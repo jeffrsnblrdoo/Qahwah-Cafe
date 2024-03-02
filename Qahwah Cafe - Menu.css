@@ -1,0 +1,52 @@
+.body {
+    font-family: Century Gothic, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+  }
+
+  .nav {
+    background-color: #E9E7DA;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav a {
+    color: black;
+    padding: 25px 25px;
+    text-decoration: none;
+  }
+
+  .nav a:hover {
+    background-color: #D5C5B5;
+  }
+
+  .background-drink {
+    background-image: url("file:///C:/Users/AMD/Pictures/MyPic/BGdrinks.png");
+    background-position: center;
+    padding: 50px;
+    text-align: center;
+    color: #815E5B;
+    font-family: Century Gothic, sans-serif;
+    font-size: 50px;
+  }
+
+  .background-A {
+    background-color: #E9E7DA;
+    padding: 235px;
+  }
+
+  .background-pastry {
+    background-color: #D5C5B5;
+    padding: 50px;
+    text-align: center;
+    color: #815E5B;
+    font-family: Century Gothic, sans-serif;
+    font-size: 50px;
+  }
+
+  .background-B {
+    background-color: #E9E7DA;
+    padding: 235px;
+  }
