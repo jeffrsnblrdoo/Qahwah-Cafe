@@ -68,3 +68,8 @@ body {
     font-size: 15px;
     font-weight: bold;
 }
+
+.second-part {
+    display: flex;
+    max-width: 50%;
+}
