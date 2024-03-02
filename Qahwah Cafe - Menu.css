@@ -1,24 +1,24 @@
-.body {
+body {
     font-family: Century Gothic, sans-serif;
     margin: 0;
     padding: 0;
     font-size: 20px;
   }
  
-  .nav {
+  nav {
     background-color: #E9E7DA;
     overflow: hidden;
     display: flex;
     justify-content: center;
   }
 
-  .nav a {
+  nav a {
     color: black;
     padding: 25px 25px;
     text-decoration: none;
   }
 
-  .nav a:hover {
+  nav a:hover {
     background-color: #D5C5B5;
   }
 
