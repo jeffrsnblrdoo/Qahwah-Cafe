@@ -69,7 +69,19 @@ body {
     font-weight: bold;
 }
 
-.second-part {
+.second-parth {
     display: flex;
-    max-width: 50%;
+    margin-top: 50px;
+    max-width: 270px;
+    margin-left: 150px;
+    font-size: 19px;
+    color: #B67352;
+}
+
+.second-partp {
+    display: flex;
+    max-width: 260px;
+    margin-left: 150px;
+    font-size: 15px;
+    color: #664331;
 }
