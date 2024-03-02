@@ -4,7 +4,7 @@
     padding: 0;
     font-size: 20px;
   }
-
+ 
   .nav {
     background-color: #E9E7DA;
     overflow: hidden;
@@ -23,7 +23,7 @@
   }
 
   .background-drink {
-    background-image: url("file:///C:/Users/AMD/Documents/GitHub/Qahwah-Cafe/pngPictures/coldDrinks/BGdrinks.png");
+    background-image: url("pngPictures/coldDrinks/BGdrinks.png");
     background-position: center;
     padding: 50px;
     text-align: center;
