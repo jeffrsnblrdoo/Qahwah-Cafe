@@ -23,7 +23,7 @@ body {
   }
 
   .background-drink {
-    background-image: url("pngPictures/coldDrinks/BGdrinks.png");
+    background-image: url("../Pictures/coldDrinks/BGdrinks.png");
     background-position: center;
     padding: 50px;
     text-align: center;
