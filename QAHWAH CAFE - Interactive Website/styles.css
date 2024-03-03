@@ -137,7 +137,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
+    font-family: 'DM Serif Text', 'Prata', Arial, Helvetica, sans-serif;
 }
 
 .promo-description > h1 {
@@ -183,6 +183,7 @@ main {
     font-weight: bolder;
     border-top: 2px solid #443229;
     padding-top: 15px;
+    font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
 }
 
 .qahwah-stories {
@@ -210,7 +211,6 @@ main {
 .story-caption > p {
     width: 700px;
     font-size: 20px;
-    text-align: center;
 }
 
 footer {
