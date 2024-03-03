@@ -86,6 +86,10 @@ main {
     margin: 0 auto;
 }
 
+.featured-pic {
+    box-shadow: 0px 32px 64px 0px rgba(0,0,0,0.2);
+}
+
 .order-btn {
     position: relative;
     width: fit-content;
