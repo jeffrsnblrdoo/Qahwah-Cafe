@@ -38,10 +38,6 @@ body {
     font-size: 50px;
   }
 
-  .background-A {
-    background-color: #E9E7DA;
-    padding: 235px;
-  }
 
   .background-pastry {
     background-image: url("../Pictures/coldDrinks/BGpastry.png");
@@ -53,15 +49,12 @@ body {
     font-size: 50px;
   }
 
-  .background-B {
-    
-    padding: 235px;
-  }
 
   .coldDrinks{
     margin: auto;
     width: 900px;
     display: flex;
+    justify-content: center;
     overflow-x: scroll;
   }
 
@@ -71,12 +64,29 @@ body {
     grid-template-columns: auto auto auto;
     grid-gap: 80px;
     padding: 10px;
+    margin: 10% auto;
     flex: none;
   }
 
   .coldDrinks img{
     width: 200%;
+    filter: grayscale(100%);
+    transition: transform 0.5s;
   }
+
+  .coldDrinks::-webkit-scrollbar{
+    display: none;
+  }
+
+  .coldDrinks div img:hover{
+    filter: grayscale(0);
+    cursor: pointer;
+    transform: scale(1.1)
+  }
+
+  
+
+  
 
 
 

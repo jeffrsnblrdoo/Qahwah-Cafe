@@ -25,18 +25,23 @@
       <span><img src="../Pictures/coldDrinks/icedMatchaLatte.png"></span>
       <span><img src="../Pictures/coldDrinks/icedMocha.png"></span>
     </div>
-    
   </div>
 
-  <div class="background-A">
-  </div>
+  <script>
+    let scrollContainer = document.querySelector(".coldDrinks");
+
+    scrollContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      scrollContainer.scrollLeft += evt.deltaY;
+    })
+  </script>
+
 
   <div class="background-pastry">
     <p>Our Pastry</p>
   </div>
 
-  <div class="background-B">
-  </div>
+  
 
 </body>
 </html>
