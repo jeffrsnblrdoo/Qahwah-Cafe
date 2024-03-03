@@ -30,7 +30,7 @@ header {
     overflow: hidden;
     background-color: #f5edda;
     display: flex;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'DM Serif Text', Prata;
 }
 
 .navbar a {
@@ -48,7 +48,7 @@ header {
     overflow: hidden;
     background-color: #f5edda;
     display: flex;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'DM Serif Text', Prata;
 }
 
 .dropdown-content {
@@ -78,7 +78,7 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'DM Serif Text', Prata;
 }
 
 .featured {
