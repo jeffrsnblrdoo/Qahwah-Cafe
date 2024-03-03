@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-size: 20px;
+    background-color: #E9E7DA;
   }
  
   nav {
@@ -53,6 +54,29 @@ body {
   }
 
   .background-B {
-    background-color: #E9E7DA;
+    
     padding: 235px;
   }
+
+  .coldDrinks{
+    margin: auto;
+    width: 900px;
+    display: flex;
+    overflow-x: scroll;
+  }
+
+  .coldDrinks div{
+    width: 200%;
+    display: flex;
+    grid-template-columns: auto auto auto;
+    grid-gap: 80px;
+    padding: 10px;
+    flex: none;
+  }
+
+  .coldDrinks img{
+    width: 200%;
+  }
+
+
+
