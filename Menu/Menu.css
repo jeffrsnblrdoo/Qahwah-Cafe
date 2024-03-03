@@ -12,6 +12,12 @@ body {
     justify-content: center;
   }
 
+  nav logo{
+    text-align: left;
+    margin-right: 80%;
+    width: 30%;
+  }
+
   nav a {
     color: black;
     padding: 25px 25px;
