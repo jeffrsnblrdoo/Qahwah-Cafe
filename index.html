@@ -1,31 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qahwah Café</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <div class="logo">
-        <img src="./Pictures/logo.png" alt="Qahwah Logo">
-    </div>
-    <div class="navbar">
-        <ul>
-            <li><a href="./Qahwah Cafe - Menu .html">Menu</a></li>
-            <li><a href="#">Book a Table</a></li>
-            <li><a href="#">Location</a></li>
-            <li><a href="#">About Us</a></li>
-        </ul>
-    </div>
-    <div class="homepage">
-        <img src="./Pictures/homepage.png" alt="Coffee with Qahwah text">
-        <div class="order-now"><a href="#">ORDER NOW</a></div>
-    </div>
-    <div class="second-part-container">
-        <h3 class="second-parth">We put the Spotlight on Philippine Coffee</h3>
-        <p class="second-partp"><em>Each cup of coffee sold supports our local coffee farmers. Our beans are sourced across the Philippines from Sagada, Atok, Ampucao & Caliking in the North, to Mt. Apo, Mt. Kitanglad, and Mt. Matutum in the South.</em></p>
-        <img src="./Pictures/coffee1.png" alt="COffee" class="coffee">
-    </div>
-</body>
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Qahwah Cafe Online Store" />
+    <title>Qahwah Cafe</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Prata&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="navbar">                                                                           
+                <div class="dropdown">
+                    <a href="#">MENU</a>
+                        <div class="dropdown-content">
+                            <a href="#">BEVERAGES</a>
+                            <a href="#">FOOD</a>
+                        </div>
+                </div> 
+                <a href="#">ORDER</a>
+                <a href="#">
+                    <img class="logo" src="../Pictures/logo.png" alt="Qahwah Cafe Logo" />
+                </a>
+                <a href="#">INQUIRE</a>
+                <a href="#">LOCATION</a>
+            </div class="navbar">
+        </header>
+        <main>
+            <section class="featured">
+                <img class="featured-pic" src="../Pictures/homepage.png" alt="Qahwah featured" />
+            </section>
+            <a class="order-btn" href="#">ORDER NOW</a>
+            <section class="mini-navbar">
+                <a class="inquire-btn" href="#">INQUIRE</a>
+                <a class="menu-btn" href="#"> VIEW MENU</a>
+                <a class="location-btn" href="#">LOCATION</a>
+            </section>
+            </section>
+            <section class="promo">
+                <div class="promo-description">
+                    <h1>Quench the heat with our summer time refreshers!</h1>
+                    <p>*Here for a limited time only.</p>
+                </div>
+                <div class="beverages">
+                    <div class="drink-1">
+                        <img class="drink-1-img" 
+                        src="../Pictures/yogurt.png" 
+                        width="250px" 
+                        alt="Qahwah Yogurt Lemon" />
+                    </div>
+                    <div class="drink-2">
+                        <img class="drink-2-img" 
+                        src="../Pictures/lemonade.png" 
+                        width="250px" 
+                        alt="Qahwah lemonade" />
+                    </div>
+                    <div class="drink-3">
+                        <img class="drink-3-img" 
+                        src="../Pictures/strawberry.png" 
+                        width="250px" 
+                        alt="Qahwah Strawberry Lemon" />
+                    </div>
+                </div>
+                <div class="beverage-name">
+                    <div class="drink-1name"><a href="#">Yogurt Lemonade</a></div>
+                    <div class="drink-2name"><a href="#">Signature Lemonade</a></div>
+                    <div class="drink-3name"><a href="#">Strawberry Lemon</a></div>
+                </div>
+            </section>
+            <section class="qahwah-stories">
+                <div class="cont-story">
+                    <div>
+                        <img class="coffee-story" src="../Pictures/coffee-story.jpg" 
+                        alt="Qahwah Coffee Stories" 
+                        width="800px" />
+                    </div>
+                    <div class="story-caption">
+                        <h1>Guess where we're headed next!</h1>
+                        <p>“When my blood runs black as the moonless night, 
+                            and my heartbeat sounds as the Warriors march, 
+                            only then may you say, I’ve had enough coffee.”</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="copyright">
+                <p>Copyright ©2024 Qahwah Cafe. All rights reserved.</p>
+            </div>
+            <div class="cafe-info">
+                <a href="#">About Us</a>
+                <a href="#">News</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </footer>
+    </body>
 </html>
