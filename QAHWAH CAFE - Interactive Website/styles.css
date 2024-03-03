@@ -30,7 +30,7 @@ header {
     overflow: hidden;
     background-color: #f5edda;
     display: flex;
-    font-family:'DM Serif Text', Prata;
+    font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
 }
 
 .navbar a {
@@ -48,7 +48,7 @@ header {
     overflow: hidden;
     background-color: #f5edda;
     display: flex;
-    font-family:'DM Serif Text', Prata;
+    font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
 }
 
 .dropdown-content {
@@ -78,7 +78,7 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    font-family:'DM Serif Text', Prata;
+    font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
 }
 
 .featured {
@@ -137,7 +137,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'DM Serif Text', Prata;
+    font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
 }
 
 .promo-description > h1 {
@@ -221,7 +221,7 @@ footer {
     position: relative;
     top: 200px;
     padding: 7px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Prata', 'DM Serif Text';
 }
 
 .copyright {
