@@ -1,0 +1,203 @@
+html {
+    background-color: #f5edda;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #f5edda;
+    height: 90px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100px;
+    transition: transfrom 5s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.2);
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #f5edda;
+    display: flex;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar a {
+    color: #443229;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 14px;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.dropdown {
+    overflow: hidden;
+    background-color: #f5edda;
+    display: flex;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 90px;
+    background-color: #f5edda;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {display:block;}
+
+.dropdown-content a:hover {color: #996f5d;}
+
+.navbar > a:hover {color: #996f5d;}
+
+.dropdown > a:hover {color: #996f5d;}
+
+main {
+    display: flex;
+    flex-direction: column;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.featured {
+    position: relative;
+    margin: 0 auto;
+}
+
+.order-btn {
+    position: relative;
+    width: fit-content;
+    top: -250px;
+    left: 150px;
+    background-color: #996f5d;
+    color: #f5edda;
+    text-decoration: none;
+    padding: 20px 25px;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.order-btn:hover {
+    background-color: #f5edda;
+    color: #443229;
+}
+
+.mini-navbar {
+    position: relative;
+    top: -100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.inquire-btn, .menu-btn, .location-btn {
+    background-color: #f5edda;
+    color: #443229;
+    padding: 25px 45px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: larger;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);
+}
+
+.inquire-btn:hover, .menu-btn:hover, .location-btn:hover {
+    background-color: #996f5d;
+    color: #f5edda;
+}
+
+.promo {
+    position: relative;
+    top: -75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.promo-description > h1 {
+    font-size: 30px;
+    color:#443229;
+}
+
+.promo-description > p {
+    font: 1em sans-serif;
+    color:#443229;
+    position: relative;
+    top: -10px;
+}
+
+.promo-description {
+    padding: 50px;
+}
+
+.beverages {
+    display: flex;
+    width: 70%;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+
+.drink-1, .drink-2, .drink-3 {transition: transfrom 0.3s ease;}
+
+.drink-1:hover, .drink-2:hover, .drink-3:hover {transform: scale(1.2);}
+
+.beverage-name {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    position: relative;
+    top: 20px;
+}
+
+.beverage-name > div > a {
+    text-decoration: none;
+    font-size: 20px;
+    color:#443229;
+    font-weight: bolder;
+}
+
+footer {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 50px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.cafe-info {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.cafe-info > a {
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #443229;
+}
