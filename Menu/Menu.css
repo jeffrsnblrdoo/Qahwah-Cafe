@@ -54,7 +54,6 @@ body {
     margin: auto;
     width: 900px;
     display: flex;
-    justify-content: center;
     overflow-x: scroll;
   }
 
@@ -82,7 +81,16 @@ body {
     filter: grayscale(0);
     cursor: pointer;
     transform: scale(1.1)
+    
   }
+
+  .coldDrinks div p{
+    margin-left: 70%;
+    text-align: justify;
+    font-family: Century Gothic, sans-serif;
+    font-size: 50px;
+  }
+
 
   
 
