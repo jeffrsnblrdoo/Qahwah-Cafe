@@ -168,7 +168,7 @@ main {
     width: 50%;
     justify-content: space-between;
     position: relative;
-    top: 20px;
+    top: 35px;
 }
 
 .beverage-name > div > a {
@@ -176,28 +176,65 @@ main {
     font-size: 20px;
     color:#443229;
     font-weight: bolder;
+    border-top: 2px solid #443229;
+    padding-top: 15px;
+}
+
+.qahwah-stories {
+    position: relative;
+    top: 50px;
+}
+
+.cont-story {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.coffee-story {
+    box-shadow: 0px 32px 64px 0px rgba(0,0,0,0.2);
+}
+
+.story-caption {
+    color: #443229;
+    font-size: 35px;
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.story-caption > p {
+    width: 700px;
+    font-size: 20px;
+    text-align: center;
 }
 
 footer {
     width: auto;
+    background-color: #996f5d;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
-    padding: 50px;
+    top: 200px;
+    padding: 7px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.copyright {
+    font-weight: bolder;
+    color: #f5edda;
+    font-size: 15px;
 }
 
 .cafe-info {
     width: 50%;
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .cafe-info > a {
-    padding: 10px;
+    padding: 20px;
     text-decoration: none;
     font-weight: bolder;
-    font-size: 20px;
-    color: #443229;
+    font-size: 15px;
+    color: #f5edda;
 }
