@@ -31,21 +31,38 @@
     </div>
   </div>
 
-  <script>
-    let scrollContainer = document.querySelector(".coldDrinks");
-
-    scrollContainer.addEventListener("wheel", (evt) => {
-      evt.preventDefault();
-      scrollContainer.scrollLeft += evt.deltaY;
-    })
-  </script>
-
-
   <div class="background-pastry">
     <p>Our Pastry</p>
   </div>
-
   
+  <div class="pastry">
+    <div>
+      <span><img src="./Pictures/BlueberryBagel.png"><p>Blueberry Bagel</p></span>
+      <span><img src="./Pictures/BlueberryMuffin.png"><p>Blueberry Muffin</p></span>
+      <span><img src="./Pictures/ButterCroissant.png"><p>Butter Croissant</p></span>
+      <span><img src="./Pictures/CheeseBaconDanish.png"><p>Cheese Bacon Danish</p></span>
+      <span><img src="./Pictures/Waffle.png"><p>Waffle</p></span>
+    </div>
+  </div>
+
+  <script>
+    let drinkscrollContainer = document.querySelector(".coldDrinks");
+    let pastryscrollContainer = document.querySelector(".pastry");
+
+	const scrollSpeed = 5;
+
+    drinkscrollContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      drinkscrollContainer.scrollLeft += evt.deltaY * scrollSpeed;
+    });
+
+    pastryscrollContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      pastryscrollContainer.scrollLeft += evt.deltaY * scrollSpeed;
+    });
+
+
+  </script>
 
 </body>
 </html>
