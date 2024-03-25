@@ -49,15 +49,19 @@
     let drinkscrollContainer = document.querySelector(".coldDrinks");
     let pastryscrollContainer = document.querySelector(".pastry");
 
+	const scrollSpeed = 5;
+
     drinkscrollContainer.addEventListener("wheel", (evt) => {
       evt.preventDefault();
-      drinkscrollContainer.scrollLeft += evt.deltaY;
+      drinkscrollContainer.scrollLeft += evt.deltaY * scrollSpeed;
     });
 
     pastryscrollContainer.addEventListener("wheel", (evt) => {
       evt.preventDefault();
-      pastryscrollContainer.scrollLeft += evt.deltaY;
+      pastryscrollContainer.scrollLeft += evt.deltaY * scrollSpeed;
     });
+
+
   </script>
 
 </body>

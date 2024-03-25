@@ -71,6 +71,8 @@ body {
     width: 900px;
     display: flex;
     overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
   }
 
   .coldDrinks div{
@@ -112,6 +114,8 @@ body {
     width: 900px;
     display: flex;
     overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
   }
 
   .pastry div{
@@ -147,7 +151,4 @@ body {
     font-family: Century Gothic, sans-serif;
     font-size: 50px;
   }
-  
-
-
 
