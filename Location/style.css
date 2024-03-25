@@ -46,3 +46,54 @@ main {
     flex-direction: column;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    color: #443229;
+    margin-bottom: 60px;
+}
+
+iframe {
+    width: 80%;
+    height: 500px;
+}
+
+footer {
+    width: auto;
+    background-color: #815E5B;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 200px;
+    padding: 7px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.copyright {
+    font-weight: bolder;
+    color: #f5edda;
+    font-size: 15px;
+}
+
+.cafe-info {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.cafe-info > a {
+    padding: 20px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 15px;
+    color: #f5edda;
+}
