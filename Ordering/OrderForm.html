@@ -23,71 +23,24 @@
             </div class="navbar">
         </header>
         <main>
-            <form>
-                <h1 class="drinks-title">Drinks</h1>
-                <div id="drinks">
-                    <div class="beverages" id="iced-americano">
-                        <div class="image">
-                            <img
-                            src="../Ordering/Pictures/IcedAmericano.png"
-                            width="350px"
-                            alt="Iced Americano"
-                            />
-                        </div>
-                        <div class="drink-name">
-                            <a href="#">Iced Americano</a>
-                        </div>
-                    </div>
-                    <div class="beverages" id="iced-caramel-macchiato">
-                        <div class="image">
-                            <img
-                            src="../Ordering/Pictures/icedCaramelMacchiato.png"
-                            width="350px"
-                            alt="Iced Caramel Macchiato"
-                            />
-                        </div>
-                        <div class="drink-name">
-                            <a href="#">Iced Caramel Macchiato</a>
-                        </div>
-                    </div>
-                    <div class="beverages" id="iced-latte">
-                        <div class="image">
-                            <img
-                            src="../Ordering/Pictures/icedLatte.png"
-                            width="350px"
-                            alt="Iced Latte"
-                            />
-                        </div>
-                        <div class="drink-name">
-                            <a href="#">Iced Latte</a>
-                        </div>
-                    </div>
-                    <div class="beverages" id="iced-matcha-latte">
-                        <div class="image">
-                            <img
-                            src="../Ordering/Pictures/icedMatchaLatte.png"
-                            width="350px"
-                            alt="Iced Matcha Latte"
-                            />
-                        </div>
-                        <div class="drink-name">
-                            <a href="#">Iced Matcha Latte</a>
-                        </div>
-                    </div>
-                    <div class="beverages" id="iced-mocha">
-                        <div class="image">
-                            <img
-                            src="../Ordering/Pictures/icedMocha.png"
-                            width="350px"
-                            alt="Iced Mocha"
-                            />
-                        </div>
-                        <div class="drink-name">
-                            <a href="#">Iced Mocha</a>
-                        </div>
+            <div class="container">
+                <div class="order-header">
+                    <h1>Drinks</h1>
+                    <div class="shopping-cart">
+                        <img src="../Ordering/Pictures/shopping cart.png" alt="Shopping Cart" />
+                        <span class="quantity">0</span>
                     </div>
                 </div>
-            </form>
+                <div class="list"></div>
+            </div>
+            <div class="cart">
+                <h1>Cart</h1>
+                <ul class="listCart"></ul>
+                <div class="checkOut">
+                    <div class="total">0</div>
+                    <div class="closeShop">Close</div>
+                </div>
+            </div>
         </main>
         <footer>
             <div class="copyright">
@@ -100,5 +53,6 @@
                 <a href="#">Contact Us</a>
             </div>
         </footer>
+        <script src="./order.js"></script>
     </body>
 </html>
