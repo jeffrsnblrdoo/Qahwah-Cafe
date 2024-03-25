@@ -68,7 +68,7 @@ body {
 
   .coldDrinks{
     margin: auto;
-    width: 900px;
+    width: 100px;
     display: flex;
     overflow-x: scroll;
   }
@@ -106,7 +106,6 @@ body {
     font-family: Century Gothic, sans-serif;
     font-size: 50px;
   }
-
 
   
 
