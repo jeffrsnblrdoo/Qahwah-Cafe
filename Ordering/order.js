@@ -37,7 +37,7 @@ const drinks = [
     {
         id: 4,
         name: 'Iced Matcha Latte',
-        image: 'icedMatchaLatte',
+        image: 'icedMatchaLatte.png',
         price: 125.00
     },
     {
@@ -54,7 +54,7 @@ const initApp = () => {
         let newDiv = document.createElement('div');
         newDiv.classList.add('item');
         newDiv.innerHTML = `
-        <img src='image/${value.image}'/>
+        <img src='../Ordering/Pictures/${value.image}'/>
         <div class='title'>${value.name}</div>
         <div class='price'>Php ${value.price.toLocaleString()}</div>
         <button onclick='addToCart(${key})'>Add to cart</button>
@@ -71,6 +71,32 @@ const addToCart = (key) => {
         listCarts[key].quantity = 1;
     }
     reloadCart();
-    
+}
+
+const reloadCart = () => {
+    listCart.innerHTML = '';
+    let count = 0;
+    let totalPrice = 0;
+    listCarts.forEach((value,key) => {
+        totalPrice = totalPrice + value.price;
+        count = count + value.quantity;
+
+        if(value != null) {
+            let newDiv = document.createElement('li');
+            newDiv.innerHTML = `
+                <div><img src='../Ordering/Pictures/${value.image}' width='100px'/></div>
+                <div>${value.name}</div>
+                <div class='price'>Php ${value.price.toLocaleString()}</div>
+                <div>
+                    <button onclick='changeQuantity(${key}, ${value.quantity - 1})'>-</button>
+                    <div class='count'>${value.quantity}</div>
+                    <button onclick='changeQuantity(${key}, ${value.quantity + 1})'>+</button>
+                </div>
+                `;
+            listCart.appendChild(newDiv);
+        }
+    })
+    total.innerHTML = "Php " + totalPrice.toLocaleString();
+    quantity.innerText = count;
 }
 
