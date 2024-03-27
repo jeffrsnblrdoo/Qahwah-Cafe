@@ -70,14 +70,14 @@ main {
 }
 
 .order-header > .shopping-cart > span {
-    background-color: red;
+    background-color: #443229;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    color: #E9E7DA;
     position: absolute;
-    top: 0px;
+    top: 3px;
     left: 98%;
     padding: 3px 10px;
     cursor: pointer;
@@ -127,18 +127,31 @@ hr {
 
 .drink-list > .beverage > .title {
     font-weight: 600;
+    font-size: 17px;
 }
 
 .drink-list > .beverage > .price {
     margin: 10px;
+    font-size: 20px;
 }
 
 .drink-list > .beverage > button {
     background-color: #443229;
     color:#E9E7DA;
-    padding: 10px;
-    width: 100%;
     cursor: pointer;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 3px;
+    padding: 12px 24px;
+    border: 0;
+    line-height: 1.15;
+    font-size: 15px;
+    :hover {
+        transition: all .1s ease;
+        box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
+    }
 }
 
 .pastry-list {
@@ -163,18 +176,31 @@ hr {
 
 .pastry-list > .pastry > .title {
     font-weight: 600;
+    font-size: 17px;
 }
 
 .pastry-list > .pastry > .price {
     margin: 10px;
+    font-size: 20px;
 }
 
 .pastry-list > .pastry > button {
     background-color: #443229;
     color:#E9E7DA;
-    padding: 10px;
-    width: 100%;
     cursor: pointer;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 3px;
+    padding: 12px 24px;
+    border: 0;
+    line-height: 1.15;
+    font-size: 15px;
+    :hover {
+        transition: all .1s ease;
+        box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
+    }
 }
 
 
