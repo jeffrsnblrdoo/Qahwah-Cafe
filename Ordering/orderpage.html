@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Qahwah Cafe Online Store" />
     <title>Qahwah Cafe</title>
-    <link rel="stylesheet" href="./order.css" />
+    <link rel="stylesheet" href="./orderstyles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Prata&display=swap" rel="stylesheet">
@@ -25,22 +25,20 @@
         <main>
             <div class="container">
                 <div class="order-header">
-                    <h1>Drinks</h1>
                     <div class="shopping-cart">
                         <img src="../Ordering/Pictures/shopping cart.png" alt="Shopping Cart" />
                         <span class="quantity">0</span>
                     </div>
                 </div>
-                <div class="list"></div>
-            </div>
-            <div class="cart">
-                <h1>Cart</h1>
-                <ul class="listCart"></ul>
-                <div class="checkOut">
-                    <div class="total">0</div>
-                    <div class="closeShop">Close</div>
+                <div class="cart-container">
+                    <h1>dito mapupunta orders</h1>
+                    <h3>naka list dapat with price and quantity tapos editable</h3>
+                    <button type="submit">Submit</button>
                 </div>
-            </div>
+                <h1>DRINKS</h1>
+                <div class="drink-list"></div>
+                <h1>PASTRIES</h1>
+                <div class="pastry-list"></div>
         </main>
         <footer>
             <div class="copyright">
@@ -53,6 +51,6 @@
                 <a href="#">Contact Us</a>
             </div>
         </footer>
-        <script src="./order.js"></script>
+        <script src="./orderscript.js"></script>
     </body>
 </html>
