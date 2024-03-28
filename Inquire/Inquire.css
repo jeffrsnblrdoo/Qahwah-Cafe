@@ -1,0 +1,148 @@
+html {
+    background-color: #E9E7DA;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #E9E7DA;
+    height: 90px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.logo {
+    max-width: 130px;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #E9E7DA;
+    display: flex;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar a {
+    color: #443229;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 14px;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.navbar > a:hover {color: #815E5B;}
+
+main {
+    display: flex;
+    flex-direction: column;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    height: 140vh;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.contact-box{
+    background: #815E5B;
+    display: flex;
+}
+.contact-left{
+    flex-basis: 60%;
+    padding: 40px 60px;
+    color: #f5edda;
+}
+.contact-right{
+    flex-basis: 30%;
+
+    background: #443229;
+    color: #f5edda;
+}
+
+.container p{
+    margin-bottom: 40px;
+}
+
+.input-group{
+    flex-basis: 40%;
+    justify-content: space-between;
+    margin-bottom: 80px;
+}
+
+input{
+    width: 60%;
+    background-color: #815E5B;
+    color: #f5edda;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    padding-bottom: 5px;
+}
+
+textarea{
+    Width: 60%;
+    border: 1px solid #ccc;
+    background-color: #815E5B;
+    color: #f5edda;
+    outline: none;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+label{
+    margin-bottom: 6px;
+    display: block;
+    color: #f5edda;
+}
+
+h1 {
+    color: #443229;
+    margin-bottom: 10px;
+}
+
+iframe {
+    width: 80%;
+    height: 500px;
+}
+
+footer {
+    width: auto;
+    background-color: #815E5B;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 200px;
+    padding: 7px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.copyright {
+    font-weight: bolder;
+    color: #f5edda;
+    font-size: 15px;
+}
+
+.cafe-info {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.cafe-info > a {
+    padding: 20px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 15px;
+    color: #f5edda;
+}
