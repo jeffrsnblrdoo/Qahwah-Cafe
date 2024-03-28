@@ -1,12 +1,15 @@
-body {
-    font-family: Century Gothic, sans-serif;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
+html {
     background-color: #E9E7DA;
-  }
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
  
-  header {
+header {
     background-color: #E9E7DA;
     height: 90px;
     display: flex;
@@ -152,3 +155,33 @@ body {
     font-size: 50px;
   }
 
+footer {
+    width: auto;
+    background-color: #815E5B;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 200px;
+    padding: 7px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.copyright {
+    font-weight: bolder;
+    color: #f5edda;
+    font-size: 15px;
+}
+
+.cafe-info {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.cafe-info > a {
+    padding: 20px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 15px;
+    color: #f5edda;
+}
