@@ -1,6 +1,7 @@
 
 const openCart = document.querySelector('.shopping-cart');
 const closeCart = document.querySelector('.closeShop');
+const cartList = document.querySelector('.cart-list');
 const cartContainer = document.querySelector('.cart-container');
 const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
@@ -81,6 +82,7 @@ const products = [
     }
 ]
 
+const shoppingCart = [];
 
 const displayProducts = () => {
     products.forEach((value) => {
@@ -91,7 +93,7 @@ const displayProducts = () => {
             <img src='../Ordering/Pictures/${value.image}'/>
             <div class='title'>${value.name}</div>
             <div class='price'>Php ${value.price.toLocaleString()}</div>
-            <button class='btn add-to-cart-btn'>Add to cart</button>
+            <button onClick='addToCart(${value.id})'>Add to cart</button>
             `;
             drinkList.appendChild(newDiv);
         } else {
@@ -101,7 +103,7 @@ const displayProducts = () => {
             <img src='../Ordering/Pictures/${value.image}'/>
             <div class='title'>${value.name}</div>
             <div class='price'>Php ${value.price.toLocaleString()}</div>
-            <button class='btn add-to-cart-btn'>Add to cart</button>
+            <button onClick='addToCart(${value.id})'>Add to cart</button>
             `;
             pastryList.appendChild(newDiv);
         }
@@ -115,17 +117,25 @@ openCart.addEventListener('click', () => {
     cartContainer.style.display = "none";
 });
 
-class ShoppingCart {
-    constructor() {
-        this.items = [];
-        this.total = 0;
-        this.count = 0;
-    }
+const addToCart = (id) => {
+    
+    const product = products.find((item) => item.id === id);
+    const { name,price } = product;
+    const prodQuantity = 1;
 
-    addItem(id, products) {
-        
-    }
+    shoppingCart.push(product);
+    console.log(shoppingCart);
+
+    cartList.innerHTML += `
+        <div class='product-container'>
+        <div class='product-name'>${name}</div>
+        <div class='product-price'>${price}</div>
+        <div class='product-quantity'>${prodQuantity}</div>
+        <div>
+    `;
+    quantity.innerHTML = shoppingCart.length;
 }
 
+const calculateTotal = (price) => {
 
-const cart = new ShoppingCart();
+}
