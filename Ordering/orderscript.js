@@ -6,7 +6,7 @@ const cartContainer = document.querySelector('.cart-container');
 const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
 const main = document.querySelector('main');
-const total = document.querySelector('.total');
+const total = document.querySelector('.grand-total');
 const quantity = document.querySelector('.quantity');
 
 const products = [
@@ -121,21 +121,36 @@ const addToCart = (id) => {
     
     const product = products.find((item) => item.id === id);
     const { name,price } = product;
-    const prodQuantity = 1;
-
     shoppingCart.push(product);
-    console.log(shoppingCart);
 
+    const countPerProduct = {};
+    shoppingCart.forEach((item) => {
+        countPerProduct[item.id] = (countPerProduct[item.id] || 0) + 1;
+    })
+
+    const currentCount = countPerProduct[product.id];
+    const prodCount = document.querySelector(`.product-quantity-for-${id}`);
+    currentCount > 1 ? prodCount.textContent = `${currentCount}` : 
     cartList.innerHTML += `
         <div class='product-container'>
         <div class='product-name'>${name}</div>
         <div class='product-price'>${price}</div>
-        <div class='product-quantity'>${prodQuantity}</div>
-        <div>
-    `;
-    quantity.innerHTML = shoppingCart.length;
+        <div class='product-quantity-for-${id}'>1</div>
+        </div>`;
+    
+    let totalCount = 0;
+    for (const productId in countPerProduct) {
+        totalCount += countPerProduct[productId];
+    }
+    quantity.innerHTML = totalCount;
+     
+    calculateTotal();
+
+    console.log(shoppingCart);
+    console.log(countPerProduct);
+    console.log(currentCount);
 }
 
-const calculateTotal = (price) => {
-
+const calculateTotal = () => {
+    
 }
