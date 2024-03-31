@@ -151,25 +151,34 @@ const addToCart = (id) => {
         <div class='product-price'>Php ${price}</div>
         <div class='product-quantity-for-${id}'>${currentCount}</div>
         </div>`;
-
-    /*updates the cart quantity display*/
-    let totalCount = 0;
-    for (const productId in countPerProduct) {
-        totalCount += countPerProduct[productId];
-    }
-    quantity.innerHTML = totalCount;
     
-    /*calculates the total for all items added to cart */
-    let grandTotal = 0;
-    for(let i = 0; i < orderList.length; i++) {
-        grandTotal += (orderList[i].price * orderList[i].quantity);
-    }
+    updateQtyDisplay(orderList);
+    calculateTotal(orderList);
 
-    total.textContent = "Total: Php " + grandTotal;
-
+    /*
+    !USE THIS TO SEE WHAT HAPPENS TO THE DATA
     console.log(shoppingCart);
     console.log(countPerProduct);
     console.log(currentCount);
-    console.log(orderList);
-    console.log(grandTotal);
+    console.log(orderList);*/
+}
+
+/*counts the total number of products added to the cart and updates the quantity counter accordingly */
+const updateQtyDisplay = (Array) => {
+    let totalCount = 0;
+    for(const prodCount in orderList) {
+        totalCount += orderList[prodCount].quantity;
+    }
+    
+    quantity.innerHTML = totalCount;
+}
+
+/*calculates the total amount of products added to cart and updates the total amount display */
+const calculateTotal = (Array) => {
+    let grandTotal = 0;
+    for(let i = 0; i < Array.length; i++) {
+        grandTotal += (Array[i].price * Array[i].quantity);
+    }
+
+    total.textContent = "Total: Php " + grandTotal;
 }
