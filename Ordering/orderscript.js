@@ -82,35 +82,30 @@ const products = [
     }
 ]
 
-const shoppingCart = [];
-const orderList = [];
+products.forEach((value) => {
+    if(value.category === "beverage") {
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('beverage');
+        newDiv.innerHTML = `
+        <img src='../Ordering/Pictures/${value.image}'/>
+        <div class='title'>${value.name}</div>
+        <div class='price'>Php ${value.price.toLocaleString()}</div>
+        <button id='${value.id}' class='add-to-cart-btn'>Add to cart</button>`;
 
-const displayProducts = () => {
-    products.forEach((value) => {
-        if(value.category === "beverage") {
-            let newDiv = document.createElement('div');
-            newDiv.classList.add('beverage');
-            newDiv.innerHTML = `
-            <img src='../Ordering/Pictures/${value.image}'/>
-            <div class='title'>${value.name}</div>
-            <div class='price'>Php ${value.price.toLocaleString()}</div>
-            <button onClick='addToCart(${value.id})'>Add to cart</button>
-            `;
-            drinkList.appendChild(newDiv);
-        } else {
-            let newDiv = document.createElement('div');
-            newDiv.classList.add('pastry');
-            newDiv.innerHTML = `
-            <img src='../Ordering/Pictures/${value.image}'/>
-            <div class='title'>${value.name}</div>
-            <div class='price'>Php ${value.price.toLocaleString()}</div>
-            <button onClick='addToCart(${value.id})'>Add to cart</button>
-            `;
-            pastryList.appendChild(newDiv);
-        }
-    })
-}
-displayProducts();
+        drinkList.appendChild(newDiv);
+    } else {
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('pastry');
+        newDiv.innerHTML = `
+        <img src='../Ordering/Pictures/${value.image}'/>
+        <div class='title'>${value.name}</div>
+        <div class='price'>Php ${value.price.toLocaleString()}</div>
+        <button id='${value.id}' class='add-to-cart-btn'>Add to cart</button>`;
+        
+        pastryList.appendChild(newDiv);
+    }
+});
+
 
 openCart.addEventListener('click', () => {
     cartContainer.style.display === "none" ? 
@@ -118,66 +113,80 @@ openCart.addEventListener('click', () => {
     cartContainer.style.display = "none";
 });
 
-const addToCart = (id) => {
-
-     //adds the product to the cart list via the add to cart button
-    const product = products.find((item) => item.id === id);
-    const { name,price } = product;
-    shoppingCart.push(product);
-
-    //quantity counter for products added to cart
-    let countPerProduct = {};
-    shoppingCart.forEach((item) => {
+class ShoppingCart {
+    constructor() {
+      this.items = [];
+      this.orders = [];
+    }
+  
+    addItem(id) {
+        const product = products.find((item) => item.id === id);
+        const { name, price } = product;
+        this.items.push(product);
+  
+        //quantity counter for products added to cart
+        let countPerProduct = {};
+        this.items.forEach((item) => {
         countPerProduct[item.id] = (countPerProduct[item.id] || 0) + 1;
+        })
+        const currentCount = countPerProduct[product.id];
+    
+        //creates a new array which adds and edits a quantity property to duplicated products in the shopping cart array 
+        if(this.orders.includes(product)) {
+            product.quantity = currentCount;
+        } else {
+            product.quantity = 1;
+            this.orders.push(product);
+        }
+
+        // creates the html display for items added into cart
+        const prodCount = document.querySelector(`.product-quantity-for-${id}`);
+        product.quantity > 1 ? prodCount.innerHTML = 
+            `<button id='${id}' class='dec-qty-btn'>-</button>
+             ${product.quantity} 
+            <button id='${id}' class='inc-qty-btn'>+</button>` :
+        cartList.innerHTML += `
+            <div class='product-container'>
+            <div class='product-name'>${name}</div>
+            <div class='product-price'>Php ${price}</div>
+            <div class='product-quantity-for-${id}'>
+            <button id='${id}' class='dec-qty-btn'>-</button>
+             ${product.quantity} 
+             <button id='${id}' class='inc-qty-btn'>+</button>
+            </div>
+            </div>`;
+    }
+
+    //counts the total number of products added to the cart and updates the quantity counter accordingly
+    updateQtyDisplay() {
+        let totalCount = 0;
+        for(const prodCount in this.orders) {
+            totalCount += this.orders[prodCount].quantity;
+        }
+    
+        quantity.innerHTML = totalCount;
+    }
+
+    //calculates the total amount of products added to cart and updates the total amount display
+    calculateTotal() {
+        let grandTotal = 0;
+        for(let i = 0; i < this.orders.length; i++) {
+            grandTotal += (this.orders[i].price * this.orders[i].quantity);
+        }
+
+        total.textContent = "Total: Php " + grandTotal;
+    }
+}
+
+
+const cart = new ShoppingCart();
+const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
+
+[...addToCartBtns].forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+        cart.addItem(Number(event.target.id));
+        cart.updateQtyDisplay();
+        cart.calculateTotal();
+        console.log(cart);
     })
-    const currentCount = countPerProduct[product.id];
-
-    //creates a new array which adds and edits a quantity property to duplicated products in the shopping cart array 
-    if(orderList.includes(product)) {
-        product.quantity = currentCount;
-    } else {
-        product.quantity = 1;
-        orderList.push(product);
-    }
-
-    // creates the html display for items added into cart
-    const prodCount = document.querySelector(`.product-quantity-for-${id}`);
-    currentCount > 1 ? prodCount.textContent = `${currentCount}` :
-    cartList.innerHTML += `
-        <div class='product-container'>
-        <div class='product-name'>${name}</div>
-        <div class='product-price'>Php ${price}</div>
-        <div class='product-quantity-for-${id}'>${currentCount}</div>
-        </div>`;
-    
-    updateQtyDisplay(orderList);
-    calculateTotal(orderList);
-
-    /*
-    !USE THIS TO SEE WHAT HAPPENS TO THE DATA
-    console.log(shoppingCart);
-    console.log(countPerProduct);
-    console.log(currentCount);
-    console.log(orderList);
-    */
-}
-
-//counts the total number of products added to the cart and updates the quantity counter accordingly
-const updateQtyDisplay = (Array) => {
-    let totalCount = 0;
-    for(const prodCount in orderList) {
-        totalCount += orderList[prodCount].quantity;
-    }
-    
-    quantity.innerHTML = totalCount;
-}
-
-//calculates the total amount of products added to cart and updates the total amount display
-const calculateTotal = (Array) => {
-    let grandTotal = 0;
-    for(let i = 0; i < Array.length; i++) {
-        grandTotal += (Array[i].price * Array[i].quantity);
-    }
-
-    total.textContent = "Total: Php " + grandTotal;
-}
+});
