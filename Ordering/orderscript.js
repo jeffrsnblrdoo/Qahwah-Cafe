@@ -130,6 +130,7 @@ const addToCart = (id) => {
     shoppingCart.forEach((item) => {
         countPerProduct[item.id] = (countPerProduct[item.id] || 0) + 1;
     })
+    const currentCount = countPerProduct[product.id];
 
     //creates a new array which adds and edits a quantity property to duplicated products in the shopping cart array 
     if(orderList.includes(product)) {
@@ -140,7 +141,6 @@ const addToCart = (id) => {
     }
 
     // creates the html display for items added into cart
-    const currentCount = countPerProduct[product.id];
     const prodCount = document.querySelector(`.product-quantity-for-${id}`);
     currentCount > 1 ? prodCount.textContent = `${currentCount}` :
     cartList.innerHTML += `
