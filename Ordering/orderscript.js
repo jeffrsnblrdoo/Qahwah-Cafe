@@ -83,6 +83,7 @@ const products = [
 ]
 
 const shoppingCart = [];
+const orderList = [];
 
 const displayProducts = () => {
     products.forEach((value) => {
@@ -118,39 +119,57 @@ openCart.addEventListener('click', () => {
 });
 
 const addToCart = (id) => {
-    
+
+     /*adds the product to the cart list via the add to cart button */
     const product = products.find((item) => item.id === id);
     const { name,price } = product;
     shoppingCart.push(product);
 
-    const countPerProduct = {};
+    /*quantity counter for products added to cart */
+    let countPerProduct = {};
     shoppingCart.forEach((item) => {
         countPerProduct[item.id] = (countPerProduct[item.id] || 0) + 1;
     })
 
+    /*creates an html for products added to cart, if product is already in cart, updates the quantity
+    instead of duplicating the display*/
     const currentCount = countPerProduct[product.id];
+
+    /*creates a new array which adds and edits a quantity property to duplicated products in the
+    shopping cart array */
+    if(orderList.includes(product)) {
+        product.quantity = currentCount;
+    } else {
+        product.quantity = 1;
+        orderList.push(product);
+    }
     const prodCount = document.querySelector(`.product-quantity-for-${id}`);
-    currentCount > 1 ? prodCount.textContent = `${currentCount}` : 
+    currentCount > 1 ? prodCount.textContent = `${currentCount}` :
     cartList.innerHTML += `
         <div class='product-container'>
         <div class='product-name'>${name}</div>
-        <div class='product-price'>${price}</div>
-        <div class='product-quantity-for-${id}'>1</div>
+        <div class='product-price'>Php ${price}</div>
+        <div class='product-quantity-for-${id}'>${currentCount}</div>
         </div>`;
-    
+
+    /*updates the cart quantity display*/
     let totalCount = 0;
     for (const productId in countPerProduct) {
         totalCount += countPerProduct[productId];
     }
     quantity.innerHTML = totalCount;
-     
-    calculateTotal();
+    
+    /*calculates the total for all items added to cart */
+    let grandTotal = 0;
+    for(let i = 0; i < orderList.length; i++) {
+        grandTotal += (orderList[i].price * orderList[i].quantity);
+    }
+
+    total.textContent = "Total: Php " + grandTotal;
 
     console.log(shoppingCart);
     console.log(countPerProduct);
     console.log(currentCount);
-}
-
-const calculateTotal = () => {
-    
+    console.log(orderList);
+    console.log(grandTotal);
 }
