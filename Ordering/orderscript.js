@@ -120,29 +120,27 @@ openCart.addEventListener('click', () => {
 
 const addToCart = (id) => {
 
-     /*adds the product to the cart list via the add to cart button */
+     //adds the product to the cart list via the add to cart button
     const product = products.find((item) => item.id === id);
     const { name,price } = product;
     shoppingCart.push(product);
 
-    /*quantity counter for products added to cart */
+    //quantity counter for products added to cart
     let countPerProduct = {};
     shoppingCart.forEach((item) => {
         countPerProduct[item.id] = (countPerProduct[item.id] || 0) + 1;
     })
 
-    /*creates an html for products added to cart, if product is already in cart, updates the quantity
-    instead of duplicating the display*/
-    const currentCount = countPerProduct[product.id];
-
-    /*creates a new array which adds and edits a quantity property to duplicated products in the
-    shopping cart array */
+    //creates a new array which adds and edits a quantity property to duplicated products in the shopping cart array 
     if(orderList.includes(product)) {
         product.quantity = currentCount;
     } else {
         product.quantity = 1;
         orderList.push(product);
     }
+
+    // creates the html display for items added into cart
+    const currentCount = countPerProduct[product.id];
     const prodCount = document.querySelector(`.product-quantity-for-${id}`);
     currentCount > 1 ? prodCount.textContent = `${currentCount}` :
     cartList.innerHTML += `
@@ -160,10 +158,11 @@ const addToCart = (id) => {
     console.log(shoppingCart);
     console.log(countPerProduct);
     console.log(currentCount);
-    console.log(orderList);*/
+    console.log(orderList);
+    */
 }
 
-/*counts the total number of products added to the cart and updates the quantity counter accordingly */
+//counts the total number of products added to the cart and updates the quantity counter accordingly
 const updateQtyDisplay = (Array) => {
     let totalCount = 0;
     for(const prodCount in orderList) {
@@ -173,7 +172,7 @@ const updateQtyDisplay = (Array) => {
     quantity.innerHTML = totalCount;
 }
 
-/*calculates the total amount of products added to cart and updates the total amount display */
+//calculates the total amount of products added to cart and updates the total amount display
 const calculateTotal = (Array) => {
     let grandTotal = 0;
     for(let i = 0; i < Array.length; i++) {
