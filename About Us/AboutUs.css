@@ -83,4 +83,120 @@ header {
 
 .content-section .content h3 {
     margin-top: 20px;
+    font-size: 21px;
+}
+
+.content-section .content p {
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.content-section .content .button {
+    margin-top: 30px;
+}
+
+.content-section .content .button a {
+    background-color: #443229;
+    padding: 12px 40px;
+    text-decoration: none;
+    color: #E9E7DA;
+    font-size: 25px;
+    letter-spacing: 1.5px;
+}
+
+.content-section .content .button a:hover {
+    background-color: #aa6c4d;
+    color: #E9E7DA;
+}
+
+.content-section .social {
+    margin-top: 40px;
+}
+
+.content-section .social i {
+    color: #443229;
+    font-size: 30px;
+    padding: 0px 10px;
+}
+
+.content-section .social i:hover {
+    color: #aa6c4d;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 80%;
+        display: block;
+        margin: auto;
+        padding-top: 50px;
+    }
+
+    .content-section {
+        float: none;
+        width: 100%;
+        display: block;
+        margin: auto;
+    }
+
+    .image-section {
+        float: none;
+        width: 100%;
+    }
+
+    .image-section img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+
+    .content-section .title {
+        text-align: center;
+        font-size: 19px;
+    }
+
+    .content-section .content .button {
+        text-align: center;
+    }
+
+    .content-section .content .button a {
+        padding: 9px 30px;
+    }
+
+    .content-section .social {
+        text-align: center;
+    }
+}
+
+footer {
+    width: auto;
+    background-color: #815E5B;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 200px;
+    padding: 7px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-weight: bolder;
+    color: #f5edda;
+    font-size: 15px;
+}
+
+.cafe-info {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.cafe-info > a {
+    padding: 20px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 15px;
+    color: #f5edda;
 }
