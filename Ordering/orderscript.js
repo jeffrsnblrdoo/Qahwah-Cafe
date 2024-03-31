@@ -159,6 +159,7 @@ class ShoppingCart {
 
     //counts the total number of products added to the cart and updates the quantity counter accordingly
     updateQtyDisplay() {
+        this.incQty();
         let totalCount = 0;
         for(const prodCount in this.orders) {
             totalCount += this.orders[prodCount].quantity;
@@ -176,6 +177,22 @@ class ShoppingCart {
 
         total.textContent = "Total: Php " + grandTotal;
     }
+
+    incQty(id) {
+        this.orders.forEach((item) => {
+            if(item.id === id) {
+                item.quantity++;
+            }
+        })
+    }
+
+    decQty(id) {
+        this.orders.forEach((item) => {
+            if(item.id === id) {
+                item.quantity--;
+            }
+        })
+    }
 }
 
 
@@ -189,4 +206,16 @@ const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
         cart.calculateTotal();
         console.log(cart);
     })
+});
+
+document.addEventListener('click', (event) => {
+    if(event.target.closest('.inc-qty-btn')) {
+        cart.incQty(Number(event.target.id));
+    }
+});
+
+document.addEventListener('click', (event) => {
+    if(event.target.closest('.dec-qty-btn')) {
+        cart.decQty(Number(event.target.id));
+    }
 });
