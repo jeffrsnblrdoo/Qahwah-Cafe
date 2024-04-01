@@ -115,57 +115,70 @@ openCart.addEventListener('click', () => {
 
 class ShoppingCart {
     constructor() {
-      this.items = [];
       this.orders = [];
+      this.quantity;
       this.count;
       this.total;
-      this.quantity;
     }
   
     addItem(id) {
         const product = products.find((item) => item.id === id);
         const { name, price } = product;
-        this.items.push(product);
-  
-        //quantity counter for products added to cart
-        let countPerProduct = {};
-        this.items.forEach((item) => {
-        countPerProduct[item.id] = (countPerProduct[item.id] || 0) + 1;
-        })
-        const currentCount = countPerProduct[product.id];
     
         //creates a new array which adds and edits a quantity property to duplicated products in the shopping cart array 
-        if(this.orders.includes(product)) {
-            product.quantity = currentCount;
+        const existingProduct = this.orders.find((item) => item.id === id);
+        if(existingProduct) {
+            existingProduct.quantity++;
         } else {
             product.quantity = 1;
             this.orders.push(product);
         }
+        this.quantity = product.quantity;
 
         // creates the html display for items added into cart
         const prodCount = document.querySelector(`.product-quantity-for-${id}`);
-        product.quantity > 1 ? prodCount.innerHTML = 
+        const newDiv = document.createElement('div');
+        newDiv.classList.add('product-container');
+
+        if (this.quantity > 1) {
+            prodCount.innerHTML = 
             `<button id='${id}' class='dec-qty-btn'>-</button>
-             ${product.quantity} 
-            <button id='${id}' class='inc-qty-btn'>+</button>` :
-        cartList.innerHTML += `
-            <div class='product-container'>
+             ${this.quantity} 
+            <button id='${id}' class='inc-qty-btn'>+</button>`
+        } else {
+            newDiv.innerHTML += `
             <div class='product-name'>${name}</div>
             <div class='product-price'>Php ${price}</div>
             <div class='product-quantity-for-${id}'>
             <button id='${id}' class='dec-qty-btn'>-</button>
-             ${product.quantity} 
+             ${this.quantity} 
              <button id='${id}' class='inc-qty-btn'>+</button>
-            </div>
             </div>`;
+        cartList.appendChild(newDiv); 
+        }
+    }
+
+    //decrease quantity and calculates the amount accordingly
+    decQty(id) {
+        const product = this.orders.find((item) => item.id === id);
+        this.quantity = product.quantity -= 1;
+        
+        const prodCount = document.querySelector(`.product-quantity-for-${id}`);
+        prodCount.innerHTML = 
+            `<button id='${id}' class='dec-qty-btn'>-</button>
+             ${this.quantity} 
+            <button id='${id}' class='inc-qty-btn'>+</button>`;
+        
+        if(this.quantity === 0) {
+            this.orders.splice(product);
+        }
     }
 
     //counts the total number of products added to the cart and updates the quantity counter accordingly
     updateQtyDisplay() {
         let totalCount = 0;
-        for(const prodCount in this.orders) {
-            totalCount += this.orders[prodCount].quantity;
-            
+        for(let i = 0; i < this.orders.length; i++) {
+            totalCount += this.orders[i].quantity;
         }
         this.count = totalCount;
         quantity.innerHTML = this.count;
@@ -175,24 +188,10 @@ class ShoppingCart {
     calculateTotal() {
         let grandTotal = 0;
         for(let i = 0; i < this.orders.length; i++) {
-            grandTotal += (this.orders[i].price * this.orders[i].quantity);
+            grandTotal += (this.orders[i].quantity * this.orders[i].price);
         }
         this.total = grandTotal;
         total.textContent = "Total: Php " + this.total;
-    }
-
-    //decrease quantity and calculates the amount accordingly
-    decQty(id) {
-        let newQty;
-        const product = this.orders.find((item) => item.id === id);
-        this.quantity = product.quantity -= 1;
-        
-        const prodCount = document.querySelector(`.product-quantity-for-${id}`);
-        prodCount.innerHTML = 
-            `<button id='${id}' class='dec-qty-btn'>-</button>
-             ${this.quantity} 
-            <button id='${id}' class='inc-qty-btn'>+</button>`;
-
     }
 }
 
@@ -200,6 +199,7 @@ class ShoppingCart {
 const cart = new ShoppingCart();
 const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
 
+//event handler for add to cart button
 [...addToCartBtns].forEach((btn) => {
     btn.addEventListener("click", (event) => {
         cart.addItem(Number(event.target.id));
@@ -209,6 +209,7 @@ const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
     })
 });
 
+//event handler for plus button
 document.addEventListener('click', (event) => {
     if(event.target.closest('.inc-qty-btn')) {
         cart.addItem(Number(event.target.id));
@@ -218,9 +219,12 @@ document.addEventListener('click', (event) => {
     }
 });
 
+//event handler for minus button
 document.addEventListener('click', (event) => {
     if(event.target.closest('.dec-qty-btn')) {
         cart.decQty(Number(event.target.id));
+        cart.updateQtyDisplay();
+        cart.calculateTotal();
         console.log(cart);
     }
 });
