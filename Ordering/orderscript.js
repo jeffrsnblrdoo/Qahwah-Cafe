@@ -172,6 +172,7 @@ class ShoppingCart {
              ${this.quantity} 
             <button id='${id}' class='inc-qty-btn'>+</button>`;
         
+        //removes the item from cart list and orders array when the quantity is zero
         if(this.quantity === 0) {
             this.orders = this.orders.filter((item) => item.id !== id);
             prodCount.parentElement.remove();
@@ -248,9 +249,6 @@ document.addEventListener('click', (event) => {
 
 const clearCart = document.querySelector('.clear-cart');
 clearCart.addEventListener('click', () => {
-    window.confirm("Are you sure you want to empty cart?");
-    if(window.confirm) {
         cart.emptyCart();
         isCartEmpty = true;
-    }
 });
