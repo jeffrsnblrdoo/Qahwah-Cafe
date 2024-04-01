@@ -117,6 +117,9 @@ class ShoppingCart {
     constructor() {
       this.items = [];
       this.orders = [];
+      this.count;
+      this.total;
+      this.quantity;
     }
   
     addItem(id) {
@@ -159,13 +162,13 @@ class ShoppingCart {
 
     //counts the total number of products added to the cart and updates the quantity counter accordingly
     updateQtyDisplay() {
-        this.incQty();
         let totalCount = 0;
         for(const prodCount in this.orders) {
             totalCount += this.orders[prodCount].quantity;
+            
         }
-    
-        quantity.innerHTML = totalCount;
+        this.count = totalCount;
+        quantity.innerHTML = this.count;
     }
 
     //calculates the total amount of products added to cart and updates the total amount display
@@ -174,24 +177,22 @@ class ShoppingCart {
         for(let i = 0; i < this.orders.length; i++) {
             grandTotal += (this.orders[i].price * this.orders[i].quantity);
         }
-
-        total.textContent = "Total: Php " + grandTotal;
+        this.total = grandTotal;
+        total.textContent = "Total: Php " + this.total;
     }
 
-    incQty(id) {
-        this.orders.forEach((item) => {
-            if(item.id === id) {
-                item.quantity++;
-            }
-        })
-    }
-
+    //decrease quantity and calculates the amount accordingly
     decQty(id) {
-        this.orders.forEach((item) => {
-            if(item.id === id) {
-                item.quantity--;
-            }
-        })
+        let newQty;
+        const product = this.orders.find((item) => item.id === id);
+        this.quantity = product.quantity -= 1;
+        
+        const prodCount = document.querySelector(`.product-quantity-for-${id}`);
+        prodCount.innerHTML = 
+            `<button id='${id}' class='dec-qty-btn'>-</button>
+             ${this.quantity} 
+            <button id='${id}' class='inc-qty-btn'>+</button>`;
+
     }
 }
 
@@ -210,12 +211,16 @@ const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
 
 document.addEventListener('click', (event) => {
     if(event.target.closest('.inc-qty-btn')) {
-        cart.incQty(Number(event.target.id));
+        cart.addItem(Number(event.target.id));
+        cart.updateQtyDisplay();
+        cart.calculateTotal();
+        console.log(cart);
     }
 });
 
 document.addEventListener('click', (event) => {
     if(event.target.closest('.dec-qty-btn')) {
         cart.decQty(Number(event.target.id));
+        console.log(cart);
     }
 });
