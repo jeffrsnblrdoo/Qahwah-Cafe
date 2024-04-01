@@ -173,7 +173,8 @@ class ShoppingCart {
             <button id='${id}' class='inc-qty-btn'>+</button>`;
         
         if(this.quantity === 0) {
-            this.orders.splice(product);
+            this.orders = this.orders.filter((item) => item.id !== id);
+            prodCount.parentElement.remove();
             this.calculateTotal();
         }
     }
