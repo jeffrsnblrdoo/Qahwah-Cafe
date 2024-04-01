@@ -9,6 +9,8 @@ const main = document.querySelector('main');
 const total = document.querySelector('.grand-total');
 const quantity = document.querySelector('.quantity');
 
+isCartEmpty = true;
+
 const products = [
     {
         id: 1,
@@ -156,6 +158,7 @@ class ShoppingCart {
             </div>`;
         cartList.appendChild(newDiv); 
         }
+        isCartEmpty = false;
     }
 
     //decrease quantity and calculates the amount accordingly
@@ -171,6 +174,7 @@ class ShoppingCart {
         
         if(this.quantity === 0) {
             this.orders.splice(product);
+            this.calculateTotal();
         }
     }
 
@@ -193,6 +197,17 @@ class ShoppingCart {
         this.total = grandTotal;
         total.textContent = "Total: Php " + this.total;
     }
+
+    emptyCart() {
+        this.orders = [];
+        this.quantity;
+        this.count;
+        this.total;
+
+        cartList.innerHTML = "";
+        quantity.innerHTML = 0;
+        total.textContent = "Total: Php 0";
+    }
 }
 
 
@@ -206,6 +221,7 @@ const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
         cart.updateQtyDisplay();
         cart.calculateTotal();
         console.log(cart);
+        console.log(isCartEmpty);
     })
 });
 
@@ -226,5 +242,14 @@ document.addEventListener('click', (event) => {
         cart.updateQtyDisplay();
         cart.calculateTotal();
         console.log(cart);
+    }
+});
+
+const clearCart = document.querySelector('.clear-cart');
+clearCart.addEventListener('click', () => {
+    window.confirm("Are you sure you want to empty cart?");
+    if(window.confirm) {
+        cart.emptyCart();
+        isCartEmpty = true;
     }
 });
