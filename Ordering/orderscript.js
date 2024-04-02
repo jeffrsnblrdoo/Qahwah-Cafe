@@ -231,47 +231,30 @@ class ShoppingCart {
         quantity.innerHTML = 0;
         total.textContent = "Total: Php 0";
     }
-
-    /*
-    //MIGHT USE THIS IN THE FUTURE
+ 
     checkout() {
+        const csName = document.getElementById('fname').value;
+        const csAdd = document.getElementById('address').value;
+        const csNum = document.getElementById('contact-number').value;
+        const finalOrders = [];
+        const orderList = [];
+
         for(let i = 0; i < this.orders.length; i++) {
-            const newDiv = document.createElement('div');
-            newDiv.innerHTML = `
-            <div>item: ${this.orders[i].name}</div>
-            <div>price: ${this.orders[i].price}</div>
-            <div>quantity: ${this.orders[i].quantity}</div>
-            `;
-            orderDetails.appendChild(newDiv);
-        }
-        orderDetails.innerHTML += `<div>total: Php ${this.total}</div>`;
-    }*/
-
-
-
-
-    //stores the orders into local storage for clients to access and expedite in real life
-    checkout() {
-        const orderList = JSON.parse(localStorage.getItem("orders")) || [];
-        //creates an array that stores the destructured properties of orders to later store into local storage
-        const descriptions = [];
-        this.orders.forEach(({name, price, quantity}) => {
-            const descriptionObj = {
-                name: name,
-                price: price,
-                quantity: quantity
+            const confirmedOrder = {
+                item: this.orders[i].name,
+                price: this.orders[i].price,
+                quantity: this.orders[i].quantity
             }
-            descriptions.push(descriptionObj);  
-        })
+            orderList.push(confirmedOrder);
+        }
 
-        //construct the details of orders to be readable by client and customer upon confirming orders
-        const orderObj = {
-            id: `${Date.now()}`,
-            descrption: descriptions,
+        const expedOrder = {
+            id: `${csNum}-${Date.now()}`,
+            orders: orderList,
             total: this.total
         }
-        orderList.push(orderObj);
-        localStorage.setItem('orders', JSON.stringify(orderList));
+        finalOrders.push(expedOrder);
+        console.log(finalOrders);
     }
 }
 
@@ -318,3 +301,42 @@ const proceedCheckOut = document.querySelector('.checkout');
 proceedCheckOut.addEventListener('click', () => {
     cart.checkout();
 })
+
+
+    /*
+    //MIGHT USE THIS IN THE FUTURE
+    checkout() {
+        for(let i = 0; i < this.orders.length; i++) {
+            const newDiv = document.createElement('div');
+            newDiv.innerHTML = `
+            <div>item: ${this.orders[i].name}</div>
+            <div>price: ${this.orders[i].price}</div>
+            <div>quantity: ${this.orders[i].quantity}</div>
+            `;
+            orderDetails.appendChild(newDiv);
+        }
+        orderDetails.innerHTML += `<div>total: Php ${this.total}</div>`;
+
+
+        //stores the orders into local storage for clients to access and expedite in real life
+        const orderList = JSON.parse(localStorage.getItem("orders")) || [];
+        //creates an array that stores the destructured properties of orders to later store into local storage
+        const descriptions = [];
+        this.orders.forEach(({name, price, quantity}) => {
+            const descriptionObj = {
+                name: name,
+                price: price,
+                quantity: quantity
+            }
+            descriptions.push(descriptionObj);  
+        })
+
+        //construct the details of orders to be readable by client and customer upon confirming orders
+        const orderObj = {
+            id: `${Date.now()}`,
+            descrption: descriptions,
+            total: this.total
+        }
+        orderList.push(orderObj);
+        localStorage.setItem('orders', JSON.stringify(orderList));
+    }*/
