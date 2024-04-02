@@ -3,6 +3,7 @@ const openCart = document.querySelector('.shopping-cart');
 const closeCart = document.querySelector('.closeShop');
 const cartList = document.querySelector('.cart-list');
 const cartContainer = document.querySelector('.cart-container');
+const orderDetails = document.querySelector('.order-details');
 const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
 const total = document.querySelector('.grand-total');
@@ -231,8 +232,26 @@ class ShoppingCart {
         total.textContent = "Total: Php 0";
     }
 
+    /*
+    //MIGHT USE THIS IN THE FUTURE
+    checkout() {
+        for(let i = 0; i < this.orders.length; i++) {
+            const newDiv = document.createElement('div');
+            newDiv.innerHTML = `
+            <div>item: ${this.orders[i].name}</div>
+            <div>price: ${this.orders[i].price}</div>
+            <div>quantity: ${this.orders[i].quantity}</div>
+            `;
+            orderDetails.appendChild(newDiv);
+        }
+        orderDetails.innerHTML += `<div>total: Php ${this.total}</div>`;
+    }*/
+
+
+
+
     //stores the orders into local storage for clients to access and expedite in real life
-    checkOut() {
+    checkout() {
         const orderList = JSON.parse(localStorage.getItem("orders")) || [];
         //creates an array that stores the destructured properties of orders to later store into local storage
         const descriptions = [];
@@ -297,5 +316,5 @@ clearCart.addEventListener('click', () => {
 
 const proceedCheckOut = document.querySelector('.checkout');
 proceedCheckOut.addEventListener('click', () => {
-    cart.checkOut();
+    cart.checkout();
 })
