@@ -15,6 +15,7 @@ const products = [
         id: 1,
         name: 'Iced Americano',
         image: 'IcedAmericano.png',
+        description: 'Rich espresso paired with water for a bold, smooth taste.',
         price: 99.00,
         category: "beverage"
     },
@@ -22,6 +23,7 @@ const products = [
         id: 2,
         name: 'Iced Caramel Macchiato',
         image: 'icedCaramelMacchiato.png',
+        description: 'Velvety espresso balanced with creamy milk, topped with a decadent caramel drizzle.',
         price: 125.00,
         category: "beverage"
     },
@@ -29,6 +31,7 @@ const products = [
         id: 3,
         name: 'Iced Latte',
         image: 'icedLatte.png',
+        description: 'Smooth espresso combined with creamy milk, topped with a delicate foam.',
         price: 110.00,
         category: "beverage"
     }, 
@@ -36,6 +39,7 @@ const products = [
         id: 4,
         name: 'Iced Matcha Latte',
         image: 'icedMatchaLatte.png',
+        description: 'Vibrant matcha harmoniously blended with creamy milk.',
         price: 125.00,
         category: "beverage"
     },
@@ -43,6 +47,7 @@ const products = [
         id: 5,
         name: 'Iced Mocha',
         image: 'icedMocha.png',
+        description: 'Bold espresso, decadent chocolate, and creamy milk.',
         price: 120.00,
         category: "beverage"
     },
@@ -50,6 +55,7 @@ const products = [
         id: 6,
         name: "Butter Croissant",
         image: "ButterCroissant.png",
+        description: 'lorem ipsum dolor',
         price: 105.00,
         category: "pastry"
     },
@@ -57,6 +63,7 @@ const products = [
         id: 7,
         name: "Blueberry Bagel",
         image: "BlueberryBagel.png",
+        description: 'lorem ipsum dolor',
         price: 135.00,
         category: "pastry"
     },
@@ -64,6 +71,7 @@ const products = [
         id: 8,
         name: "Cheese Bacon Danish",
         image: "CheeseBaconDanish.png",
+        description: 'lorem ipsum dolor',
         price: 210.00,
         category: "pastry"
     },
@@ -71,6 +79,7 @@ const products = [
         id: 9,
         name: "Blueberry Muffin",
         image: "BlueberryMuffin.png",
+        description: 'lorem ipsum dolor',
         price: 165.00,
         category: "pastry"
     },
@@ -78,6 +87,7 @@ const products = [
         id: 10,
         name: "Waffle",
         image: "Waffle.png",
+        description: 'lorem ipsum dolor',
         price: 105.00,
         category: "pastry"
     }
@@ -88,7 +98,14 @@ products.forEach((value) => {
         let newDiv = document.createElement('div');
         newDiv.classList.add('beverage');
         newDiv.innerHTML = `
-        <img src='../Ordering/Pictures/${value.image}'/>
+        <div class='flip-card'>
+            <div class='flip-card-inner'>
+                <div class='flip-card-front'>
+                    <img src='../Ordering/Pictures/${value.image}'/>
+                </div>
+                <div class='flip-card-back'>${value.description}</div>
+            </div>
+        </div>
         <div class='title'>${value.name}</div>
         <div class='price'>Php ${value.price.toLocaleString()}</div>
         <button id='${value.id}' class='add-to-cart-btn'>Add to cart</button>`;
@@ -98,7 +115,14 @@ products.forEach((value) => {
         let newDiv = document.createElement('div');
         newDiv.classList.add('pastry');
         newDiv.innerHTML = `
-        <img src='../Ordering/Pictures/${value.image}'/>
+        <div class='flip-card'>
+            <div class='flip-card-inner'>
+                <div class='flip-card-front'>
+                    <img src='../Ordering/Pictures/${value.image}'/>
+                </div>
+                <div class='flip-card-back'>${value.description}</div>
+            </div>
+        </div>
         <div class='title'>${value.name}</div>
         <div class='price'>Php ${value.price.toLocaleString()}</div>
         <button id='${value.id}' class='add-to-cart-btn'>Add to cart</button>`;
