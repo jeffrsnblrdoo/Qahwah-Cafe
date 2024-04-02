@@ -8,8 +8,6 @@ const pastryList = document.querySelector('.pastry-list');
 const total = document.querySelector('.grand-total');
 const quantity = document.querySelector('.quantity');
 
-isCartEmpty = true;
-
 const products = [
     {
         id: 1,
@@ -181,7 +179,6 @@ class ShoppingCart {
             </div>`;
         cartList.appendChild(newDiv); 
         }
-        isCartEmpty = false;
     }
 
     //decrease quantity and calculates the amount accordingly
@@ -237,7 +234,6 @@ class ShoppingCart {
     //stores the orders into local storage for clients to access and expedite in real life
     checkOut() {
         const orderList = JSON.parse(localStorage.getItem("orders")) || [];
-
         //creates an array that stores the destructured properties of orders to later store into local storage
         const descriptions = [];
         this.orders.forEach(({name, price, quantity}) => {
@@ -297,10 +293,9 @@ document.addEventListener('click', (event) => {
 const clearCart = document.querySelector('.clear-cart');
 clearCart.addEventListener('click', () => {
         cart.emptyCart();
-        isCartEmpty = true;
 });
 
-const submit = document.querySelector('.submit');
-submit.addEventListener('click', () => {
+const proceedCheckOut = document.querySelector('.checkout');
+proceedCheckOut.addEventListener('click', () => {
     cart.checkOut();
 })
