@@ -11,7 +11,7 @@ const quantity = document.querySelector('.quantity');
 const products = [
     {
         id: 1,
-        name: 'Iced Americano',
+        name: 'Americano',
         image: 'IcedAmericano.png',
         description: 'Rich espresso paired with water for a bold, smooth taste.',
         price: 99.00,
@@ -19,7 +19,7 @@ const products = [
     },
     {
         id: 2,
-        name: 'Iced Caramel Macchiato',
+        name: 'Caramel Macchiato',
         image: 'icedCaramelMacchiato.png',
         description: 'Velvety espresso balanced with creamy milk, topped with a decadent caramel drizzle.',
         price: 125.00,
@@ -27,7 +27,7 @@ const products = [
     },
     {
         id: 3,
-        name: 'Iced Latte',
+        name: 'Caffe Latte',
         image: 'icedLatte.png',
         description: 'Smooth espresso combined with creamy milk, topped with a delicate foam.',
         price: 110.00,
@@ -35,7 +35,7 @@ const products = [
     }, 
     {
         id: 4,
-        name: 'Iced Matcha Latte',
+        name: 'Matcha Latte',
         image: 'icedMatchaLatte.png',
         description: 'Vibrant matcha harmoniously blended with creamy milk.',
         price: 125.00,
@@ -43,7 +43,7 @@ const products = [
     },
     {
         id: 5,
-        name: 'Iced Mocha',
+        name: 'Caffe Mocha',
         image: 'icedMocha.png',
         description: 'Bold espresso, decadent chocolate, and creamy milk.',
         price: 120.00,
@@ -99,7 +99,7 @@ products.forEach((value) => {
         <div class='flip-card'>
             <div class='flip-card-inner'>
                 <div class='flip-card-front'>
-                    <img src='../Ordering/Pictures/${value.image}'/>
+                    <img loading='lazy' src='../Ordering/Pictures/${value.image}'/>
                 </div>
                 <div class='flip-card-back'>${value.description}</div>
             </div>
@@ -116,7 +116,7 @@ products.forEach((value) => {
         <div class='flip-card'>
             <div class='flip-card-inner'>
                 <div class='flip-card-front'>
-                    <img src='../Ordering/Pictures/${value.image}'/>
+                    <img loading='lazy' src='../Ordering/Pictures/${value.image}'/>
                 </div>
                 <div class='flip-card-back'>${value.description}</div>
             </div>

@@ -90,16 +90,18 @@ main {
     align-items: center;
     padding: 25px;
     background-color: #f3f1ea;
-    box-shadow: 0 2px 2px #757676;
+    box-shadow: 0 2px 2px #443229;
+    border-radius: 25px;
 }
 
 h1 {
     font-weight: bolder;
+    font-size: 40px;
     font-family: 'DM Serif Text', 'Prata', Arial, Helvetica, sans-serif;
 }
 
 h1:nth-of-type(2) {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 hr {
@@ -107,92 +109,7 @@ hr {
     width: auto;
 }
 
-.drink-list {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(3, 350px);
-    gap: 40px;
-    margin-top: 50px;
-}
-
-.drink-list > .beverage {
-    text-align: center;
-    background-color: #f3f1ea;
-    padding: 20px;
-    box-shadow: 0 15px 15px #757676;
-    letter-spacing: 1px;
-    border-radius: 25px;
-}
-
-.flip-card {
-    perspective: 1000px;
-    height: 350px;
-    margin: auto;
-}
-
-.flip-card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.flip-card-front > img {
-    width: 90%;  
-}
-
-.flip-card-back > img {
-    width: 90%;  
-}
-
-.flip-card-front {
-    z-index: 2;
-}
-
-.flip-card {
-    max-width: 90%;
-    max-height: 90%;
-}
-
-.flip-card-back {
-    z-index: 1;
-    background-color: transparent;
-    color:#443229;
-    font-weight: bolder;
-    font-size: 25px;
-    font-family: 'DM Serif Text', 'Prata', Arial, Helvetica, sans-serif;
-    text-align: center;
-    transform: rotateY(180deg);
-}
-
-.drink-list > .beverage > .title {
-    margin: 25px;
-    font-weight: 600;
-    font-size: 20px;
-    font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
-}
-
-.drink-list > .beverage > .price {
-    margin: 10px;
-    font-size: 20px;
-}
-
-.drink-list > .beverage > button {
+.checkout, .clear-cart {
     background-color: #443229;
     color:#E9E7DA;
     cursor: pointer;
@@ -208,32 +125,35 @@ hr {
     font-size: 15px;
 }
 
-.drink-list > .beverage > button:hover {
+.inc-qty-btn, .dec-qty-btn {
+    background-color: #443229;
+    color:#E9E7DA;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    padding: 6px 12px;
+    margin: 10px;
+    border: 0;
+    font-size: 20px;
+}
+
+.checkout:hover, .clear-cart:hover, .inc-qty-btn:hover, .dec-qty-btn:hover {
     transition: all .1s ease;
-    box-shadow: 0 0 0 0 #fff, 0 0 0 3px #815E5B;
-}
-
-.pastry-list {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(3, 350px);
-    gap: 40px;
-    margin-top: 50px;
-}
-
-.pastry-list > .pastry {
-    text-align: center;
-    background-color: #f3f1ea;
-    padding: 20px;
-    box-shadow: 0 15px 15px #757676;
-    letter-spacing: 1px;
-    border-radius: 25px;
+    background-color: #815E5B;
 }
 
 .flip-card {
     perspective: 1000px;
     height: 350px;
     margin: auto;
+    max-width: 90%;
+    max-height: 90%;
 }
 
 .flip-card-inner {
@@ -258,21 +178,12 @@ hr {
     justify-content: center;
 }
 
-.flip-card-front > img {
-    width: 90%;  
-}
-
-.flip-card-back > img {
+.flip-card-front > img, .flip-card-back > img {
     width: 90%;  
 }
 
 .flip-card-front {
     z-index: 2;
-}
-
-.flip-card {
-    max-width: 90%;
-    max-height: 90%;
 }
 
 .flip-card-back {
@@ -286,19 +197,36 @@ hr {
     transform: rotateY(180deg);
 }
 
-.pastry-list > .pastry > .title {
+.drink-list , .pastry-list {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 350px);
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.drink-list > .beverage, .pastry-list > .pastry {
+    text-align: center;
+    background-color: #f3f1ea;
+    padding: 20px;
+    box-shadow: 0 10px 10px #443229;
+    letter-spacing: 1px;
+    border-radius: 25px;
+}
+
+.drink-list > .beverage > .title, .pastry-list > .pastry > .title {
     margin: 25px;
     font-weight: 600;
     font-size: 20px;
     font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
 }
 
-.pastry-list > .pastry > .price {
+.drink-list > .beverage > .price, .pastry-list > .pastry > .price {
     margin: 10px;
     font-size: 20px;
 }
 
-.pastry-list > .pastry > button {
+.drink-list > .beverage > button, .pastry-list > .pastry > button {
     background-color: #443229;
     color:#E9E7DA;
     cursor: pointer;
@@ -314,7 +242,7 @@ hr {
     font-size: 15px;
 }
 
-.pastry-list > .pastry > button:hover {
+.drink-list > .beverage > button:hover, .pastry-list > .pastry > button:hover {
     transition: all .1s ease;
     box-shadow: 0 0 0 0 #fff, 0 0 0 3px #815E5B;
 }
