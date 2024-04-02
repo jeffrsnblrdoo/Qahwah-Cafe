@@ -111,7 +111,7 @@ hr {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(3, 350px);
-    gap: 20px;
+    gap: 40px;
     margin-top: 50px;
 }
 
@@ -119,8 +119,9 @@ hr {
     text-align: center;
     background-color: #f3f1ea;
     padding: 20px;
-    box-shadow: 0 50px 50px #757676;
+    box-shadow: 0 15px 15px #757676;
     letter-spacing: 1px;
+    border-radius: 25px;
 }
 
 .flip-card {
@@ -182,7 +183,8 @@ hr {
 .drink-list > .beverage > .title {
     margin: 25px;
     font-weight: 600;
-    font-size: 17px;
+    font-size: 20px;
+    font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
 }
 
 .drink-list > .beverage > .price {
@@ -198,7 +200,7 @@ hr {
     outline: none;
     cursor: pointer;
     font-weight: 600;
-    border-radius: 3px;
+    border-radius: 10px;
     padding: 12px 24px;
     margin: 10px;
     border: 0;
@@ -215,7 +217,7 @@ hr {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(3, 350px);
-    gap: 20px;
+    gap: 40px;
     margin-top: 50px;
 }
 
@@ -223,8 +225,9 @@ hr {
     text-align: center;
     background-color: #f3f1ea;
     padding: 20px;
-    box-shadow: 0 50px 50px #757676;
+    box-shadow: 0 15px 15px #757676;
     letter-spacing: 1px;
+    border-radius: 25px;
 }
 
 .flip-card {
@@ -286,7 +289,8 @@ hr {
 .pastry-list > .pastry > .title {
     margin: 25px;
     font-weight: 600;
-    font-size: 17px;
+    font-size: 20px;
+    font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
 }
 
 .pastry-list > .pastry > .price {
@@ -302,7 +306,7 @@ hr {
     outline: none;
     cursor: pointer;
     font-weight: 600;
-    border-radius: 3px;
+    border-radius: 10px;
     padding: 12px 24px;
     margin: 10px;
     border: 0;
