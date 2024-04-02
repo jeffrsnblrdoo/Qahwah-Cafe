@@ -170,7 +170,7 @@ hr {
 
 .flip-card-back {
     z-index: 1;
-    background-color: #f3f1ea;
+    background-color: transparent;
     color:#443229;
     font-weight: bolder;
     font-size: 25px;
@@ -274,7 +274,7 @@ hr {
 
 .flip-card-back {
     z-index: 1;
-    background-color: #f3f1ea;
+    background-color: transparent;
     color:#443229;
     font-weight: bolder;
     font-size: 25px;

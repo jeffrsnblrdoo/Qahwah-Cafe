@@ -55,7 +55,7 @@ const products = [
         id: 6,
         name: "Butter Croissant",
         image: "ButterCroissant.png",
-        description: 'lorem ipsum dolor',
+        description: 'Light, buttery pastry with a delicate flakiness.',
         price: 105.00,
         category: "pastry"
     },
@@ -63,7 +63,7 @@ const products = [
         id: 7,
         name: "Blueberry Bagel",
         image: "BlueberryBagel.png",
-        description: 'lorem ipsum dolor',
+        description: 'Soft, chewy bagel infused with bursts of sweet blueberries.',
         price: 135.00,
         category: "pastry"
     },
@@ -71,7 +71,7 @@ const products = [
         id: 8,
         name: "Cheese Bacon Danish",
         image: "CheeseBaconDanish.png",
-        description: 'lorem ipsum dolor',
+        description: 'Savory pastry filled with creamy cheese and crispy bacon.',
         price: 210.00,
         category: "pastry"
     },
@@ -79,7 +79,7 @@ const products = [
         id: 9,
         name: "Blueberry Muffin",
         image: "BlueberryMuffin.png",
-        description: 'lorem ipsum dolor',
+        description: 'Moist muffin bursting with juicy blueberries.',
         price: 165.00,
         category: "pastry"
     },
@@ -87,7 +87,7 @@ const products = [
         id: 10,
         name: "Waffle",
         image: "Waffle.png",
-        description: 'lorem ipsum dolor',
+        description: 'Crisp on the outside, fluffy on the inside, topped with whipped cream and syrup of choice.',
         price: 105.00,
         category: "pastry"
     }
@@ -220,7 +220,7 @@ class ShoppingCart {
             grandTotal += (this.orders[i].quantity * this.orders[i].price);
         }
         this.total = grandTotal;
-        total.textContent = "Total: Php " + this.total;
+        total.textContent = "Total: Php " + this.total.toLocaleString();
     }
 
     emptyCart() {
