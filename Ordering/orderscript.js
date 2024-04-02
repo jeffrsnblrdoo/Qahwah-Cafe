@@ -5,7 +5,6 @@ const cartList = document.querySelector('.cart-list');
 const cartContainer = document.querySelector('.cart-container');
 const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
-const main = document.querySelector('main');
 const total = document.querySelector('.grand-total');
 const quantity = document.querySelector('.quantity');
 
@@ -176,8 +175,8 @@ class ShoppingCart {
         if(this.quantity === 0) {
             this.orders = this.orders.filter((item) => item.id !== id);
             prodCount.parentElement.remove();
-            this.calculateTotal();
         }
+        this.calculateTotal();
     }
 
     //counts the total number of products added to the cart and updates the quantity counter accordingly
@@ -210,6 +209,31 @@ class ShoppingCart {
         quantity.innerHTML = 0;
         total.textContent = "Total: Php 0";
     }
+
+    //stores the orders into local storage for clients to access and expedite in real life
+    checkOut() {
+        const orderList = JSON.parse(localStorage.getItem("orders")) || [];
+
+        //creates an array that stores the destructured properties of orders to later store into local storage
+        const descriptions = [];
+        this.orders.forEach(({name, price, quantity}) => {
+            const descriptionObj = {
+                name: name,
+                price: price,
+                quantity: quantity
+            }
+            descriptions.push(descriptionObj);  
+        })
+
+        //construct the details of orders to be readable by client and customer upon confirming orders
+        const orderObj = {
+            id: `${Date.now()}`,
+            descrption: descriptions,
+            total: this.total
+        }
+        orderList.push(orderObj);
+        localStorage.setItem('orders', JSON.stringify(orderList));
+    }
 }
 
 
@@ -223,7 +247,6 @@ const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
         cart.updateQtyDisplay();
         cart.calculateTotal();
         console.log(cart);
-        console.log(isCartEmpty);
     })
 });
 
@@ -252,3 +275,8 @@ clearCart.addEventListener('click', () => {
         cart.emptyCart();
         isCartEmpty = true;
 });
+
+const submit = document.querySelector('.submit');
+submit.addEventListener('click', () => {
+    cart.checkOut();
+})

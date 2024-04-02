@@ -88,7 +88,9 @@ main {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: 1px solid black;
+    padding: 25px;
+    background-color: #f3f1ea;
+    box-shadow: 0 2px 2px #757676;
 }
 
 h1 {
@@ -115,7 +117,7 @@ hr {
 
 .drink-list > .beverage {
     text-align: center;
-    background-color: #E9E7DA;
+    background-color: #f3f1ea;
     padding: 20px;
     box-shadow: 0 50px 50px #757676;
     letter-spacing: 1px;
@@ -165,7 +167,7 @@ hr {
 
 .pastry-list > .pastry {
     text-align: center;
-    background-color: #E9E7DA;
+    background-color: #f3f1ea;
     padding: 20px;
     box-shadow: 0 50px 50px #757676;
     letter-spacing: 1px;
