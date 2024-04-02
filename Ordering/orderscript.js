@@ -92,6 +92,7 @@ const products = [
     }
 ]
 
+//creates the html display for items in the products array
 products.forEach((value) => {
     if(value.category === "beverage") {
         let newDiv = document.createElement('div');
@@ -131,6 +132,7 @@ products.forEach((value) => {
 });
 
 
+//toggles the display for cart
 openCart.addEventListener('click', () => {
     cartContainer.style.display === "none" ? 
     cartContainer.style.display = "flex" : 
@@ -145,6 +147,7 @@ class ShoppingCart {
       this.total;
     }
   
+    //add items into cart
     addItem(id) {
         const product = products.find((item) => item.id === id);
         const { name, price } = product;
@@ -221,6 +224,7 @@ class ShoppingCart {
         total.textContent = "Total: Php " + this.total.toLocaleString();
     }
 
+    //clears cart
     emptyCart() {
         this.orders = [];
         this.quantity;
@@ -233,12 +237,16 @@ class ShoppingCart {
     }
  
     checkout() {
+        //get values from input fields
         const csName = document.getElementById('fname').value;
         const csAdd = document.getElementById('address').value;
         const csNum = document.getElementById('contact-number').value;
+
+        //initialize empty arrays for localStorage/DB use later in the program
         const finalOrders = [];
         const orderList = [];
 
+        //creates an object holder for each item order
         for(let i = 0; i < this.orders.length; i++) {
             const confirmedOrder = {
                 item: this.orders[i].name,
@@ -248,6 +256,7 @@ class ShoppingCart {
             orderList.push(confirmedOrder);
         }
 
+        //creates the final object with unique to be stored in DB later in the program
         const expedOrder = {
             id: `${csNum}-${Date.now()}`,
             orders: orderList,
