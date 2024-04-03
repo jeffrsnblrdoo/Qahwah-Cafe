@@ -11,8 +11,7 @@ const quantity = document.querySelector('.quantity');
 
 const products = [
     {
-        id: 1,
-        name: 'Americano',
+        id: 1,name: 'Americano',
         image: 'IcedAmericano.png',
         description: 'Rich espresso paired with water for a bold, smooth taste.',
         price: 99.00,
@@ -92,59 +91,42 @@ const products = [
     }
 ]
 
-//creates the html display for items in the products array
+//function for html display creation
+const createDisplay = (value) => {
+    let newDiv = document.createElement('div');
+        newDiv.classList.add(value.category);
+        newDiv.innerHTML = `
+        <div class='flip-card'>
+            <div class='flip-card-inner'>
+                <div class='flip-card-front'>
+                    <img loading='lazy' src='../Ordering/Pictures/${value.image}'/>
+                </div>
+                <div class='flip-card-back'>${value.description}</div>
+            </div>
+        </div>
+        <div class='title'>${value.name}</div>
+        <div class='price'>Php ${value.price.toLocaleString()}</div>
+        <button id='${value.id}' class='add-to-cart-btn'>Add to cart</button>`;
+        return newDiv;
+}
+
+//creates the display for the products array
 products.forEach((value) => {
-    if(value.category === "beverage") {
-        let newDiv = document.createElement('div');
-        newDiv.classList.add('beverage');
-        newDiv.innerHTML = `
-        <div class='flip-card'>
-            <div class='flip-card-inner'>
-                <div class='flip-card-front'>
-                    <img loading='lazy' src='../Ordering/Pictures/${value.image}'/>
-                </div>
-                <div class='flip-card-back'>${value.description}</div>
-            </div>
-        </div>
-        <div class='title'>${value.name}</div>
-        <div class='price'>Php ${value.price.toLocaleString()}</div>
-        <button id='${value.id}' class='add-to-cart-btn'>Add to cart</button>`;
-
-        drinkList.appendChild(newDiv);
-    } else {
-        let newDiv = document.createElement('div');
-        newDiv.classList.add('pastry');
-        newDiv.innerHTML = `
-        <div class='flip-card'>
-            <div class='flip-card-inner'>
-                <div class='flip-card-front'>
-                    <img loading='lazy' src='../Ordering/Pictures/${value.image}'/>
-                </div>
-                <div class='flip-card-back'>${value.description}</div>
-            </div>
-        </div>
-        <div class='title'>${value.name}</div>
-        <div class='price'>Php ${value.price.toLocaleString()}</div>
-        <button id='${value.id}' class='add-to-cart-btn'>Add to cart</button>`;
-        
-        pastryList.appendChild(newDiv);
-    }
-});
-
+    const list = (value.category === "beverage") ? drinkList : pastryList;
+    list.appendChild(createDisplay(value));
+})
 
 //toggles the display for cart
 openCart.addEventListener('click', () => {
-    cartContainer.style.display === "none" ? 
-    cartContainer.style.display = "flex" : 
-    cartContainer.style.display = "none";
+    cartContainer.style.display = cartContainer.style.display === "none" ? "flex" :  "none";
 });
 
 class ShoppingCart {
     constructor() {
       this.orders = [];
-      this.quantity;
-      this.count;
-      this.total;
+      this.quantity = 0;
+      this.count = 0;
+      this.total = 0;
     }
   
     //add items into cart
@@ -183,6 +165,8 @@ class ShoppingCart {
             </div>`;
         cartList.appendChild(newDiv); 
         }
+        this.updateQtyDisplay();
+        this.calculateTotal();
     }
 
     //decrease quantity and calculates the amount accordingly
@@ -201,35 +185,28 @@ class ShoppingCart {
             this.orders = this.orders.filter((item) => item.id !== id);
             prodCount.parentElement.remove();
         }
+        this.updateQtyDisplay();
         this.calculateTotal();
     }
 
     //counts the total number of products added to the cart and updates the quantity counter accordingly
     updateQtyDisplay() {
-        let totalCount = 0;
-        for(let i = 0; i < this.orders.length; i++) {
-            totalCount += this.orders[i].quantity;
-        }
-        this.count = totalCount;
+        this.count = this.orders.reduce((acc, item) => acc + item.quantity, 0);
         quantity.innerHTML = this.count;
     }
 
     //calculates the total amount of products added to cart and updates the total amount display
     calculateTotal() {
-        let grandTotal = 0;
-        for(let i = 0; i < this.orders.length; i++) {
-            grandTotal += (this.orders[i].quantity * this.orders[i].price);
-        }
-        this.total = grandTotal;
+        this.total = this.orders.reduce((acc, item) => acc + (item.quantity * item.price), 0);
         total.textContent = "Total: Php " + this.total.toLocaleString();
     }
 
     //clears cart
     emptyCart() {
         this.orders = [];
-        this.quantity;
-        this.count;
-        this.total;
+        this.quantity = 0;
+        this.count = 0;
+        this.total = 0;
 
         cartList.innerHTML = "";
         quantity.innerHTML = 0;
@@ -275,32 +252,21 @@ const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
 [...addToCartBtns].forEach((btn) => {
     btn.addEventListener("click", (event) => {
         cart.addItem(Number(event.target.id));
-        cart.updateQtyDisplay();
-        cart.calculateTotal();
         console.log(cart);
     })
 });
 
-//event handler for plus button
+//event handler for plus and minus button
 document.addEventListener('click', (event) => {
     if(event.target.closest('.inc-qty-btn')) {
         cart.addItem(Number(event.target.id));
-        cart.updateQtyDisplay();
-        cart.calculateTotal();
-        console.log(cart);
-    }
-});
-
-//event handler for minus button
-document.addEventListener('click', (event) => {
-    if(event.target.closest('.dec-qty-btn')) {
+    } else if(event.target.closest('.dec-qty-btn')) {
         cart.decQty(Number(event.target.id));
-        cart.updateQtyDisplay();
-        cart.calculateTotal();
-        console.log(cart);
     }
+    console.log(cart);
 });
 
+//empty shopping cart
 const clearCart = document.querySelector('.clear-cart');
 clearCart.addEventListener('click', () => {
         cart.emptyCart();
@@ -309,7 +275,7 @@ clearCart.addEventListener('click', () => {
 const proceedCheckOut = document.querySelector('.checkout');
 proceedCheckOut.addEventListener('click', () => {
     cart.checkout();
-})
+});
 
 
     /*
