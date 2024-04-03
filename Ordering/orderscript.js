@@ -8,6 +8,9 @@ const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
 const total = document.querySelector('.grand-total');
 const quantity = document.querySelector('.quantity');
+const customerName = document.getElementById('fname');
+const customerNumber = document.getElementById('contact-number');
+const customerAddress = document.getElementById('address');
 
 const products = [
     {
@@ -211,6 +214,9 @@ class ShoppingCart {
         cartList.innerHTML = "";
         quantity.innerHTML = 0;
         total.textContent = "Total: Php 0";
+        document.getElementById('fname').value = "";
+        document.getElementById('contact-number').value = "";
+        document.getElementById('address').value = "";
     }
 
     checkout() {
@@ -218,8 +224,8 @@ class ShoppingCart {
         const onlineOrders = JSON.parse(localStorage.getItem("order")) || [];
 
         //get values from input fields
-        const csName = document.getElementById('fname').value;
-        const csNum = document.getElementById('contact-number').value;
+        const csName = customerName.value;
+        const csNum = customerNumber.value;
         const lastThree = csNum.substring(csNum.length - 3);
 
         // Map orders to desired format
@@ -232,9 +238,10 @@ class ShoppingCart {
             price: this.total
         };
 
+        //push the order to the array that will be stored in local storage
         onlineOrders.push(orderList);
         localStorage.setItem('order', JSON.stringify(onlineOrders));
-        console.log(orderList);
+        this.emptyCart();
     }
 }
 
