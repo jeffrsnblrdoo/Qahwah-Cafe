@@ -296,3 +296,23 @@ footer {
     font-size: 15px;
     color: #f5edda;
 }
+
+.cart-heading h5 {
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    color: #443229;
+}
+
+.cart-list {
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    color: #443229;
+}
+
+.grand-total {
+    font-size: 20px;
+    color: #443229;
+    margin-top: 16px;
+}
