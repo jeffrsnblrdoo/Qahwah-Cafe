@@ -212,35 +212,29 @@ class ShoppingCart {
         quantity.innerHTML = 0;
         total.textContent = "Total: Php 0";
     }
- 
+
     checkout() {
+        // Get existing orders from local storage
+        const onlineOrders = JSON.parse(localStorage.getItem("order")) || [];
+
         //get values from input fields
         const csName = document.getElementById('fname').value;
-        const csAdd = document.getElementById('address').value;
         const csNum = document.getElementById('contact-number').value;
+        const lastThree = csNum.substring(csNum.length - 3);
 
-        //initialize empty arrays for localStorage/DB use later in the program
-        const finalOrders = [];
-        const orderList = [];
+        // Map orders to desired format
+        const orders = this.orders.map(item => `${item.name}: ${item.quantity}`);
 
-        //creates an object holder for each item order
-        for(let i = 0; i < this.orders.length; i++) {
-            const confirmedOrder = {
-                item: this.orders[i].name,
-                price: this.orders[i].price,
-                quantity: this.orders[i].quantity
-            }
-            orderList.push(confirmedOrder);
-        }
+        // Create new order object
+        const orderList = {
+            id: `${csName}-${lastThree}-${Date.now()}`,
+            order: orders,
+            price: this.total
+        };
 
-        //creates the final object with unique to be stored in DB later in the program
-        const expedOrder = {
-            id: `${csNum}-${Date.now()}`,
-            orders: orderList,
-            total: this.total
-        }
-        finalOrders.push(expedOrder);
-        console.log(finalOrders);
+        onlineOrders.push(orderList);
+        localStorage.setItem('order', JSON.stringify(onlineOrders));
+        console.log(orderList);
     }
 }
 
@@ -262,8 +256,8 @@ document.addEventListener('click', (event) => {
         cart.addItem(Number(event.target.id));
     } else if(event.target.closest('.dec-qty-btn')) {
         cart.decQty(Number(event.target.id));
+        console.log(cart);
     }
-    console.log(cart);
 });
 
 //empty shopping cart
