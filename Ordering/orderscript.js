@@ -3,7 +3,9 @@ const openCart = document.querySelector('.shopping-cart');
 const closeCart = document.querySelector('.closeShop');
 const cartList = document.querySelector('.cart-list');
 const cartContainer = document.querySelector('.cart-container');
-const orderDetails = document.querySelector('.order-details');
+const formContainer = document.querySelector('.form-container');
+const orderContainer = document.querySelector('.order-container');
+const orderReview = document.querySelector('.order-review');
 const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
 const total = document.querySelector('.amount-total');
@@ -113,6 +115,14 @@ const createDisplay = (value) => {
         return newDiv;
 }
 
+const toggleContainerShow = (container) => {
+    container.style.display = "flex";
+}
+
+const toggleContainerHide = (container) => {
+    container.style.display = "none";
+}
+
 //creates the display for the products array
 products.forEach((value) => {
     const list = (value.category === "beverage") ? drinkList : pastryList;
@@ -121,7 +131,7 @@ products.forEach((value) => {
 
 //toggles the display for cart
 openCart.addEventListener('click', () => {
-    cartContainer.style.display = cartContainer.style.display === "none" ? "flex" :  "none";
+    toggleContainerShow(orderContainer);
 });
 
 class ShoppingCart {
@@ -130,6 +140,10 @@ class ShoppingCart {
       this.quantity = 0;
       this.count = 0;
       this.total = 0;
+    }
+
+    isCartEmpty() {
+        return this.orders.length === 0;
     }
   
     //add items into cart
@@ -205,7 +219,11 @@ class ShoppingCart {
     //calculates the total amount of products added to cart and updates the total amount display
     calculateTotal() {
         this.total = this.orders.reduce((acc, item) => acc + (item.quantity * item.price), 0);
+<<<<<<< Updated upstream
         total.textContent = "Php " + this.total.toLocaleString();
+=======
+        total.textContent = this.total.toLocaleString();
+>>>>>>> Stashed changes
     }
 
     //clears cart
@@ -216,11 +234,31 @@ class ShoppingCart {
         this.total = 0;
 
         cartList.innerHTML = "";
+<<<<<<< Updated upstream
         quantity.innerHTML = 0;
         total.textContent = "Php 0";
+=======
+        orderReview.innerHTML = `<h3>Your Orders:</h3>`;
+        quantity.innerHTML = this.count;
+        total.textContent = this.total;
+>>>>>>> Stashed changes
     }
 
     checkout() {
+        this.orders.forEach((item) => {
+            const newDiv = document.createElement('div');
+            newDiv.innerHTML = `
+                <p>Php${item.price * item.quantity}</p>
+                <p>${item.quantity}x ${item.name}</p>
+            `;
+            orderReview.appendChild(newDiv);
+        })
+        orderReview.innerHTML += `<div>
+        <h2>Amount to pay: <br><br>Php${this.total}</h2>
+        </div>`;
+    }
+
+    submit() {
         // Get existing orders from local storage
         const onlineOrders = JSON.parse(localStorage.getItem("order")) || [];
 
@@ -276,13 +314,40 @@ clearCart.addEventListener('click', () => {
     } else {
         alert("Your cart is currently empty.");
     }
+<<<<<<< Updated upstream
+=======
+        
+>>>>>>> Stashed changes
 });
 
 const proceedCheckOut = document.querySelector('.checkout');
 proceedCheckOut.addEventListener('click', () => {
     if(!cart.isCartEmpty()) {
+<<<<<<< Updated upstream
         window.open("../Ordering/checkoutpage.html");
     } else {
         alert("Your cart is currently empty.");
     }
 });
+=======
+        cart.checkout();
+        toggleContainerShow(formContainer);
+        toggleContainerHide(cartContainer);
+    } else {
+        alert("Your cart is currently empty.");
+    }
+});
+
+const editBtn = document.querySelector('.edit-button');
+editBtn.addEventListener('click', () => {
+    toggleContainerShow(cartContainer);
+    toggleContainerHide(formContainer);
+    orderReview.innerHTML = "";
+});
+
+const submit = document.querySelector('.submit-button');
+submit.addEventListener('click', () => {
+    cart.submit();
+    cart.emptyCart();
+})
+>>>>>>> Stashed changes
