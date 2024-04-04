@@ -230,7 +230,7 @@ class ShoppingCart {
         this.total = 0;
 
         cartList.innerHTML = "";
-        orderReview.innerHTML = `<h3>Your Orders:</h3>`;
+        orderReview.innerHTML = "";
         quantity.innerHTML = this.count;
         total.textContent = this.total;
     }
