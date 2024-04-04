@@ -312,6 +312,51 @@ hr {
     align-items: start;
 }
 
+.order-review {
+    height: 250px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* width */
+.order-review::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track { 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #443229; 
+    border-radius: 10px;
+  }
+
+.cart-list {
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 10px;
+}
+
+/* width */
+.cart-list::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track { 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #443229; 
+    border-radius: 10px;
+  }
+
 .order-review > div > p {
     font-size: 16px;
 }
