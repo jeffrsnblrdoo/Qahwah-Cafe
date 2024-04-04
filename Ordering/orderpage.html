@@ -32,44 +32,27 @@
                 </div>
                 <div class="cart-container">
                     <div class="cart-heading">
-                        <h5>Product</h5>
-                        <h5>Price</h5>
-                        <h5>Quantity</h5>
-                    </div>
-                    <div class="cart-list">
+                        <div class="cart-list"></div>
+                        <div class="customer-details">
+                            <label for="fname">First Name</label>
+                            <br>
+                            <input type="text" id="fname" name="fname" placeholder="First Name Required" size="50" required />
+                            <br>
+                            <br>
+                            <label for="address">Address</label>
+                            <br>
+                            <input type="text" id="address" name="address" placeholder="Address Required" size="50" required />
+                            <br>
+                            <br>
+                            <label for="contact-number">Mobile Contact Number</label>
+                            <br>
+                            <input type="text" id="contact-number" name="contact-number" placeholder="Mobile Contact Number Required" size="50" required />
+                        </div>
                     </div>
                     <div class="grand-total">Total: Php 0</div>
-                    <div class="customer-details">
-                        <label for="fname">First Name</label>
-                        <br>
-                        <input type="text"
-                        id="fname"
-                        name="fname"
-                        placeholder="First Name Required"
-                        size="50"
-                        required />
-                        <br>
-                        <label for="address">Address</label>
-                        <br>
-                        <input type="text" 
-                        id="address" 
-                        name="address" 
-                        placeholder="Address Required" 
-                        size="100"
-                        required />
-                        <br>
-                        <label for="contact-number">Mobile Contact Number</label>
-                        <br>
-                        <input type="text"
-                        id="contact-number"
-                        name="contact-number"
-                        placeholder="Mobile Contact Number Required"
-                        size="30"
-                        required />
-                    </div>
-                    <div>
-                        <button class="checkout" type="submit" value="Submit">CHECKOUT</button>
+                    <div class="ccbutton">
                         <button class="clear-cart">CLEAR CART</button>
+                        <button class="checkout" type="submit" value="Submit">CHECKOUT</button>
                     </div>
                 </div>
                 <h1>DRINKS</h1>
