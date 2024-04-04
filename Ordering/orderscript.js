@@ -6,7 +6,7 @@ const cartContainer = document.querySelector('.cart-container');
 const orderDetails = document.querySelector('.order-details');
 const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
-const total = document.querySelector('.grand-total');
+const total = document.querySelector('.amount-total');
 const quantity = document.querySelector('.quantity');
 const customerName = document.getElementById('fname');
 const customerNumber = document.getElementById('contact-number');
@@ -172,6 +172,10 @@ class ShoppingCart {
         this.calculateTotal();
     }
 
+    isCartEmpty() {
+        return this.orders.length === 0;
+    }
+
     //decrease quantity and calculates the amount accordingly
     decQty(id) {
         const product = this.orders.find((item) => item.id === id);
@@ -201,7 +205,7 @@ class ShoppingCart {
     //calculates the total amount of products added to cart and updates the total amount display
     calculateTotal() {
         this.total = this.orders.reduce((acc, item) => acc + (item.quantity * item.price), 0);
-        total.textContent = "Total: Php " + this.total.toLocaleString();
+        total.textContent = "Php " + this.total.toLocaleString();
     }
 
     //clears cart
@@ -213,10 +217,7 @@ class ShoppingCart {
 
         cartList.innerHTML = "";
         quantity.innerHTML = 0;
-        total.textContent = "Total: Php 0";
-        document.getElementById('fname').value = "";
-        document.getElementById('contact-number').value = "";
-        document.getElementById('address').value = "";
+        total.textContent = "Php 0";
     }
 
     checkout() {
@@ -270,49 +271,18 @@ document.addEventListener('click', (event) => {
 //empty shopping cart
 const clearCart = document.querySelector('.clear-cart');
 clearCart.addEventListener('click', () => {
+    if(!cart.isCartEmpty()) {
         cart.emptyCart();
+    } else {
+        alert("Your cart is currently empty.");
+    }
 });
 
 const proceedCheckOut = document.querySelector('.checkout');
 proceedCheckOut.addEventListener('click', () => {
-    cart.checkout();
+    if(!cart.isCartEmpty()) {
+        window.open("../Ordering/checkoutpage.html");
+    } else {
+        alert("Your cart is currently empty.");
+    }
 });
-
-
-    /*
-    //MIGHT USE THIS IN THE FUTURE
-    checkout() {
-        for(let i = 0; i < this.orders.length; i++) {
-            const newDiv = document.createElement('div');
-            newDiv.innerHTML = `
-            <div>item: ${this.orders[i].name}</div>
-            <div>price: ${this.orders[i].price}</div>
-            <div>quantity: ${this.orders[i].quantity}</div>
-            `;
-            orderDetails.appendChild(newDiv);
-        }
-        orderDetails.innerHTML += `<div>total: Php ${this.total}</div>`;
-
-
-        //stores the orders into local storage for clients to access and expedite in real life
-        const orderList = JSON.parse(localStorage.getItem("orders")) || [];
-        //creates an array that stores the destructured properties of orders to later store into local storage
-        const descriptions = [];
-        this.orders.forEach(({name, price, quantity}) => {
-            const descriptionObj = {
-                name: name,
-                price: price,
-                quantity: quantity
-            }
-            descriptions.push(descriptionObj);  
-        })
-
-        //construct the details of orders to be readable by client and customer upon confirming orders
-        const orderObj = {
-            id: `${Date.now()}`,
-            descrption: descriptions,
-            total: this.total
-        }
-        orderList.push(orderObj);
-        localStorage.setItem('orders', JSON.stringify(orderList));
-    }*/
