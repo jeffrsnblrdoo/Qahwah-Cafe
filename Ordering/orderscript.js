@@ -219,11 +219,7 @@ class ShoppingCart {
     //calculates the total amount of products added to cart and updates the total amount display
     calculateTotal() {
         this.total = this.orders.reduce((acc, item) => acc + (item.quantity * item.price), 0);
-<<<<<<< Updated upstream
-        total.textContent = "Php " + this.total.toLocaleString();
-=======
         total.textContent = this.total.toLocaleString();
->>>>>>> Stashed changes
     }
 
     //clears cart
@@ -234,14 +230,9 @@ class ShoppingCart {
         this.total = 0;
 
         cartList.innerHTML = "";
-<<<<<<< Updated upstream
-        quantity.innerHTML = 0;
-        total.textContent = "Php 0";
-=======
         orderReview.innerHTML = `<h3>Your Orders:</h3>`;
         quantity.innerHTML = this.count;
         total.textContent = this.total;
->>>>>>> Stashed changes
     }
 
     checkout() {
@@ -314,22 +305,12 @@ clearCart.addEventListener('click', () => {
     } else {
         alert("Your cart is currently empty.");
     }
-<<<<<<< Updated upstream
-=======
         
->>>>>>> Stashed changes
 });
 
 const proceedCheckOut = document.querySelector('.checkout');
 proceedCheckOut.addEventListener('click', () => {
     if(!cart.isCartEmpty()) {
-<<<<<<< Updated upstream
-        window.open("../Ordering/checkoutpage.html");
-    } else {
-        alert("Your cart is currently empty.");
-    }
-});
-=======
         cart.checkout();
         toggleContainerShow(formContainer);
         toggleContainerHide(cartContainer);
@@ -350,4 +331,3 @@ submit.addEventListener('click', () => {
     cart.submit();
     cart.emptyCart();
 })
->>>>>>> Stashed changes

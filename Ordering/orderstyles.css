@@ -98,11 +98,7 @@ hr {
     width: auto;
 }
 
-<<<<<<< Updated upstream
-.checkout, .clear-cart, .submit-btn {
-=======
 .checkout, .clear-cart, .submit-button, .edit-button {
->>>>>>> Stashed changes
     background-color: #443229;
     color:#E9E7DA;
     cursor: pointer;
@@ -112,11 +108,7 @@ hr {
     font-weight: 600;
     border-radius: 10px;
     padding: 12px 24px;
-<<<<<<< Updated upstream
-    margin: 20px;
-=======
     margin: 15px;
->>>>>>> Stashed changes
     border: 0;
     line-height: 1.15;
     font-size: 15px;
@@ -146,12 +138,8 @@ hr {
     font-size: 15px;
 }
 
-<<<<<<< Updated upstream
-.checkout:hover, .clear-cart:hover, .submit-btn:hover, .inc-qty-btn:hover, .dec-qty-btn:hover {
-=======
 .checkout:hover, .clear-cart:hover, .submit-button:hover, .edit-button:hover,
  .inc-qty-btn:hover, .dec-qty-btn:hover {
->>>>>>> Stashed changes
     transition: all .1s ease;
     background-color: #815E5B;
 }
@@ -271,23 +259,6 @@ hr {
 }
 
 .product-container {
-<<<<<<< Updated upstream
-    display: flex;
-    justify-content: flex-start;
-    font-size: 16px;
-    color: #443229;
-    width: auto;
-}
-
-.product-container .product-name{
-    padding-top: 5px;
-    width: 200px;
-}
-
-.product-container .product-price{
-    padding-top: 5px;
-    width: 150px;
-=======
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -378,7 +349,6 @@ hr {
     position: absolute;
     top: 0;
     right: 0;
->>>>>>> Stashed changes
 }
 
 .product-container .product-quantity-for-2{
