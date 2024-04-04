@@ -131,7 +131,7 @@ products.forEach((value) => {
 
 //toggles the display for cart
 openCart.addEventListener('click', () => {
-    toggleContainerShow(orderContainer);
+    orderContainer.style.display = orderContainer.style.display === "none" ? "flex" : "none";
 });
 
 class ShoppingCart {
