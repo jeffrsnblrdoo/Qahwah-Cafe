@@ -186,10 +186,6 @@ class ShoppingCart {
         this.calculateTotal();
     }
 
-    isCartEmpty() {
-        return this.orders.length === 0;
-    }
-
     //decrease quantity and calculates the amount accordingly
     decQty(id) {
         const product = this.orders.find((item) => item.id === id);
@@ -239,13 +235,13 @@ class ShoppingCart {
         this.orders.forEach((item) => {
             const newDiv = document.createElement('div');
             newDiv.innerHTML = `
-                <p>Php${item.price * item.quantity}</p>
+                <p>Php ${item.price * item.quantity}</p>
                 <p>${item.quantity}x ${item.name}</p>
             `;
             orderReview.appendChild(newDiv);
         })
         orderReview.innerHTML += `<div>
-        <h2>Amount to pay: <br><br>Php${this.total}</h2>
+        <h2>Amount to pay: <br><br>Php ${this.total}</h2>
         </div>`;
     }
 
