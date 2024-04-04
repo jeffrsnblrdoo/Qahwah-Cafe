@@ -24,32 +24,21 @@
         </header>
         <main>
             <div class="container">
-                <div class="order-header">
-                    <div class="shopping-cart">
-                        <img src="../Ordering/Pictures/shopping cart.png" alt="Shopping Cart" />
-                        <span class="quantity">0</span>
-                    </div>
-                </div>
-                <div class="cart-container">
-                    <div class="cart-heading">
-                        <h5>Product</h5>
-                        <h5>Price</h5>
-                        <h5>Quantity</h5>
-                    </div>
-                    <div class="cart-list">
-                    </div>
-                    <div class="grand-total">Total Amount: <span class="amount-total">Php 0</span></div>
-                    <div>
-                        <button class="checkout" value="Open Window">Proceed to Checkout</button>
-                        <button class="clear-cart">Clear Cart</button>
-                    </div>
-                </div>
-                <h1>DRINKS</h1>
+                <h1 class="payment-details">Enter Payment Details</h1>
                 <hr>
-                <div class="drink-list"></div>
-                <h1>PASTRIES</h1>
-                <hr>
-                <div class="pastry-list"></div>
+                <form class="form-container">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name" placeholder="Name Required" required/><br>
+                    <label for="address">Address:</label><br>
+                    <input type="text" id="address" name="address" placeholder="Address Required" required/><br>
+                    <label for="contact-number">Mobile Contact Number:</label><br>
+                    <input type="text" id="contact-number" name="contact-number" placeholder="Contact Number Required" required/>
+                    <div class="order-review">
+                        order summary will be dynamically added in this div--can edit order before submit order
+                    </div>
+                    <input class="submit-btn" type="submit" value="Submit Order"/>
+                </form>
+            </div>
         </main>
         <footer>
             <div class="copyright">
