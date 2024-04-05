@@ -6,7 +6,6 @@ const cartContainer = document.querySelector('.cart-container');
 const formContainer = document.querySelector('.form-container');
 const orderContainer = document.querySelector('.order-container');
 const orderReview = document.querySelector('.order-review');
-const csDetFoot = document.querySelector('.customer-details-right');
 const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
 const total = document.querySelector('.amount-total');
@@ -241,7 +240,7 @@ class ShoppingCart {
             `;
             orderReview.appendChild(newDiv);
         })
-        csDetFoot.innerHTML += `<div>
+        orderReview.innerHTML += `<div>
         <h2>Amount to pay: <br><br>Php ${this.total.toLocaleString()}</h2>
         </div>`;
     }
