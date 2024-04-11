@@ -60,6 +60,7 @@ main {
 }
 
 .order-header > .shopping-cart {
+    display: block;
     position: relative;
     text-align: right;
 }
@@ -241,6 +242,9 @@ hr {
 .drink-list > .beverage > button:hover, .pastry-list > .pastry > button:hover {
     transition: all .1s ease;
     box-shadow: 0 0 0 0 #fff, 0 0 0 3px #815E5B;
+}
+.items-container {
+    display: block;
 }
 
 .product-container {

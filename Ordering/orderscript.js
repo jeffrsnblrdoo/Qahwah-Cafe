@@ -6,6 +6,7 @@ const cartContainer = document.querySelector('.cart-container');
 const formContainer = document.querySelector('.form-container');
 const orderContainer = document.querySelector('.order-container');
 const orderReview = document.querySelector('.order-review');
+const itemsContainer = document.querySelector('.items-container');
 const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
 const total = document.querySelector('.amount-total');
@@ -115,8 +116,12 @@ const createDisplay = (value) => {
         return newDiv;
 }
 
-const toggleContainerShow = (container) => {
+const toggleContainerFlex = (container) => {
     container.style.display = "flex";
+}
+
+const toggleContainerBlock = (container) => {
+    container.style.display = "block";
 }
 
 const toggleContainerHide = (container) => {
@@ -308,8 +313,10 @@ const proceedCheckOut = document.querySelector('.checkout');
 proceedCheckOut.addEventListener('click', () => {
     if(!cart.isCartEmpty()) {
         cart.checkout();
-        toggleContainerShow(formContainer);
+        toggleContainerFlex(formContainer);
         toggleContainerHide(cartContainer);
+        toggleContainerHide(itemsContainer);
+        toggleContainerHide(openCart);
     } else {
         alert("Your cart is currently empty.");
     }
@@ -317,8 +324,10 @@ proceedCheckOut.addEventListener('click', () => {
 
 const editBtn = document.querySelector('.edit-button');
 editBtn.addEventListener('click', () => {
-    toggleContainerShow(cartContainer);
+    toggleContainerFlex(cartContainer);
     toggleContainerHide(formContainer);
+    toggleContainerBlock(itemsContainer);
+    toggleContainerBlock(openCart);
     orderReview.innerHTML = "";
 });
 
