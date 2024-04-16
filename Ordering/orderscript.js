@@ -258,6 +258,7 @@ class ShoppingCart {
         const csName = customerName.value;
         const csNum = customerNumber.value;
         const lastThree = csNum.substring(csNum.length - 3);
+        const csAdd = customerAddress.value;
 
         // Map orders to desired format
         const orders = this.orders.map(item => `${item.name}: ${item.quantity}`);
@@ -266,7 +267,8 @@ class ShoppingCart {
         const orderList = {
             id: `${csName}-${lastThree}-${Date.now()}`,
             order: orders,
-            price: this.total
+            price: this.total,
+            address: csAdd
         };
 
         //push the order to the array that will be stored in local storage
