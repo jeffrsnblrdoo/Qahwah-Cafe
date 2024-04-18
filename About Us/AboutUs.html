@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qahwah Cafe</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="AboutUs.css">
 </head>
 <body>
@@ -19,28 +19,84 @@
             <a href="../Location/index.html">LOCATION</a>
         </div class="navbar">
     </header>
-    <div class="section">
-        <div class="container">
-            <div class="content-section">
-                <div class="title">
-                    <h1>About Us</h1>
+    <div class="coverPhoto">
+        <img src="./Pictures/aboutus_header.png" alt="Coffee Shop">
+        <h1>ABOUT US</h1>
+    </div>
+    <div class="textContainer">
+        <div class="leftContainer">
+            <h2 class="start">Welcome to Qahwah Cafe!</h2>
+            <p>At Qahwah Cafe, we believe that a great cup of coffee is more than just a beverage – it’s an experience. Nestled in the heart of Bocaue, Bulacan, our coffee shop is a cozy haven where friends gather, stories are shared, and memories are made over the perfect brew.</p>
+            <br>
+
+            <div class="slideshow-container">
+
+                <div class="mySlides fade">
+                  <div class="numbertext">1 / 3</div>
+                  <img src="./Pictures/1.jpeg" style="width:100%">
+                  <!-- <div class="text">Caption Text</div> -->
                 </div>
-                <div class="content">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium temporibus asperiores</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam dolore delectus facilis cumque nobis, ratione laudantium atque voluptatem consequatur</p>
-                    <div class="button">
-                        <a href="">Read More</a>
-                    </div>
+                
+                <div class="mySlides fade">
+                  <div class="numbertext">2 / 3</div>
+                  <img src="./Pictures/2.jpeg" style="width:100%">
+                  <!-- <div class="text">Caption Two</div> -->
                 </div>
-                <div class="social">
-                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                    <a href=""><i class="fab fa-twitter"></i></a>
-                    <a href=""><i class="fab fa-instagram"></i></a>
+                
+                <div class="mySlides fade">
+                  <div class="numbertext">3 / 3</div>
+                  <img src="./Pictures/3.jpeg" style="width:100%">
+                  <!-- <div class="text">Caption Three</div> -->
                 </div>
-            </div>
-            <div class="image-section">
-                <img src="../Homepage/Pictures/homepage.png" alt="">
-            </div>
+                
+                </div>
+                <br>
+                
+                <div style="text-align:center">
+                  <span class="dot"></span> 
+                  <span class="dot"></span> 
+                  <span class="dot"></span> 
+                </div>
+                
+                <script>
+                let slideIndex = 0;
+                showSlides();
+                
+                function showSlides() {
+                  let i;
+                  let slides = document.getElementsByClassName("mySlides");
+                  let dots = document.getElementsByClassName("dot");
+                  for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                  }
+                  slideIndex++;
+                  if (slideIndex > slides.length) {slideIndex = 1}    
+                  for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                  }
+                  slides[slideIndex-1].style.display = "block";  
+                  dots[slideIndex-1].className += " active";
+                  setTimeout(showSlides, 4000);
+                }
+                </script>
+
+            <h3>Our Story</h2>
+            <p>Founded in 2020, Qahwah Cafe was born out of a passion for exceptional coffee and a desire to create a welcoming space for our community. From our humble beginnings, we’ve grown into a beloved local establishment, cherished by coffee enthusiasts and casual visitors alike.</p>
+            <br>
+            <h3>Craftsmanship</h2>
+            <p>We take pride in every cup we serve. Our beans are carefully sourced from sustainable farms around the world, ensuring the highest quality and freshness in every sip. Our skilled baristas artfully craft each drink, using precision and care to bring out the unique flavors of our premium coffee blends.</p>
+            <br>
+            <h3>Community</h2>
+            <p>At Qahwah Cafe, we’re more than just a place to grab your morning pick-me-up. We’re a gathering place for friends, families, and neighbors to connect and unwind. Whether you’re catching up with old friends, diving into a good book, or simply enjoying a quiet moment of reflection, you’ll always find a warm welcome here.</p>
+            <br>
+            <h3>Our Commitment</h2>
+            <p>We are committed to not only serving great coffee but also making a positive impact in our community. From supporting local charities to reducing our environmental footprint, we strive to do our part in creating a better world, one cup at a time.</p>
+            <br>
+            <h3>Join Us</h2>
+            <p>We invite you to join us at Qahwah Cafe and experience the warmth and hospitality that sets us apart. Whether you’re a regular or a first-time visitor, we promise a memorable experience that will keep you coming back for more.</p>
+            <br>
+            <h2 class="end">Thank you for choosing Qahwah Cafe. We can’t wait to welcome you!</h2>
+            <a href="#" class="fa fa-facebook"></a>
         </div>
     </div>
     <footer>
@@ -49,8 +105,6 @@
         </div>
         <div class="cafe-info">
             <a href="../About Us/AboutUs.html">About Us</a>
-            <a href="#">News</a>
-            <a href="#">Careers</a>
             <a href="#">Contact Us</a>
         </div>
     </footer>
