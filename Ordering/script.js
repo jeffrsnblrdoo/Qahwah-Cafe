@@ -159,12 +159,12 @@ class ShoppingCart {
     }
 
     //checks if shopping cart is empty
-    //returns true(boolean)
+    //returns boolean
     isCartEmpty() {
         return this.cart.length === 0;
     }
 
-    //this function opens the order modal for the customer
+    //this function opens the order modal for the user
     showModal(id) {
         //searches the products array for any product that matches with element id
         //destructures the product and initialize a quantity of 1
@@ -177,6 +177,7 @@ class ShoppingCart {
         //generates the product display for the modal based on the elements id that matches the products id
         const newDiv = document.createElement('div');
         newDiv.classList.add('order-details');
+        //for beverages, adds a hot or iced choice
         if(product.category === "beverage") {
         newDiv.innerHTML = 
         `<div>
@@ -235,9 +236,9 @@ class ShoppingCart {
             <button id='${id}' class='add-to-cart-btn'>Add to cart</button>
         </div>`;
         }
-
         modalContent.append(newDiv);
         //disables the modal background so user can focus on order details
+        //adds depth to the view
         body.classList.add('disabled-body');
 
         //limits the minimum order to always 1
@@ -269,7 +270,7 @@ class ShoppingCart {
         <button id='${id}' class='modal-inc-btn'>+</button>`;
         
         //again limits the minimum order to always 1
-        //might refactor this into a separate method to avoid writing the code repeatedly, but this works for now
+        //might refactor this into a separate method to avoid writing the code repeatedly
         if(this.order.quantity === 1) {
             const decQtyBtn = document.querySelector('.modal-dec-btn');
             decQtyBtn.style.cursor = "not-allowed";
@@ -346,7 +347,7 @@ class ShoppingCart {
         });
     }
 
-    //decrease quantity and calculates the amount accordingly
+    //decrease quantity in the cart display and calculates the amount accordingly
     decQty(id) {
         const product = this.cart.find((item) => item.id === id);
         product.quantity -= 1;
@@ -357,7 +358,7 @@ class ShoppingCart {
              ${product.quantity} 
             <button id='${id}' class='inc-qty-btn'>+</button>`;
         
-        //removes the item from cart list and orders array when the quantity is zero
+        //removes the item from cart and temporary array when the quantity is zero
         if(product.quantity === 0) {
             this.cart = this.cart.filter((item) => item.id !== id);
             this.temp = this.temp.filter((item) => item.id !== id);
@@ -367,6 +368,7 @@ class ShoppingCart {
         this.calculateTotal();
     }
 
+    //increase quantity in the cart display and calculates the amount accordingly
     incQty(id) {
         const product = this.cart.find((item) => item.id === id);
         product.quantity += 1;
@@ -394,6 +396,7 @@ class ShoppingCart {
     }
 
     //proceeds to payment review details for checking out
+    //generates the order review for the checkout
     checkout() {
         this.cart.forEach((item) => {
             const newDiv = document.createElement('div');
@@ -424,7 +427,7 @@ class ShoppingCart {
 }
 
 const cart = new ShoppingCart();
-
+//event handler for opening the order modal
 const addToOrdersBtns = document.getElementsByClassName("add-to-orders-btn");
 [...addToOrdersBtns].forEach((btn) => {
     btn.addEventListener("click", (event) => {
@@ -436,6 +439,7 @@ const addToOrdersBtns = document.getElementsByClassName("add-to-orders-btn");
     })
 });
 
+//event handlers for closing the modal
 overlay.addEventListener('click', () => {
     cart.closeModal();
 });
@@ -481,6 +485,7 @@ proceedCheckOut.addEventListener('click', () => {
     }
 });
 
+//event handler for editing orders before submiting order
 const editBtn = document.querySelector('.edit-button');
 editBtn.addEventListener('click', () => {
     toggleContainerFlex(cartContainer);
