@@ -1,12 +1,9 @@
-
 const openCart = document.querySelector('.shopping-cart');
 const closeCart = document.querySelector('.closeShop');
 const cartList = document.querySelector('.cart-list');
 const cartContainer = document.querySelector('.cart-container');
 const formContainer = document.querySelector('.form-container');
 const orderContainer = document.querySelector('.order-container');
-const modalContainer = document.querySelector('.modal-container');
-const modalContent = document.querySelector('.modal-content');
 const orderReview = document.querySelector('.order-review');
 const itemsContainer = document.querySelector('.items-container');
 const drinkList = document.querySelector('.drink-list');
@@ -16,14 +13,10 @@ const quantity = document.querySelector('.quantity');
 const customerName = document.getElementById('fname');
 const customerNumber = document.getElementById('contact-number');
 const customerAddress = document.getElementById('address');
-const overlay = document.querySelector('.overlay');
-const body = document.querySelector('body');
-const modalBtn = document.querySelector('.modal-btn');
 
 const products = [
     {
-        id: 1, 
-        name: 'Americano',
+        id: 1,name: 'Americano',
         image: 'IcedAmericano.png',
         description: 'Rich espresso paired with water for a bold, smooth taste.',
         price: 99.00,
@@ -117,11 +110,8 @@ const createDisplay = (value) => {
             </div>
         </div>
         <div class='title'>${value.name}</div>
-        <div class='price'>Php ${value.price.toLocaleString()}
-        <button id='${value.id}' class='add-to-orders-btn'>+</button>
-        </div>
-        `;
-        //<button id='${value.id}' class='add-to-cart-btn'>Add to cart</button>
+        <div class='price'>Php ${value.price.toLocaleString()}</div>
+        <button id='${value.id}' class='add-to-cart-btn'>Add to cart</button>`;
         return newDiv;
 }
 
@@ -151,21 +141,20 @@ const toggleContainerHide = (container) => {
 class ShoppingCart {
     constructor() {
       this.orders = [];
-      this.cart = [];
       this.quantity = 0;
       this.count = 0;
       this.total = 0;
     }
 
     isCartEmpty() {
-        return this.cart.length === 0;
+        return this.orders.length === 0;
     }
   
     //add items into cart
-    showModal(id) {
+    addItem(id) {
         const product = products.find((item) => item.id === id);
-        const { name, price, description } = product;
-
+        const { name, price } = product;
+    
         //creates a new array which adds and edits a quantity property to duplicated products in the shopping cart array 
         const existingProduct = this.orders.find((item) => item.id === id);
         if(existingProduct) {
@@ -176,83 +165,30 @@ class ShoppingCart {
         }
         this.quantity = product.quantity;
 
-        const newDiv = document.createElement('div');
-        newDiv.classList.add('order-details');
-        newDiv.innerHTML = 
-        `<div>
-            <div class='description-div'>${description}</div>
-            <div class='title-div'>${name}</div>
-            <div class='price-div'>Php ${price}</div>
-        </div>
-        <div class='modal-footer'>
-            <div class='product-quantity-for-${id}'>
-                <button id='${id}' class='dec-qty-btn'>-</button>
-                ${this.quantity}
-                <button id='${id}' class='inc-qty-btn'>+</button>
-            </div>
-            <button id='${id}' class='add-to-cart-btn'>Add to cart</button>
-        </div>`
-        modalContent.append(newDiv);
-
-        if(this.quantity === 1) {
-            const decQtyBtn = document.querySelector('.dec-qty-btn');
-            decQtyBtn.style.cursor = "not-allowed";
-            decQtyBtn.disabled = true;
-            decQtyBtn.style.backgroundColor = "#815E5B";
-        }
-        body.classList.add('disabled-body');
-
-        this.updateQtyDisplay();
-        this.calculateTotal();
-    }
-
-    closeModal() {
-        toggleContainerHide(overlay);
-        toggleContainerHide(modalContainer);
-        body.classList.remove('disabled-body');
-        modalContent.innerHTML = "";
-    }
-
-    addItem(id) {
-        this.cart.push(...this.orders);
-        const product = this.cart.find((item) => item.id === id);
-        const {name, price, quantity} = product;
-
         // creates the html display for items added into cart
-        //const prodCount = document.querySelector(`.product-quantity-for-${id}`);
+        const prodCount = document.querySelector(`.product-quantity-for-${id}`);
         const newDiv = document.createElement('div');
         newDiv.classList.add('product-container');
         var h1El = cartList.querySelector('h1');
 
         h1El.textContent = "";
-        
-        newDiv.innerHTML += `
+
+        if (this.quantity > 1) {
+            prodCount.innerHTML = 
+            `<button id='${id}' class='dec-qty-btn'>-</button>
+             ${this.quantity} 
+            <button id='${id}' class='inc-qty-btn'>+</button>`
+        } else {
+            newDiv.innerHTML += `
             <div class='product-name'>${name}</div>
             <div class='product-price'>Php ${price}</div>
             <div class='product-quantity-for-${id}'>
-                <button id='${id}' class='dec-qty-btn'>-</button>
-                ${quantity}
-                <button id='${id}' class='inc-qty-btn'>+</button>
+            <button id='${id}' class='dec-qty-btn'>-</button>
+             ${this.quantity} 
+             <button id='${id}' class='inc-qty-btn'>+</button>
             </div>`;
         cartList.appendChild(newDiv); 
-        this.updateQtyDisplay();
-        this.calculateTotal();
-    }
-
-
-
-    
-
-    incQty(id) {
-        const product = this.orders.find((item) => item.id === id);
-        this.quantity = product.quantity += 1;
-
-        const prodCount = document.querySelector(`.product-quantity-for-${id}`);
-        prodCount.innerHTML = 
-            `<button id='${id}' class='dec-qty-btn'>-</button>
-             ${this.quantity} 
-            <button id='${id}' class='inc-qty-btn'>+</button>`;
-        
+        }
         this.updateQtyDisplay();
         this.calculateTotal();
     }
@@ -272,11 +208,6 @@ class ShoppingCart {
         if(this.quantity === 0) {
             this.orders = this.orders.filter((item) => item.id !== id);
             prodCount.parentElement.remove();
-        } else if(this.quantity === 1) {
-            const decQtyBtn = document.querySelector('.dec-qty-btn');
-            decQtyBtn.style.cursor = "not-allowed";
-            decQtyBtn.disabled = true;
-            decQtyBtn.style.backgroundColor = "#815E5B";
         }
         this.updateQtyDisplay();
         this.calculateTotal();
@@ -284,31 +215,25 @@ class ShoppingCart {
 
     //counts the total number of products added to the cart and updates the quantity counter accordingly
     updateQtyDisplay() {
-        this.count = this.cart.reduce((acc, item) => acc + item.quantity, 0);
+        this.count = this.orders.reduce((acc, item) => acc + item.quantity, 0);
         quantity.innerHTML = this.count;
     }
 
     //calculates the total amount of products added to cart and updates the total amount display
     calculateTotal() {
-        this.total = this.cart.reduce((acc, item) => acc + (item.quantity * item.price), 0);
+        this.total = this.orders.reduce((acc, item) => acc + (item.quantity * item.price), 0);
         total.textContent = this.total.toLocaleString();
-    }
-
-    resetOrders() {
-        this.orders = [];
-        this.quantity = 0;
-        this.count = 0;
-        this.total = 0;
     }
 
     //clears cart
     emptyCart() {
-        this.cart = [];
+        this.orders = [];
         this.quantity = 0;
         this.count = 0;
         this.total = 0;
 
         cartList.innerHTML = `<h1>Your cart is currenty empty.</h1>`;
+        cartList.innerHTML = "";
         orderReview.innerHTML = "";
         quantity.innerHTML = this.count;
         total.textContent = this.total;
@@ -328,7 +253,7 @@ class ShoppingCart {
         </div>`;
     }
 
-    /*submit() {
+    submit() {
         // Get existing orders from local storage
         const onlineOrders = JSON.parse(localStorage.getItem("order")) || [];
 
@@ -353,51 +278,29 @@ class ShoppingCart {
         onlineOrders.push(orderList);
         localStorage.setItem('order', JSON.stringify(onlineOrders));
         this.emptyCart();
-    }*/
+    }
 }
 
 
 const cart = new ShoppingCart();
+const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
 
-const addToOrdersBtns = document.getElementsByClassName("add-to-orders-btn");
-[...addToOrdersBtns].forEach((btn) => {
+//event handler for add to cart button
+[...addToCartBtns].forEach((btn) => {
     btn.addEventListener("click", (event) => {
-        cart.showModal(Number(event.target.id));
-        toggleContainerFlex(modalContainer);
-        toggleContainerBlock(overlay);
-        console.log(cart);
-        return;
-    })
-})
-
-document.addEventListener("click", (event) => {
-    if(event.target.closest('.add-to-cart-btn')) {
         cart.addItem(Number(event.target.id));
-        cart.closeModal();
-        cart.resetOrders();
         console.log(cart);
-        return;
-    }
-})
-
-overlay.addEventListener('click', () => {
-    cart.closeModal();
-})
-
-modalBtn.addEventListener('click', () => {
-    cart.closeModal();
-})
+    })
+});
 
 //event handler for plus and minus button
 document.addEventListener('click', (event) => {
     if(event.target.closest('.inc-qty-btn')) {
-        cart.incQty(Number(event.target.id));
-        console.log(cart);
+        cart.addItem(Number(event.target.id));
     } else if(event.target.closest('.dec-qty-btn')) {
         cart.decQty(Number(event.target.id));
         console.log(cart);
     }
-    return;
 });
 
 //empty shopping cart
@@ -407,8 +310,7 @@ clearCart.addEventListener('click', () => {
         cart.emptyCart();
     } else {
         alert("Your cart is currently empty.");
-    }
-    return;  
+    }   
 });
 
 const proceedCheckOut = document.querySelector('.checkout');
@@ -422,7 +324,6 @@ proceedCheckOut.addEventListener('click', () => {
     } else {
         alert("Your cart is currently empty.");
     }
-    return;
 });
 
 const editBtn = document.querySelector('.edit-button');
@@ -432,51 +333,10 @@ editBtn.addEventListener('click', () => {
     toggleContainerBlock(itemsContainer);
     toggleContainerBlock(openCart);
     orderReview.innerHTML = "";
-    return;
 });
 
 const submit = document.querySelector('.submit-button');
 submit.addEventListener('click', () => {
     cart.submit();
     cart.emptyCart();
-    window.location.href = "../Ordering/orderpage.html";
-    return;
-});
-
-const order = this.order;
-        const product = products.find((item) => item.id === order.id);
-        const {name, price} = product;
-
-        const existingProduct = this.cart.find((item) => item.id === product.id);
-        if(product.quantity > 0) {
-            if(existingProduct) {
-                existingProduct.quantity++;
-            } else {
-                this.cart.push(product);
-            }
-        }
-        
-         // creates the html display for items added into cart
-         const prodCount = document.querySelector(`.product-quantity-for-${id}`);
-         const newDiv = document.createElement('div');
-         newDiv.classList.add('product-container');
-         var h1El = cartList.querySelector('h1');
- 
-         h1El.textContent = "";
- 
-         if (product.quantity > 1) {
-             prodCount.innerHTML = 
-             `<button id='${id}' class='dec-qty-btn'>-</button>
-              ${product.quantity} 
-             <button id='${id}' class='inc-qty-btn'>+</button>`
-         } else {
-             newDiv.innerHTML += `
-             <div class='product-name'>${name}</div>
-             <div class='product-price'>Php ${price}</div>
-             <div class='product-quantity-for-${id}'>
-             <button id='${id}' class='dec-qty-btn'>-</button>
-              ${product.quantity} 
-              <button id='${id}' class='inc-qty-btn'>+</button>
-             </div>`;
-         cartList.appendChild(newDiv); 
-         }
+})

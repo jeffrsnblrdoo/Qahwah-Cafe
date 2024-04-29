@@ -1,0 +1,250 @@
+.container {
+    width: 1000px;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.cart-heading h5 {
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    color: #443229;
+}
+
+.cart-list {
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    color: #443229;
+}
+
+.order-header {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    margin-top: 50px;
+}
+
+.order-header > .shopping-cart {
+    display: block;
+    position: relative;
+    text-align: right;
+}
+
+.order-header > .shopping-cart > img {
+    width: 60px;
+    cursor: pointer;
+}
+
+.order-header > .shopping-cart > span {
+    background-color: #443229;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E9E7DA;
+    position: absolute;
+    top: 3px;
+    left: 98%;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+h1 {
+    font-weight: bolder;
+    font-size: 40px;
+    font-family: 'DM Serif Text', 'Prata', Arial, Helvetica, sans-serif;
+}
+
+h1:nth-of-type(2) {
+    margin-top: 50px;
+}
+
+hr {
+    border: 2px solid #443229;
+    width: auto;
+}
+
+.checkout, .clear-cart, .submit-button, .edit-button, .modal-btn {
+    background-color: #443229;
+    color:#E9E7DA;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 12px 24px;
+    margin: 10px;
+    border: 0;
+    line-height: 1.15;
+    font-size: 15px;
+}
+
+.submit-button {
+    margin-top: 50px;
+    width: 200px;
+    height: 50px;
+}
+
+.inc-qty-btn, .dec-qty-btn, .modal-inc-btn, .modal-dec-btn {
+    background-color: #443229;
+    color:#E9E7DA;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    padding: 6px 12px;
+    margin: 10px;
+    border: 0;
+    font-size: 20px;
+}
+
+.checkout:hover, .clear-cart:hover, .submit-button:hover, .edit-button:hover,
+ .inc-qty-btn:hover, .dec-qty-btn:hover, .modal-btn:hover, .add-to-cart-btn:hover,
+ .modal-inc-btn:hover, .modal-dec-btn:hover {
+    transition: all .1s ease;
+    background-color: #815E5B;
+}
+
+.cart-heading {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 100px;
+    margin-top: 10px;
+}
+
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form-container {
+    position: relative;
+    display: none;
+    width: 950px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.customer-details {
+    display: flex;
+    width: 950px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.order-container {
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 25px;
+    background-color: #f3f1ea;
+    box-shadow: 0 2px 2px #443229;
+    border-radius: 25px;
+}
+
+.grand-total {
+    font-size: 25px;
+    font-weight: bolder;
+    color: #443229;
+    padding-top: 50px;
+    margin: 50px;
+}
+
+.customer-details-left {
+    background-color: rgb(231, 224, 221);
+    padding: 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+}
+
+.order-review > div > p {
+    font-size: 16px;
+}
+
+.order-review > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.modal-container {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    background-color: #f3f1ea;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
+    height: 80%;
+    width: 30%;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1000;
+    border-radius: 25px;
+    box-shadow: 0 2px 2px #443229;
+}
+
+.modal-content {
+    width: 90%;
+}
+
+.modal-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.cart-list > h1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.modal-footer {
+    display: flex;
+    position: absolute;
+    margin: 20px;
+    left: 0;
+    bottom: 0;
+    width: 95%;
+}
+
+.add-to-cart-btn {
+    background-color: #443229;
+    color:#E9E7DA;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 6px 14px;
+    margin: 10px;
+    border: 0;
+    line-height: 1.15;
+    font-size: 15px;
+    width: 68%;
+}
