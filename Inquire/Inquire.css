@@ -57,6 +57,7 @@ main {
 .contact-box{
     background: #815E5B;
     display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .contact-left{
     flex-basis: 60%;
@@ -88,27 +89,40 @@ input{
     border-bottom: 1px solid #ccc;
     outline: none;
     padding-bottom: 5px;
+    font-size: 160%;
 }
 
 textarea{
-    Width: 60%;
+    Width: 80%;
+    height: 200%;
     border: 1px solid #ccc;
     background-color: #815E5B;
     color: #f5edda;
     outline: none;
     padding: 10px;
     box-sizing: border-box;
+    font-size: 120%;
 }
 
 label{
     margin-bottom: 6px;
     display: block;
     color: #f5edda;
+    font-size: 160%;
 }
 
 h1 {
     color: #443229;
     margin-bottom: 10px;
+    font-size: 200%;
+}
+
+h3{
+    font-size: 160%;
+}
+
+p{
+    font-size: 120%;
 }
 
 iframe {
