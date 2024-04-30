@@ -1,3 +1,4 @@
+
 const openCart = document.querySelector('.shopping-cart');
 const closeCart = document.querySelector('.closeShop');
 const cartList = document.querySelector('.cart-list');
@@ -153,7 +154,6 @@ class ShoppingCart {
       this.cart = [];
       this.temp = [];
       this.order = {};
-      this.quantity = 0;
       this.count = 0;
       this.total = 0;
     }
@@ -189,10 +189,10 @@ class ShoppingCart {
         <div class="radioBtns">
             <h3>Hot or Iced</h3>
             <label for="iced">
-                <input type="radio" id="iced" name="temperature" value="iced" checked /> Iced
+                <input type="radio" id="iced" name="temperature" value="Iced" checked /> Iced
             </label>
             <label for="hot">
-                <input type="radio" id="hot" name="temperature" value="hot" /> Hot
+                <input type="radio" id="hot" name="temperature" value="Hot" /> Hot
             </label>
         </div>
         <div class="orderComment">
@@ -302,47 +302,77 @@ class ShoppingCart {
     //adds the item into cart
     addItem() {
         //destructure the order to get and add important details
-        const {id, name, price, quantity} = this.order;
+        const {category, id, name, price, quantity} = this.order;
         const drinkTemp = this.temperature();
         const comment = document.getElementById('comment').value;
 
         //adds the order into the a temporary array with the important details
-        this.temp.push({id, name, temperature: drinkTemp, price, quantity, comment: comment});
+        const newOrder = {
+            category, 
+            name,  
+            price, 
+            quantity, 
+            comment
+        }
 
-        this.updateCartDisplay();
+        //if the order is beverage, adds a temperature property
+        if(this.order.category === "beverage") {
+            newOrder.temperature = drinkTemp;
+            newOrder.id = `${id}_${drinkTemp}`;
+        }
+
+        this.temp.push(newOrder);
+
+        this.updateCartDisplay(this.temp);
         this.updateQtyDisplay();
         this.calculateTotal();
     }
 
-    //removes duplicated display in the shopping cart
-    updateCartDisplay() {
+    //removes any duplicates in the array
+    //makes sure that there is only 1 unique id-temperature object in the array with accumulated quantity
+    //sets a new id for the product
+    updateCartDisplay(array) {
         cartList.innerHTML = "";
-         
+
         const uniqueOrder = {};
-        //remove duplicates form the temp array and totals the quantity for the duplicated items
-        //creates a new array with udpated quantity and no duplicated products
-        this.temp.forEach((order) => {
+
+        array.forEach((order) => {
             if(uniqueOrder.hasOwnProperty(order.id)) {
                 uniqueOrder[order.id].quantity += order.quantity;
             } else {
                 uniqueOrder[order.id] = {...order};
+                console.log(uniqueOrder);
             }
         });
         this.cart = Object.values(uniqueOrder);
-        
+
+        this.displayCartItems(this.cart);
+    }
+
+    //displays the items in the shopping cart
+    displayCartItems(array) {
         //creates the html display for items added into cart
-        this.cart.forEach((item) => {
+        array.forEach((item) => {
             const newDiv = document.createElement('div');
             newDiv.classList.add('product-container');
 
-            newDiv.innerHTML += `
+            newDiv.innerHTML += item.category === "beverage" ? 
+                newDiv.innerHTML += `
+                <div class='product-name'>${item.temperature} ${item.name}</div>
+                <div class='product-price'>Php ${item.price}</div>
+                <div class='product-quantity-for-${item.id}'>
+                <button id='${item.id}' class='dec-qty-btn'>-</button>
+                ${item.quantity} 
+                <button id='${item.id}' class='inc-qty-btn'>+</button>
+                </div>`: 
+                newDiv.innerHTML += `
                 <div class='product-name'>${item.name}</div>
                 <div class='product-price'>Php ${item.price}</div>
                 <div class='product-quantity-for-${item.id}'>
                 <button id='${item.id}' class='dec-qty-btn'>-</button>
                 ${item.quantity} 
                 <button id='${item.id}' class='inc-qty-btn'>+</button>
-                </div>`;
+                </div>`
             cartList.appendChild(newDiv);
         });
     }
@@ -351,6 +381,8 @@ class ShoppingCart {
     decQty(id) {
         const product = this.cart.find((item) => item.id === id);
         product.quantity -= 1;
+        const tempProduct = this.temp.find((item) => item.id === id);
+        tempProduct.quantity -= 1;
         
         const prodCount = document.querySelector(`.product-quantity-for-${id}`);
         prodCount.innerHTML = 
@@ -364,6 +396,7 @@ class ShoppingCart {
             this.temp = this.temp.filter((item) => item.id !== id);
             prodCount.parentElement.remove();
         }
+
         this.updateQtyDisplay();
         this.calculateTotal();
     }
@@ -372,7 +405,10 @@ class ShoppingCart {
     incQty(id) {
         const product = this.cart.find((item) => item.id === id);
         product.quantity += 1;
+        const tempProduct = this.temp.find((item) => item.id === id);
+        tempProduct.quantity += 1;
         
+
         const prodCount = document.querySelector(`.product-quantity-for-${id}`);
         prodCount.innerHTML = 
             `<button id='${id}' class='dec-qty-btn'>-</button>
@@ -402,7 +438,7 @@ class ShoppingCart {
             const newDiv = document.createElement('div');
             newDiv.innerHTML = `
                 <p>Php ${item.price * item.quantity}</p>
-                <p>${item.quantity}x ${item.name}</p>
+                <p>${item.quantity}x ${item.temperature} ${item.name}</p>
             `;
             orderReview.appendChild(newDiv);
         })
@@ -415,7 +451,6 @@ class ShoppingCart {
      emptyCart() {
         this.cart = [];
         this.temp = [];
-        this.quantity = 0;
         this.count = 0;
         this.total = 0;
 
@@ -464,9 +499,9 @@ document.addEventListener('click', (event) => {
 //event handler for plus and minus button
 document.addEventListener('click', (event) => {
     if(event.target.closest('.inc-qty-btn')) {
-        cart.incQty(Number(event.target.id));
+        cart.incQty(event.target.id);
     } else if(event.target.closest('.dec-qty-btn')) {
-        cart.decQty(Number(event.target.id));
+        cart.decQty(event.target.id);
         console.log(cart);
     }
 });
