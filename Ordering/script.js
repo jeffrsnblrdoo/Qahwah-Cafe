@@ -173,7 +173,6 @@ class ShoppingCart {
         const { name, price, description } = product;
         product.quantity = 1;
         this.order = product;
-
         //generates the product display for the modal based on the elements id that matches the products id
         const newDiv = document.createElement('div');
         newDiv.classList.add('order-details');
@@ -241,13 +240,7 @@ class ShoppingCart {
         //adds depth to the view
         body.classList.add('disabled-body');
 
-        //limits the minimum order to always 1
-        if(this.order.quantity === 1) {
-            const decQtyBtn = document.querySelector('.modal-dec-btn');
-            decQtyBtn.style.cursor = "not-allowed";
-            decQtyBtn.disabled = true;
-            decQtyBtn.style.backgroundColor = "#815E5B";
-        }
+        this.orderLimit(this.order.quantity);
     }
 
     //increase order quantity
@@ -268,16 +261,19 @@ class ShoppingCart {
         modalQty.innerHTML = `<button id='${id}' class='modal-dec-btn'>-</button>
         <span class='modal-qty-span'>${this.order.quantity}</span>
         <button id='${id}' class='modal-inc-btn'>+</button>`;
-        
-        //again limits the minimum order to always 1
-        //might refactor this into a separate method to avoid writing the code repeatedly
-        if(this.order.quantity === 1) {
+   
+        this.orderLimit(this.order.quantity);
+    }
+
+    //set order limit to quantity of 1
+    orderLimit(object) {
+        if(object === 1) {
             const decQtyBtn = document.querySelector('.modal-dec-btn');
             decQtyBtn.style.cursor = "not-allowed";
             decQtyBtn.disabled = true;
             decQtyBtn.style.backgroundColor = "#815E5B";
         }
-    }
+    } 
 
     //closes the modal to allow user to continue browsing products
     //this also resets the modal display for the next product to order
@@ -305,7 +301,6 @@ class ShoppingCart {
         const {category, id, name, price, quantity} = this.order;
         const drinkTemp = this.temperature();
         const comment = document.getElementById('comment').value;
-
         //adds the order into the a temporary array with the important details
         const newOrder = {
             category, 
@@ -314,7 +309,6 @@ class ShoppingCart {
             quantity, 
             comment
         }
-
         //if the order is beverage, adds a temperature property
         if(this.order.category === "beverage") {
             newOrder.temperature = drinkTemp;
@@ -389,7 +383,6 @@ class ShoppingCart {
             `<button id='${id}' class='dec-qty-btn'>-</button>
              ${product.quantity} 
             <button id='${id}' class='inc-qty-btn'>+</button>`;
-        
         //removes the item from cart and temporary array when the quantity is zero
         if(product.quantity === 0) {
             this.cart = this.cart.filter((item) => item.id !== id);
@@ -407,7 +400,6 @@ class ShoppingCart {
         product.quantity += 1;
         const tempProduct = this.temp.find((item) => item.id === id);
         tempProduct.quantity += 1;
-        
 
         const prodCount = document.querySelector(`.product-quantity-for-${id}`);
         prodCount.innerHTML = 
