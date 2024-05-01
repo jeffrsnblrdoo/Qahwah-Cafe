@@ -13,12 +13,12 @@ const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
 const total = document.querySelector('.amount-total');
 const quantity = document.querySelector('.quantity');
-const customerName = document.getElementById('fname');
-const customerNumber = document.getElementById('contact-number');
-const customerAddress = document.getElementById('address');
 const overlay = document.querySelector('.overlay');
 const body = document.querySelector('body');
 const modalBtn = document.querySelector('.modal-btn');
+const customerName = document.getElementById('fname');
+const customerNumber = document.getElementById('contact-number');
+const customerAddress = document.getElementById('address');
 
 const products = [
     {
@@ -313,6 +313,8 @@ class ShoppingCart {
         if(this.order.category === "beverage") {
             newOrder.temperature = drinkTemp;
             newOrder.id = `${id}_${drinkTemp}`;
+        } else {
+            newOrder.id = `${id}`;
         }
 
         this.temp.push(newOrder);
@@ -374,6 +376,7 @@ class ShoppingCart {
     //decrease quantity in the cart display and calculates the amount accordingly
     decQty(id) {
         const product = this.cart.find((item) => item.id === id);
+        console.log(product);
         product.quantity -= 1;
         const tempProduct = this.temp.find((item) => item.id === id);
         tempProduct.quantity -= 1;
