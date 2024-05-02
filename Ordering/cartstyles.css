@@ -49,21 +49,6 @@
     cursor: pointer;
 }
 
-h1 {
-    font-weight: bolder;
-    font-size: 40px;
-    font-family: 'DM Serif Text', 'Prata', Arial, Helvetica, sans-serif;
-}
-
-h1:nth-of-type(2) {
-    margin-top: 50px;
-}
-
-hr {
-    border: 2px solid #443229;
-    width: auto;
-}
-
 .checkout, .clear-cart, .submit-button, .edit-button, .modal-btn {
     background-color: #443229;
     color:#E9E7DA;

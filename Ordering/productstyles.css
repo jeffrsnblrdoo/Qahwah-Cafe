@@ -1,3 +1,18 @@
+h1 {
+    font-weight: bolder;
+    font-size: 40px;
+    font-family: 'DM Serif Text', 'Prata', Arial, Helvetica, sans-serif;
+}
+
+h1:nth-of-type(2), h1:nth-of-type(3) {
+    margin-top: 50px;
+}
+
+hr {
+    border: 2px solid #443229;
+    width: auto;
+}
+
 .flip-card {
     perspective: 1000px;
     height: 350px;
@@ -47,7 +62,11 @@
     transform: rotateY(180deg);
 }
 
-.drink-list , .pastry-list {
+.lto-list img {
+    width: 45%;
+}
+
+.drink-list , .pastry-list, .lto-list {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(3, 350px);
@@ -55,7 +74,7 @@
     margin-top: 50px;
 }
 
-.drink-list > .beverage, .pastry-list > .pastry {
+.drink-list > .beverage, .pastry-list > .pastry, .lto-list > .lto {
     text-align: center;
     background-color: #f3f1ea;
     padding: 20px;
@@ -64,14 +83,14 @@
     border-radius: 25px;
 }
 
-.drink-list > .beverage > .title, .pastry-list > .pastry > .title {
+.drink-list > .beverage > .title, .pastry-list > .pastry > .title, .lto-list > .lto > .title {
     margin: 25px;
     font-weight: 600;
     font-size: 20px;
     font-family: 'Prata', 'DM Serif Text', Arial, Helvetica, sans-serif;
 }
 
-.drink-list > .beverage > .price, .pastry-list > .pastry > .price {
+.drink-list > .beverage > .price, .pastry-list > .pastry > .price, .lto-list > .lto > .price {
     margin: 10px;
     font-size: 30px;
 }

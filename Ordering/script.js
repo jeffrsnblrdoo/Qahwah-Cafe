@@ -9,6 +9,7 @@ const modalContainer = document.querySelector('.modal-container');
 const modalContent = document.querySelector('.modal-content');
 const orderReview = document.querySelector('.order-review');
 const itemsContainer = document.querySelector('.items-container');
+const ltoList = document.querySelector('.lto-list');
 const drinkList = document.querySelector('.drink-list');
 const pastryList = document.querySelector('.pastry-list');
 const total = document.querySelector('.amount-total');
@@ -100,6 +101,30 @@ const products = [
         description: 'Crisp on the outside, fluffy on the inside, topped with whipped cream and syrup of choice.',
         price: 105.00,
         category: "pastry"
+    },
+    {
+        id: 11,
+        name: "Signature Lemonade",
+        image: "lemonade.png",
+        description: "Freshly squeezed lemons, pure cane sugar, and ice-cold water.",
+        price: 99.00,
+        category: "lto"
+    },
+    {
+        id: 12,
+        name: "Strawberry Lemon",
+        image: "strawberry.png",
+        description: "A fusion of tangy lemons and ripe strawberries, served over ice for a burst of refreshing flavor.",
+        price: 110.00,
+        category: "lto"
+    },
+    {
+        id: 13,
+        name: "Yogurt Lemonade",
+        image: "yogurt.png",
+        description: "A harmonious blend of tangy lemons and smooth yogurt, creating a refreshing treat that delights the palate.",
+        price: 125.00,
+        category: "lto"
     }
 ]
 
@@ -121,14 +146,24 @@ const createDisplay = (value) => {
         <button id='${value.id}' class='add-to-orders-btn'>+</button>
         </div>
         `;
-        //<button id='${value.id}' class='add-to-cart-btn'>Add to cart</button>
         return newDiv;
 }
 
 //creates the display for the products array
 products.forEach((value) => {
-    const list = (value.category === "beverage") ? drinkList : pastryList;
-    list.appendChild(createDisplay(value));
+    switch (value.category) {
+        case "lto":
+            ltoList.appendChild(createDisplay(value));
+            break;
+        case "beverage":
+            drinkList.appendChild(createDisplay(value));
+            break;
+        case "pastry":
+            pastryList.appendChild(createDisplay(value));
+            break;
+        default:
+            break;
+    }
 });
 
 //toggles the display for cart
@@ -222,7 +257,7 @@ class ShoppingCart {
             <label for="comment">
                 <h3>Special Instructions</h3>
                 <p>Special requests are subject to the barista's/owner's approval. Tell us here!</p>
-                <textarea id="comment" name="comment" placeholder="e.g. I want it warmed" rows="5" cols="67" style="resize: none"></textarea>
+                <textarea id="comment" name="comment" placeholder="e.g. no straw/untensils" rows="5" cols="67" style="resize: none"></textarea>
             </label>
         </div>
         <hr>
@@ -431,11 +466,20 @@ class ShoppingCart {
     checkout() {
         this.cart.forEach((item) => {
             const newDiv = document.createElement('div');
-            newDiv.innerHTML = `
+
+            if(item.category === "beverage") {
+                newDiv.innerHTML = `
                 <p>Php ${item.price * item.quantity}</p>
                 <p>${item.quantity}x ${item.temperature} ${item.name}</p>
             `;
             orderReview.appendChild(newDiv);
+            } else {
+                newDiv.innerHTML = `
+                <p>Php ${item.price * item.quantity}</p>
+                <p>${item.quantity}x ${item.name}</p>
+            `;
+            orderReview.appendChild(newDiv);
+            }
         })
         orderReview.innerHTML += `<div>
         <h2>Amount to pay: <br><br>Php ${this.total.toLocaleString()}</h2>
