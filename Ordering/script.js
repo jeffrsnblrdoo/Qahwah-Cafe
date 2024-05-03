@@ -428,6 +428,10 @@ class ShoppingCart {
             prodCount.parentElement.remove();
         }
 
+        if(this.cart.length === 0) {
+            cartList.innerHTML = `<h1>Your cart is currenty empty.</h1>`;
+        }
+
         this.updateQtyDisplay();
         this.calculateTotal();
     }
