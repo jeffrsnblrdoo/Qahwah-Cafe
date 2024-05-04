@@ -7,11 +7,9 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    background-image: url("./SignInBG.png");
+    background-image: url("./SignInBG.jpg");
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
 }
 
 header {
@@ -27,6 +25,7 @@ header {
 }
 
 .navbar {
+    height: 100%;
     overflow: hidden;
     background-color: #E9E7DA;
     display: flex;
@@ -68,7 +67,7 @@ main {
 }
 
 span{
-    color: #fff;
+    color: white;
     font-size: small;
     display: flex;
     justify-content: center;
