@@ -13,8 +13,9 @@ header {
     background-color: #E9E7DA;
     height: 90px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .logo {
@@ -30,10 +31,20 @@ header {
     overflow: hidden;
     background-color: #E9E7DA;
     display: flex;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .navbar a {
+    color: #443229;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 14px;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.signup a {
     color: #443229;
     text-decoration: none;
     display: flex;

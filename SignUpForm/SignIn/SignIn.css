@@ -144,6 +144,10 @@ label a{
     text-decoration: none;
 }
 
+.right a{
+    color: deepskyblue;
+}
+
 iframe {
     width: 80%;
     height: 500px;
