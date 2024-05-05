@@ -150,21 +150,28 @@ const createDisplay = (value) => {
 }
 
 //creates the display for the products array
-products.forEach((value) => {
-    switch (value.category) {
-        case "lto":
-            ltoList.appendChild(createDisplay(value));
-            break;
-        case "beverage":
-            drinkList.appendChild(createDisplay(value));
-            break;
-        case "pastry":
-            pastryList.appendChild(createDisplay(value));
-            break;
-        default:
-            break;
-    }
-});
+fetch('/products')
+    .then(res => res.json())
+    .then(data => {
+        data.forEach((value) => {
+            switch (value.category) {
+                case "lto":
+                    ltoList.appendChild(createDisplay(value));
+                    break;
+                case "beverage":
+                    drinkList.appendChild(createDisplay(value));
+                    break;
+                case "pastry":
+                    pastryList.appendChild(createDisplay(value));
+                    break;
+                default:
+                    break;
+            }
+        });
+    })
+    .catch(error => {
+        console.log(error);
+    });
 
 //toggles the display for cart
 openCart.addEventListener("click", () => {

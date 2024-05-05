@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const Products = require('./servers/models/Products');
 
 const connectDB = require('./servers/config/db');
 
@@ -15,8 +16,18 @@ connectDB();
 app.use(express.static(path.join(__dirname, './public')));
 
 //default route
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
     res.sendFile(path.join(__dirname, './public', 'home.html'));
+});
+
+app.get('/products', async (req, res) => {
+    try {
+        const data = await Products.find();
+        res.setHeader('Content-Type', 'application/json');
+        res.json(data);
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 //start server
