@@ -2,7 +2,7 @@
   "name": "qahwah-cafe",
   "version": "1.0.0",
   "description": "Repository for Qahwah Cafe website for school project.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "app.js",
