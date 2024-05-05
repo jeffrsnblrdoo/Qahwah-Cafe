@@ -1,3 +1,4 @@
+<?php include('../../dbcon.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,6 @@
             <a href="#">LOCATION</a>
         </div class="navbar">
     </header>
-    
         <div class="box">
             <div class="container">
                 <div class="top-header">
@@ -27,18 +27,40 @@
                     <h1>Sign In</h1>
                 </div>
 
-                <div class="input-field">
-                    <input type="text" class="input" placeholder="Username" required>   
-                    <i class="bx bx-user"></i>
-                </div>
-                <div class="input-field">
-                    <input type="password" class="input" placeholder="Password" required>
-                    <i class="bx bx-lock-alt"></i>   
-                </div>
-                <div class="input-field">
-                    <input type="submit" class="submit" value="SignIn">   
-                </div>
+                <?php
+                    if(isset($_POST['useraccounts_check'])){
+                        $username = $_POST['username'];
+                        $password = $_POST['password'];
 
+                        $query = "select * from `useraccounts`";
+                        $result = mysqli_query($connection, $query);
+                        if(!$result){
+                            die("qery Failed".mysqli_error());
+                        }
+                        else{
+                            while($row = mysqli_fetch_assoc($result)){
+                                
+                                die($row['lname']);
+                                die($row['fname']);
+                            }
+                        }
+
+                    }
+                ?>
+
+                <form method="post">
+                    <div class="input-field">
+                        <input type="text" class="input" name="username" placeholder="Username" required>   
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="input" name="password" placeholder="Password" required>
+                        <i class="bx bx-lock-alt"></i>   
+                    </div>
+                    <div class="input-field">
+                        <input type="submit" class="submit" name="useraccounts_check" value="SignIn">   
+                    </div>
+                </form>
                 <div class="bottom">
                     <div class="left">
                         <input type="checkbox" id="check">
