@@ -89,13 +89,14 @@ main {
 }
 
 footer {
-    width: auto;
     background-color: #815E5B;
     display: flex;
     justify-content: space-between;
-    position: relative;
-    top: 100px;
-    padding: 7px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow-x: hidden;
+    padding: 7px 0px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
