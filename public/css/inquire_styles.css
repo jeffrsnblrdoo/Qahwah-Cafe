@@ -93,8 +93,6 @@ input{
 }
 
 textarea{
-    Width: 60%;
-    height: 200%;
     border: 1px solid #ccc;
     background-color: #815E5B;
     color: #f5edda;
@@ -102,6 +100,8 @@ textarea{
     padding: 10px;
     box-sizing: border-box;
     font-size: 120%;
+    width: 60%;
+    resize: none;
 }
 
 .input-field{

@@ -26,8 +26,29 @@
             <div class="contact-left">
                 <h3>Answer Required Questions for Booking</h3><br><br>
 
-                <?php
 
+
+                <?php
+                    if(isset($_POST['submit_inquiry'])){
+                        $BookerName = $_POST['booker_name'];
+                        $Email = $_POST['Email'];
+                        $MobileNumber = $_POST['mobile_number'];
+                        $EventTitle = $_POST['event_title'];
+                        $InvoiceMsg = $_POST['invoice'];
+                        $date = date("Y-m-d");
+                        $time = date("h:i:sa");
+                        
+                        $query = "insert into `inquirytable` (`booker_name`,`email_address`,`mobile_no`,`event_title`,`invoice`,
+                        `date`,`time`,`Is_archived`) values ('$BookerName','$Email','$MobileNumber','$EventTitle','$InvoiceMsg','$date','$time', '0')";
+
+                        $result = mysqli_query($connection,$query);
+
+                        if(!$result){
+                            die("Query Failed". mysqli_error());
+                        }else{
+                            header('location:inquire.php');
+                        }
+                    }
                 ?>
 
                 <form method="post">
@@ -48,20 +69,19 @@
                         <input type="text" name="event_title" placeholder ="x & x wedding party ">
                     </div>
                     <label>Messages/Invoice</label><br>
-                    <textarea rows ="5" name="invoice" placeholder="Your Message"></textarea>
-                    
+                    <textarea rows ="10" columns ="50" name="invoice" placeholder="Your Message"></textarea>
+
                     <div class="input-field">
-                        <input type="submit" class="submit" name="useraccounts_check" value="Submit">   
+                        <input type="submit" class="submit" name="submit_inquiry" value="Submit">   
                     </div>
-
                 </form>
-
             </div>
             <div class="contact-right">
                 <img src="./images/InquirePic.png" alt="dk"/>
             </div>
         </div>
     </div>
+
     <footer>
         <div class="cafe-info">
             <a href="./about.html">About Us</a>
