@@ -35,13 +35,15 @@
                         $query = "select * from `useraccounts`";
                         $result = mysqli_query($connection, $query);
                         if(!$result){
-                            die("qery Failed".mysqli_error());
+                            die("query Failed".mysqli_error());
                         }
                         else{
                             while($row = mysqli_fetch_assoc($result)){
-                                
-                                die($row['lname']);
-                                die($row['fname']);
+                                if($row['user_name']==$username){
+                                    die("exist");
+                                }else{
+                                    
+                                }
                             }
                         }
 
