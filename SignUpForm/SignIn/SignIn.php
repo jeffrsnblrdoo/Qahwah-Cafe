@@ -32,6 +32,7 @@
                     if(isset($_POST['useraccounts_check'])){
                         //CHECKS IF THE USERNAME EXISTS IN THE DATABASES
                         $AccountExists = false;
+                        $PasswordCorrect = false;
                         $username = $_POST['username'];
                         $password = $_POST['password'];
 
@@ -45,13 +46,22 @@
                                 //ITERATE EACH ROW AND COMPARE USERNAME
                                 if($row['user_name']==$username){
                                     $AccountExists = true;
+                                    if($row['password']==$password){
+                                        $PasswordCorrect = true;
+                                    }
                                 }
                             }
                         }
                         if($AccountExists){
-
-                            header("Location:http://localhost/qahwah-cafe/public/clientUI.html"); 
-                            exit; // <- don't forget this!
+                            if($PasswordCorrect){
+                                echo "<script>alert('Welcome Admin!');</script>";
+                                header("Location:http://localhost/qahwah-cafe/public/clientUI.html"); 
+                                exit; // <- don't forget this!
+                            }else{
+                                echo "<script>alert('Password Incorrect!');</script>";
+                            }
+                        }else{
+                            echo "<script>alert('This account does not exists!');</script>";
                         }
                     }
                 ?>
