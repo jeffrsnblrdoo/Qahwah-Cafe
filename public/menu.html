@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Qahwah Cafe</title>
+  <link rel="stylesheet" type="text/css" href="./css/menu_styles.css"> 
+</head>
+<body>
+  <header>
+    <div class="navbar">                                                                           
+        <a href="./menu.html">MENU</a>
+        <a href="./order.html">ORDER</a>
+        <a href="./home.html">
+            <img class="logo" src="./images/Logo 2.png" alt="Qahwah Cafe Logo" />
+        </a>
+        <a href="./inquire.html">INQUIRE</a>
+        <a href="./location.html">LOCATION</a>
+    </div class="navbar">
+</header>
+
+  <div class="background-drink">
+    <p>Our Drink</p>
+  </div>
+
+  <div class="coldDrinks">
+    <div>
+      <span><a href="../FoodDescription/IcedAmericano.html"><img src="./images/IcedAmericano.png"></a><p>Iced Americano</p></span>
+      <span><a href="../FoodDescription/IcedCaramelMacchiato.html"><img src="./images/icedCaramelMacchiato.png"></a><p>Iced Caramel Macchiato</p></span>
+      <span><a href="../FoodDescription/IcedLatte.html"><img src="./images/icedLatte.png"></a><p>Iced Latte</p></p></span>
+      <span><a href="../FoodDescription/IcedMatchaLatte.html"><img src="./images/icedMatchaLatte.png"></a><p>Iced Matcha Latte</p></span>
+      <span><a href="../FoodDescription/IcedMocha.html"><img src="./images/icedMocha.png"></a><p>Iced Mocha</p></span>
+    </div>
+  </div>
+
+  <div class="background-pastry">
+    <p>Our Pastry</p>
+  </div>
+  
+  <div class="pastry">
+    <div>
+      <span><a href="../FoodDescription/BlueberryBagel.html"><img src="./Pictures/BlueberryBagel.png"></a><p>Blueberry Bagel</p></span>
+      <span><a href="../FoodDescription/BlueberryMuffin.html"><img src="./Pictures/BlueberryMuffin.png"></a><p>Blueberry Muffin</p></span>
+      <span><a href="../FoodDescription/ButterCroissant.html"><img src="./Pictures/ButterCroissant.png"></a><p>Butter Croissant</p></span>
+      <span><a href="../FoodDescription/CheeseBaconDanish.html"><img src="./Pictures/CheeseBaconDanish.png"></a><p>Cheese Bacon Danish</p></span>
+      <span><a href="../FoodDescription/Waffle.html"><img src="./Pictures/Waffle.png"></a><p>Waffle</p></span>
+    </div>
+  </div>
+
+  <script>
+    let drinkscrollContainer = document.querySelector(".coldDrinks");
+    let pastryscrollContainer = document.querySelector(".pastry");
+
+	const scrollSpeed = 5;
+
+    drinkscrollContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      drinkscrollContainer.scrollLeft += evt.deltaY * scrollSpeed;
+    });
+
+    pastryscrollContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      pastryscrollContainer.scrollLeft += evt.deltaY * scrollSpeed;
+    });
+  </script>
+
+  <footer>
+    <div class="cafe-info">
+        <a href="./about.html">About Us</a>
+        <a href="./contact.html">Contact Us</a>
+    </div>
+    <div class="copyright">
+      <p>Copyright ©2024 Qahwah Cafe. All rights reserved.</p>
+  </div>
+  </footer>
+</body>
+</html>

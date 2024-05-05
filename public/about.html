@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qahwah Cafe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/about_styles.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">                                                                           
+            <a href="./menu.html">MENU</a>
+            <a href="./order.html">ORDER</a>
+            <a href="./home.html">
+                <img class="logo" src="./images/Logo 2.png" alt="Qahwah Cafe Logo" />
+            </a>
+            <a href="./inquire.html">INQUIRE</a>
+            <a href="./location.html">LOCATION</a>
+        </div class="navbar">
+    </header>
+    <div class="coverPhoto">
+        <img src="./images/aboutus_header.png" alt="Coffee Shop">
+        <h1>ABOUT US</h1>
+    </div>
+    <div class="textContainer">
+        <div class="leftContainer">
+            <h2 class="start">Welcome to Qahwah Cafe!</h2>
+            <p>At Qahwah Cafe, we believe that a great cup of coffee is more than just a beverage – it’s an experience. Nestled in the heart of Bocaue, Bulacan, our coffee shop is a cozy haven where friends gather, stories are shared, and memories are made over the perfect brew.</p>
+            <br>
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="./images/1.jpeg" style="width:100%">
+                </div>
+                <div class="mySlides fade">
+                    <img src="./images/2.jpeg" style="width:100%">
+                </div>
+                <div class="mySlides fade">
+                    <img src="./images/3.jpeg" style="width:100%">
+                </div>
+            </div>
+            <br>
+            <div style="text-align:center">
+                <span class="dot"></span> 
+                <span class="dot"></span> 
+                <span class="dot"></span> 
+            </div>
+            <script>
+                let slideIndex = 0;
+                showSlides();
+
+                function showSlides() {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides");
+                    let dots = document.getElementsByClassName("dot");
+                    for (i = 0; i < slides.length; i++) {
+                      slides[i].style.display = "none";  
+                    }
+                    slideIndex++;
+                    if (slideIndex > slides.length) {slideIndex = 1}    
+                    for (i = 0; i < dots.length; i++) {
+                      dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex-1].style.display = "block";  
+                    dots[slideIndex-1].className += " active";
+                    setTimeout(showSlides, 4000);
+                }
+            </script>
+            <h3>Our Story</h2>
+            <p>Founded in 2020, Qahwah Cafe was born out of a passion for exceptional coffee and a desire to create a welcoming space for our community. From our humble beginnings, we’ve grown into a beloved local establishment, cherished by coffee enthusiasts and casual visitors alike.</p>
+            <br>
+            <h3>Craftsmanship</h2>
+            <p>We take pride in every cup we serve. Our beans are carefully sourced from sustainable farms around the world, ensuring the highest quality and freshness in every sip. Our skilled baristas artfully craft each drink, using precision and care to bring out the unique flavors of our premium coffee blends.</p>
+            <br>
+            <h3>Community</h2>
+            <p>At Qahwah Cafe, we’re more than just a place to grab your morning pick-me-up. We’re a gathering place for friends, families, and neighbors to connect and unwind. Whether you’re catching up with old friends, diving into a good book, or simply enjoying a quiet moment of reflection, you’ll always find a warm welcome here.</p>
+            <br>
+            <h3>Our Commitment</h2>
+            <p>We are committed to not only serving great coffee but also making a positive impact in our community. From supporting local charities to reducing our environmental footprint, we strive to do our part in creating a better world, one cup at a time.</p>
+            <br>
+            <h3>Join Us</h2>
+            <p>We invite you to join us at Qahwah Cafe and experience the warmth and hospitality that sets us apart. Whether you’re a regular or a first-time visitor, we promise a memorable experience that will keep you coming back for more.</p>
+            <br>
+            <h2 class="end">Thank you for choosing Qahwah Cafe. We can’t wait to welcome you!</h2>
+            <a href="https://www.facebook.com/qahwah.ph" class="fa fa-facebook" target="_blank "></a>
+        </div>
+    </div>
+    <footer>
+        <div class="cafe-info">
+            <a href="./about.html">About Us</a>
+            <a href="./contact.html">Contact Us</a>
+        </div>
+        <div class="copyright">
+          <p>Copyright ©2024 Qahwah Cafe. All rights reserved.</p>
+      </div>
+    </footer>
+</body>
+</html>
