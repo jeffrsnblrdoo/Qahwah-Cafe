@@ -7,6 +7,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 header {
@@ -35,7 +36,14 @@ header h1 {
     flex-direction: row;
     align-items: center;
     width: 100vw;
-    height: 15vh;
+    height: 10vh;
+}
+
+.dashboard h1 {
+    position: relative;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2em;
+    padding-left: 2%;
 }
 
 .categories {
@@ -50,22 +58,55 @@ header h1 {
 .categories h2 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.5em;
+    text-decoration: none;
 }
 
-.dashboard h1 {
-    position: relative;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 2em;
-    padding-left: 2%;
+.order > span {
+    background-color: #FF0000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E9E7DA;
+    position: absolute;
+    top: 10%;
+    left: 27%;
+    padding: 1% 2%;
+    cursor: pointer;
+    font-size: 1.2em;
 }
 
-
-hr {
-    border: 2px solid #443229;
-    width: 80%;
+.inquiry > span {
+    background-color: #FF0000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E9E7DA;
+    position: absolute;
+    top: 10%;
+    left: 56%;
+    padding: 1% 2%;
+    cursor: pointer;
+    font-size: 1.2em;
 }
 
-.orders-container,.products-container, .inquiry-container {
+.report > span {
+    background-color: #FF0000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E9E7DA;
+    position: absolute;
+    top: 10%;
+    left: 85%;
+    padding: 1% 2%;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.order-container,.product-container, .inquiry-container {
     display: flex;
     flex-direction: column;
     background-color: #f3f1ea;
@@ -75,14 +116,9 @@ hr {
     width: 75%;
     height: 70vh;
 }
-.container-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
 
-.category-title {
+.order-container h1, .product-container h1, .inquiry-container h1 {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 2em;
+    font-size: 2.5em;
     padding: 0 0 0 2%;
 }
