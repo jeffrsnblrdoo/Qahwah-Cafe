@@ -1,0 +1,88 @@
+html {
+    background-color: #E9E7DA;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #E9E7DA;
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+
+
+.logo {
+    width: 6%;
+    position: relative;
+    left: 0;
+}
+
+header h1 {
+    position: relative;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5em;
+}
+
+.dashboard {
+    background-color: #f3f1ea;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100vw;
+    height: 15vh;
+}
+
+.categories {
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    width: 30%;
+    position: absolute;
+    right: 0;
+}
+
+.categories h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5em;
+}
+
+.dashboard h1 {
+    position: relative;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2em;
+    padding-left: 2%;
+}
+
+
+hr {
+    border: 2px solid #443229;
+    width: 80%;
+}
+
+.orders-container,.products-container, .inquiry-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f1ea;
+    box-shadow: 0 2px 2px #443229;
+    border-radius: 	1.5625em;
+    margin: 5% auto;
+    width: 75%;
+    height: 70vh;
+}
+.container-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.category-title {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2em;
+    padding: 0 0 0 2%;
+}
