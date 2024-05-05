@@ -15,7 +15,7 @@
             <a href="./home.html">
                 <img class="logo" src="./images/Logo 2.png" alt="Qahwah Cafe Logo" />
             </a>
-            <a href="./inquire.html">INQUIRE</a>
+            <a href="./inquire.php">INQUIRE</a>
             <a href="./location.html">LOCATION</a>
         </div class="navbar">
     </header>
