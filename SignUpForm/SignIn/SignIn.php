@@ -11,13 +11,13 @@
 <body>
     <header>
         <div class="navbar">                                                                           
-            <a href="../../Menu/Menu.html">MENU</a>
-            <a href="../../Ordering/orderpage.html">ORDER</a>
-            <a href="../../Homepage/index.html">
+            <a href="../../public/Menu.html">MENU</a>
+            <a href="../../public/order.html">ORDER</a>
+            <a href="../../public/home.html">
                 <img class="logo" src="../../Homepage/Pictures/Logo 2.png" alt="Qahwah Cafe Logo" />
             </a>
-            <a href="../../Inquire/Inquire.html">INQUIRE</a>
-            <a href="#">LOCATION</a>
+            <a href="../../public/Inquire.php">INQUIRE</a>
+            <a href="../../public/location.html">LOCATION</a>
         </div class="navbar">
     </header>
         <div class="box">

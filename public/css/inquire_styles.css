@@ -93,7 +93,7 @@ input{
 }
 
 textarea{
-    Width: 80%;
+    Width: 60%;
     height: 200%;
     border: 1px solid #ccc;
     background-color: #815E5B;
@@ -102,6 +102,25 @@ textarea{
     padding: 10px;
     box-sizing: border-box;
     font-size: 120%;
+}
+
+.input-field{
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.submit{
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 45px;
+    outline: none;
+    width: 60%;
+    background: #443229;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 130%;
 }
 
 label{

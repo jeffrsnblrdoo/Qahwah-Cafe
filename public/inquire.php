@@ -1,3 +1,4 @@
+<?php include('../dbcon.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +25,11 @@
         <div class ="contact-box">
             <div class="contact-left">
                 <h3>Answer Required Questions for Booking</h3><br><br>
+
+                <?php
+
+                ?>
+
                 <form method="post">
                     <div class="input-group">
                         <label>Name of Booker</label><br>
@@ -43,7 +49,13 @@
                     </div>
                     <label>Messages/Invoice</label><br>
                     <textarea rows ="5" name="invoice" placeholder="Your Message"></textarea>
+                    
+                    <div class="input-field">
+                        <input type="submit" class="submit" name="useraccounts_check" value="Submit">   
+                    </div>
+
                 </form>
+
             </div>
             <div class="contact-right">
                 <img src="./images/InquirePic.png" alt="dk"/>
