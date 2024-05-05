@@ -27,8 +27,11 @@
                     <h1>Sign In</h1>
                 </div>
 
+                
                 <?php
                     if(isset($_POST['useraccounts_check'])){
+                        //CHECKS IF THE USERNAME EXISTS IN THE DATABASES
+                        $AccountExists = false;
                         $username = $_POST['username'];
                         $password = $_POST['password'];
 
@@ -39,14 +42,17 @@
                         }
                         else{
                             while($row = mysqli_fetch_assoc($result)){
+                                //ITERATE EACH ROW AND COMPARE USERNAME
                                 if($row['user_name']==$username){
-                                    die("exist");
-                                }else{
-                                    
+                                    $AccountExists = true;
                                 }
                             }
                         }
+                        if($AccountExists){
 
+                            header("Location:http://localhost/qahwah-cafe/ClientUI/client_ui.html"); 
+                            exit; // <- don't forget this!
+                        }
                     }
                 ?>
 
