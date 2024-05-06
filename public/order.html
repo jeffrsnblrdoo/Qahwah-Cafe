@@ -73,12 +73,35 @@
                                 <br>
                                 <label for="contact-number">Mobile Contact Number</label>
                                 <br>
-                                <input type="text"
+                                <input type="tel"
                                 id="contact-number"
                                 name="contact-number"
-                                placeholder="Mobile Contact Number Required"
+                                placeholder="ex. 09876543210"
                                 size="55"
+                                maxlength="11"
                                 required />
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        const contactInput = document.getElementById("contact-number");
+                                    
+                                        contactInput.addEventListener("input", function(event) {
+                                            const input = event.target.value;
+                                            const digits = input.replace(/\D/g, ''); // Remove non-numeric characters
+                                            const formatted = digits.slice(0, 11); // Limit to 11 digits
+                                    
+                                            if (digits !== input) {
+                                                contactInput.value = digits;
+                                            }
+
+                                            contactInput.addEventListener("keypress", function(event) {
+                                                const key = event.key;
+                                                if (isNaN(key) || key === ' ') {
+                                                event.preventDefault();
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
                                 <button class="submit-button" type="submit" value="submit">Submit Orders</button>
                             </div>
                             <div class="customer-details-right">
