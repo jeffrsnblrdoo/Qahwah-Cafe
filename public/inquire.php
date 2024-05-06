@@ -37,7 +37,7 @@
                         $InvoiceMsg = $_POST['invoice'];
                         $date = date("Y-m-d");
                         $time = date("h:i:sa");
-                        
+
                         $query = "insert into `inquirytable` (`booker_name`,`email_address`,`mobile_no`,`event_title`,`invoice`,
                         `date`,`time`,`Is_archived`) values ('$BookerName','$Email','$MobileNumber','$EventTitle','$InvoiceMsg','$date','$time', '0')";
 
@@ -46,7 +46,8 @@
                         if(!$result){
                             die("Query Failed". mysqli_error());
                         }else{
-                            header('location:inquire.php');
+                            header('Refresh:5; url=inquire.php');
+                            echo "<script>alert('Form successfully submitted');</script>";
                         }
                     }
                 ?>

@@ -54,8 +54,7 @@
                         }
                         if($AccountExists){
                             if($PasswordCorrect){
-                                echo "<script>alert('Welcome Admin!');</script>";
-                                header("Location:http://localhost/qahwah-cafe/public/clientUI.html"); 
+                                header("Location:http://localhost/qahwah-cafe/public/clientUI.php"); 
                                 exit; // <- don't forget this!
                             }else{
                                 echo "<script>alert('Password Incorrect!');</script>";
