@@ -21,113 +21,6 @@ const customerName = document.getElementById('fname');
 const customerNumber = document.getElementById('contact-number');
 const customerAddress = document.getElementById('address');
 
-const products = [
-    {
-        id: 1, 
-        name: 'Americano',
-        image: 'IcedAmericano.png',
-        description: 'Rich espresso paired with water for a bold, smooth taste.',
-        price: 99.00,
-        category: "beverage"
-    },
-    {
-        id: 2,
-        name: 'Caramel Macchiato',
-        image: 'icedCaramelMacchiato.png',
-        description: 'Velvety espresso balanced with creamy milk, topped with a decadent caramel drizzle.',
-        price: 125.00,
-        category: "beverage"
-    },
-    {
-        id: 3,
-        name: 'Caffe Latte',
-        image: 'icedLatte.png',
-        description: 'Smooth espresso combined with creamy milk, topped with a delicate foam.',
-        price: 110.00,
-        category: "beverage"
-    }, 
-    {
-        id: 4,
-        name: 'Matcha Latte',
-        image: 'icedMatchaLatte.png',
-        description: 'Vibrant matcha harmoniously blended with creamy milk.',
-        price: 125.00,
-        category: "beverage"
-    },
-    {
-        id: 5,
-        name: 'Caffe Mocha',
-        image: 'icedMocha.png',
-        description: 'Bold espresso, decadent chocolate, and creamy milk.',
-        price: 120.00,
-        category: "beverage"
-    },
-    {
-        id: 6,
-        name: "Butter Croissant",
-        image: "ButterCroissant.png",
-        description: 'Light, buttery pastry with a delicate flakiness.',
-        price: 105.00,
-        category: "pastry"
-    },
-    {
-        id: 7,
-        name: "Blueberry Bagel",
-        image: "BlueberryBagel.png",
-        description: 'Soft, chewy bagel infused with bursts of sweet blueberries.',
-        price: 135.00,
-        category: "pastry"
-    },
-    {
-        id: 8,
-        name: "Cheese Bacon Danish",
-        image: "CheeseBaconDanish.png",
-        description: 'Savory pastry filled with creamy cheese and crispy bacon.',
-        price: 210.00,
-        category: "pastry"
-    },
-    {
-        id: 9,
-        name: "Blueberry Muffin",
-        image: "BlueberryMuffin.png",
-        description: 'Moist muffin bursting with juicy blueberries.',
-        price: 165.00,
-        category: "pastry"
-    },
-    {
-        id: 10,
-        name: "Waffle",
-        image: "Waffle.png",
-        description: 'Crisp on the outside, fluffy on the inside, topped with whipped cream and syrup of choice.',
-        price: 105.00,
-        category: "pastry"
-    },
-    {
-        id: 11,
-        name: "Signature Lemonade",
-        image: "lemonade.png",
-        description: "Freshly squeezed lemons, pure cane sugar, and ice-cold water.",
-        price: 99.00,
-        category: "lto"
-    },
-    {
-        id: 12,
-        name: "Strawberry Lemon",
-        image: "strawberry.png",
-        description: "A fusion of tangy lemons and ripe strawberries, served over ice for a burst of refreshing flavor.",
-        price: 110.00,
-        category: "lto"
-    },
-    {
-        id: 13,
-        name: "Yogurt Lemonade",
-        image: "yogurt.png",
-        description: "A harmonious blend of tangy lemons and smooth yogurt, creating a refreshing treat that delights the palate.",
-        price: 125.00,
-        category: "lto"
-    }
-]
-
 //function for html display creation
 const createDisplay = (value) => {
     let newDiv = document.createElement('div');
@@ -168,10 +61,22 @@ fetch('/products')
                     break;
             }
         });
+
+        const addToOrdersBtns = document.getElementsByClassName("add-to-orders-btn");
+        [...addToOrdersBtns].forEach((btn) => {
+            btn.addEventListener("click", (event) => {
+                cart.showModal(Number(event.target.id));
+                toggleContainerFlex(modalContainer);
+                toggleContainerBlock(overlay);
+                console.log(cart);
+                return;
+            });
+        });
     })
     .catch(error => {
         console.log(error);
-    });
+});
+
 
 //toggles the display for cart
 openCart.addEventListener("click", () => {
@@ -198,6 +103,20 @@ class ShoppingCart {
       this.order = {};
       this.count = 0;
       this.total = 0;
+      this.products = [];
+      this.fetchedProducts();
+    }
+
+    //fetch the products from the data base
+    fetchedProducts() {
+        fetch('/products')
+            .then(res => res.json())
+            .then(data => {
+                this.products = data;
+            })
+            .catch(error => {
+                console.log("ERROR FETCHING PRODUCTS: ", error);
+            })
     }
 
     //checks if shopping cart is empty
@@ -211,7 +130,7 @@ class ShoppingCart {
         //searches the products array for any product that matches with element id
         //destructures the product and initialize a quantity of 1
         //assign that product to the order object
-        const product = products.find((item) => item.id === id);
+        const product = this.products.find((item) => item.id === id);
         const { name, price, description } = product;
         product.quantity = 1;
         this.order = product;
@@ -509,20 +428,62 @@ class ShoppingCart {
         quantity.innerHTML = this.count;
         total.textContent = this.total;
     }
+
+    submit() {
+        // Map orders to desired format
+        const orders = this.cart.map(item => {
+            if(item.category === "beverage") {
+                return {
+                    name: item.temperature + item.name,
+                    quantity: item.quantity,
+                    comment: item.comment
+                }
+            } else {
+                return {
+                    name: item.name,
+                    quantity: item.quantity,
+                    comment: item.comment
+                }
+            }
+        });
+
+        // Create new order object
+        const orderData = {
+            name: customerName.value,
+            address: customerAddress.value,
+            contact: customerNumber.value,
+            orders,
+            price: this.total
+        };
+
+        fetch('/submitOrders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        })
+        .then(res => {
+            if(!res.ok) {
+                throw new Error("Failed to submit order");
+            }
+            console.log(JSON.stringify(orderData));
+            return res.json();
+        })
+        .then(data => {
+            console.log("Order submitted successfully: ", data);
+
+            this.isCartEmpty();
+        })
+        .catch(error => {
+            console.log("Error submitting orders: ", error);
+        });
+    }
 }
 
 const cart = new ShoppingCart();
 //event handler for opening the order modal
-const addToOrdersBtns = document.getElementsByClassName("add-to-orders-btn");
-[...addToOrdersBtns].forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-        cart.showModal(Number(event.target.id));
-        toggleContainerFlex(modalContainer);
-        toggleContainerBlock(overlay);
-        console.log(cart);
-        return;
-    })
-});
+
 
 //event handlers for closing the modal
 overlay.addEventListener('click', () => {
@@ -588,4 +549,11 @@ clearCart.addEventListener('click', () => {
     } else {
         alert("Your cart is currently empty.");
     }   
+});
+
+//submit orders
+const submit = document.querySelector('.submit-button');
+submit.addEventListener('click', (event) => {
+    cart.submit();
+    cart.emptyCart();
 });
