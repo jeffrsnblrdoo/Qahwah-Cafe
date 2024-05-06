@@ -42,7 +42,7 @@
             <div class="inquiry-container">
                 <h1>PENDING INQUIRIES</h1>
                 <div class="container">
-                    <table class="table table-hover table-borderd table-striped">
+                    <table class="table table-hover table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Inquiry ID</th>
@@ -68,14 +68,14 @@
                                 while($row = mysqli_fetch_assoc($result)){
                                     ?>
                                         <tr>
-                                            <td><?php echo $row['id'];?><td>
-                                            <td><?php echo $row['booker_name'];?><td>
-                                            <td><?php echo $row['email_address'];?><td>
-                                            <td><?php echo $row['mobile_no'];?><td>
-                                            <td><?php echo $row['event_title'];?><td>
-                                            <td><?php echo $row['invoice'];?><td>
-                                            <td><?php echo $row['date'];?><td>
-                                            <td><?php echo $row['time'];?><td>
+                                            <td><?php echo $row['id'];?></td>
+                                            <td><?php echo $row['booker_name'];?></td>
+                                            <td><?php echo $row['email_address'];?></td>
+                                            <td><?php echo $row['mobile_no'];?></td>
+                                            <td><?php echo $row['event_title'];?></td>
+                                            <td><?php echo $row['invoice'];?></td>
+                                            <td><?php echo $row['date'];?></td>
+                                            <td><?php echo $row['time'];?></td>
                                         </tr>
                                     <?php
                                 }
