@@ -43,16 +43,17 @@ app.post('/submitOrders', async (req, res) => {
 
     try {
         // Extract order data from the request body
-        const { name, address, contact, orders, price } = req.body;
-        //console.log('Received order data:', { name, address, contact, orders, price });
+        const { id, name, address, contact, orders, total } = req.body;
+        //console.log({id, name, address, contact, orders, total })
 
         // Create a new order document using the Orders model
         const newOrder = new Orders({
+            id,
             name,
             address,
             contact,
             orders,
-            price
+            total
         });
 
         //save the new order document to the db
@@ -62,6 +63,84 @@ app.post('/submitOrders', async (req, res) => {
     } catch(error) {
         console.log('Error saving order data: ', error);
         res.status(500).json({ error: 'Failed to save order' });
+    }
+});
+
+
+//route to fetch orders
+app.get('/submitOrders', async (req, res) => {
+    try {
+        const data = await Orders.find();
+        res.setHeader('Content-Type', 'application/json');
+        res.json(data);
+    } catch(error) {
+        console.log(error);
+    }
+});
+
+
+//route for deleting orders
+app.delete('/submitOrders/:orderId', async (req, res) => {
+    const orderId = req.params.orderId;
+    console.log(orderId);
+
+    try {
+        //find and delete the order by its ID
+        const deleteOrder = await Orders.findByIdAndDelete(orderId);
+
+        if(!deleteOrder) {
+            return res.status(404).json({ error: `Order with ID ${orderId} not found` });
+        }
+
+        res.json({ message: `Order with ID ${orderId} has been deleted` });
+    } catch(error) {
+        console.error('Error deleting order:', error);
+        res.status(500).json({ error: 'Failed to delete order' });
+    }
+});
+
+
+//route for adding new product to the database
+app.post('/addProducts', async (req,res) => {
+    try {
+        const { category, id, name, price, description, image } = req.body;
+
+        const newProduct = new Products({
+            category,
+            id,
+            name,
+            price,
+            description,
+            image
+        });
+
+        await newProduct.save();
+
+        res.status(200).json({ message: 'Product added successfully' });
+    } catch(error) {
+        console.log('Error adding product: ', error);
+        res.status(500).json({ error: 'Failed to add product' });
+    }
+});
+
+
+//route for deleting product
+app.delete('/addProducts/:productId', async (req, res) => {
+    const productId = req.params.productId;
+    console.log(productId);
+
+    try {
+        //find and delete the order by its ID
+        const deleteProduct = await Products.findByIdAndDelete(productId);
+
+        if(!deleteProduct) {
+            return res.status(404).json({ error: `Order with ID ${productId} not found` });
+        }
+
+        res.json({ message: `Order with ID ${productId} has been deleted` });
+    } catch(error) {
+        console.error('Error deleting order:', error);
+        res.status(500).json({ error: 'Failed to delete order' });
     }
 });
 

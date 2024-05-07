@@ -22,6 +22,10 @@ const OrderSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    id: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -38,7 +42,7 @@ const OrderSchema = new Schema({
         type: [OrderItemSchema],
         required: true
     },
-    price: {
+    total: {
         type: Number,
         required: true
     }

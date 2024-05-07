@@ -1,0 +1,69 @@
+.order-content {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    top: -5%;
+    width: 95%;
+    height: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f1ea;
+}
+
+.order-content > h1 {
+    font-family: 'DM Serif Text', 'Prata', Arial, Helvetica, sans-serif;
+}
+
+.order-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #443229;
+}
+
+.content-info div {
+    font-size: 1.2em;
+    padding: 2%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.order-div {
+    width: 50%;
+    margin: auto;
+}
+
+.order-div div {
+    font-size: 0.8em;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.content-btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 5% auto;
+    width: 50%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.reject-done-btn {
+    background-color: #443229;
+    color:#E9E7DA;
+    cursor: pointer;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1.5em;
+    padding: 5%;
+    font-weight: bolder;
+}
+
+.reject-done-btn:hover {
+    transition: all .1s ease;
+    background-color: #815E5B;
+    transition: all .1s ease;
+    box-shadow: 0 0 0 0 #fff, 0 0 0 3px #443229;
+}

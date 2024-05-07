@@ -434,7 +434,7 @@ class ShoppingCart {
         const orders = this.cart.map(item => {
             if(item.category === "beverage") {
                 return {
-                    name: item.temperature + item.name,
+                    name: `${item.temperature} ${item.name}`,
                     quantity: item.quantity,
                     comment: item.comment
                 }
@@ -447,13 +447,17 @@ class ShoppingCart {
             }
         });
 
+        const timeStamp = Date.now().toString();
+        const lastFive = timeStamp.substr(-5);
+
         // Create new order object
         const orderData = {
+            id: `${customerName.value}-${lastFive}`,
             name: customerName.value,
             address: customerAddress.value,
             contact: customerNumber.value,
             orders,
-            price: this.total
+            total: this.total
         };
 
         fetch('/submitOrders', {
@@ -467,7 +471,6 @@ class ShoppingCart {
             if(!res.ok) {
                 throw new Error("Failed to submit order");
             }
-            console.log(JSON.stringify(orderData));
             return res.json();
         })
         .then(data => {
@@ -555,5 +558,4 @@ clearCart.addEventListener('click', () => {
 const submit = document.querySelector('.submit-button');
 submit.addEventListener('click', (event) => {
     cart.submit();
-    cart.emptyCart();
 });
