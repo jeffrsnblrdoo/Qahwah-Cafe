@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const Products = require('./servers/models/Products');
 const Orders = require('./servers/models/Orders');
 
@@ -18,6 +19,8 @@ connectDB();
 app.use(express.static(path.join(__dirname, './public')));
 
 app.use(bodyParser.json());
+
+app.use('*.php', createProxyMiddleware({ target: 'http://localhost:80', changeOrigin: true }));
 
 
 //default route
