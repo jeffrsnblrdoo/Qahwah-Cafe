@@ -11,6 +11,11 @@
     background-color: #f3f1ea;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .order-content > h1 {
     font-family: 'DM Serif Text', 'Prata', Arial, Helvetica, sans-serif;
 }

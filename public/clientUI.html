@@ -22,20 +22,17 @@
                 <h1>Dashboard</h1>
                 <div class="categories">
                     <div class="order">
-                        <h2>Order</h2>
-                        <span class="order-span">0</span>
+                        <h2><a href="#order-container">Orders</a></h2>
+                        <a href="#order-container"><span class="order-span">0</span></a>
                     </div>
                     <div class="inquiry">
-                        <h2>Inquiry</h2>
-                        <span class="inquiry-span">2</span>
-                    </div>
-                    <div class="report">
-                        <h2>Report</h2>
+                        <h2><a href="#inquiry-container">Inquiries</a></h2>
+                       <a href="#inquiry-container"><span class="inquiry-span">2</span></a>
                     </div>
                 </div>
             </div><!--dashboard-->
             <div class="product-grp">
-                <div class="order-container">
+                <div class="order-container" id="order-container">
                     <h1>PENDING ORDERS</h1>
                     <div class="order-content">
                         <h1>You currently have no pending orders!</h1>
@@ -66,7 +63,7 @@
                     <button class="add-product-btn">ADD A PRODUCT</button>
                 </div>
             </div>
-            <div class="inquiry-container">
+            <div class="inquiry-container" id="inquiry-container">
                 <h1>PENDING INQUIRIES</h1>
                 <div></div>
             </div>
