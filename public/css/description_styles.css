@@ -107,7 +107,7 @@ footer {
     display: flex;
     justify-content: space-between;
     position: relative;
-    top: 100px;
+    bottom: -247px;
     padding: 7px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
