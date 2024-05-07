@@ -127,7 +127,7 @@ app.post('/addProducts', async (req,res) => {
 });
 
 
-//route for deleting product
+//route for deleting products
 app.delete('/addProducts/:productId', async (req, res) => {
     const productId = req.params.productId;
     console.log(productId);

@@ -14,7 +14,7 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.add-to-list-btn, .cancel-btn {
+.add-to-list-btn, .cancel-btn, .finish-update-btn, .cancel-update-btn {
     display: flex;
     justify-content: center;
     background-color: #443229;
@@ -31,7 +31,7 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.update-btn, .finish-update-btn {
+.update-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +46,7 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.delete-btn, .cancel-update-btn {
+.delete-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,14 +61,15 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.delete-btn:hover, .cancel-update-btn:hover {
+.delete-btn:hover {
     transition: all .1s ease;
     background-color: #D2042D;
     transition: all .1s ease;
     box-shadow: 0 0 0 0 #fff, 0 0 0 3px #800020;
 }
 
-.add-product-btn:hover, .add-to-list-btn:hover, .cancel-btn:hover, .update-btn:hover, .finish-update-btn:hover {
+.add-product-btn:hover, .add-to-list-btn:hover, .cancel-btn:hover,
+.update-btn:hover, .finish-update-btn:hover, .cancel-update-btn:hover {
     transition: all .1s ease;
     background-color: #815E5B;
     transition: all .1s ease;
@@ -87,7 +88,7 @@
     background-color: #f3f1ea;
 }
 
-.add-product-content {
+.add-product-content, .update-product-content {
     position: relative;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -153,27 +154,37 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.new-product-details {
+.new-product-details, .update-product-details {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-.new-product-details label, .new-product-details input {
+.new-product-details label, .new-product-details input, .update-product-details label, .update-product-details input {
     padding: 1%;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bolder;
 }
 
-.middle input {
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+.update-product-details h2 {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
 }
 
-.update-form {
-    width: 100%;
+.update-product-details p {
+    font-family: 'DM Serif Text', 'Prata', Arial, Helvetica, sans-serif;
+    font-size: 3.5em;
+    font-weight: bolder;
+    margin: 5% auto;
+}
+
+.update-product-content-btns {
     display: flex;
-    flex-direction: row;
-    border: 2px solid blue;
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    width: 50%;
+}
+
+.finish-update-btn, .cancel-update-btn {
+    padding: 3%;
 }

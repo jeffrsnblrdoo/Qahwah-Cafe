@@ -135,7 +135,7 @@ header h1 {
     height: 70vh;
 }
 
-.order-container h1, .product-container h1, .inquiry-container h1 {
+.order-container h1, .product-container > h1, .inquiry-container h1 {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 2.5em;
     padding: 0 0 0 2%;

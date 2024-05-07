@@ -1,10 +1,13 @@
 const productContent = document.querySelector('.product-content');
 const addProdContent = document.querySelector('.add-product-content');
+const upProdContent = document.querySelector('.update-product-content');
 const prodDetails = document.querySelector('.new-product-details');
+const updateDetails = document.querySelector('.update-product-details');
 
 class Products {
     constructor() {
         this.newProduct = {};
+        this.updatedProduct = {};
         this.list = [];
         this.products = [];
         this.fetchProducts();
@@ -64,6 +67,10 @@ class Products {
         const updateBtns = document.querySelectorAll('.update-btn');
         updateBtns.forEach(btn => {
             btn.addEventListener('click', event => {
+                toggleHidden(productContent);
+                toggleHidden(addProductBtn);
+                toggleFlex(upProdContent);
+                toggleFlex(addToListBtn);
                 const productId = event.target.dataset.productId;
                 this.updateProducts(productId);
             });
@@ -131,6 +138,57 @@ class Products {
         });
     }
 
+     //update a product in product collection
+     updateProducts(productId) {
+
+        const product = this.products.find(item => item._id === productId);
+        const { category, id, name, price, description, image } = product;
+
+        updateDetails.innerHTML = "";
+
+        updateDetails.innerHTML = `
+        <h2>You are about to update product:</h2><p>${name}</p>
+
+        <label for='new-product-category'>Product Category: </label>
+        <input type='text' id='new-product-category' name='new-product-category' placeholder='${category}' required />
+
+        <label for='new-product-id'>Product ID: </label>
+        <input type='number' id='new-product-id' name='new-product-id' placeholder='${id}' required />
+
+        <label for='new-product-name'>Product Name: </label>
+        <input type='text' id='new-product-name' name='new-product-name' placeholder='${name}' required />
+
+        <label for='new-product-price'>Product Price: </label>
+        <input type='number' id='new-product-price' name='new-product-price' placeholder='${price}' required />
+
+        <label for='new-product-description'>Product Description: </label>
+        <input type='text' id='new-product-description' name='new-product-description' placeholder='${description}' required />
+
+        <label for='new-product-image'>Product Image: </label>
+        <input type='file' id='new-product-image' name='new-product-image' accept='image/png' placeholder='${image}' required />
+        `;
+    }
+
+    postUpdate(productId) {
+        //get input field values
+        const category = document.getElementById('new-product-category').value;
+        const id = document.getElementById('new-product-id').value;
+        const name = document.getElementById('new-product-name').value;
+        const price = document.getElementById('new-product-price').value;
+        const description = document.getElementById('new-product-description').value;
+        const image = document.getElementById('new-product-image').value;
+
+        //creates the product object
+        this.updatedProduct = {
+            category,
+            id,
+            name,
+            price,
+            description,
+            image
+        }
+    }
+
     //delete a product from the products collection
     deleteProduct(productId, action) {
         fetch(`/addProducts/${productId}`, {
@@ -150,16 +208,6 @@ class Products {
         .catch(error => {
             console.log('Error deleting order: ', error);
         });
-    }
-
-    //update a product in product collection
-    updateProducts(productId) {
-
-        const product = this.products.find(item => item._id === productId);
-        const { _id, category, id, name, price, description } = product;
-
-        const prodToUpdate = document.querySelector(`.product-box[data-product-id="${productId}"]`);
-        prodToUpdate.style.border = "5px solid blue";
     }
 }
 
@@ -193,6 +241,25 @@ addToListBtn.addEventListener('click', () => {
 const cancel = document.querySelector('.cancel-btn');
 cancel.addEventListener('click', () => {
     toggleHidden(addProdContent);
+    toggleHidden(addToListBtn);
+    toggleFlex(productContent);
+    toggleFlex(addProductBtn);
+});
+
+const finishUpdateBtn = document.querySelector('.finish-update-btn');
+finishUpdateBtn.addEventListener('click', event => {
+    toggleHidden(upProdContent);
+    toggleHidden(addToListBtn);
+    toggleFlex(productContent);
+    toggleFlex(addProductBtn);
+    const productIdInput = document.getElementById('new-product-id');
+    const productId = productIdInput.value; // Get productId from the input field
+    products.postUpdate(productId);
+});
+
+const cancelUpdate = document.querySelector('.cancel-update-btn');
+cancelUpdate.addEventListener('click', () => {
+    toggleHidden(upProdContent);
     toggleHidden(addToListBtn);
     toggleFlex(productContent);
     toggleFlex(addProductBtn);
