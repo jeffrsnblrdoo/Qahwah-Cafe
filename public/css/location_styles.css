@@ -7,6 +7,9 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    background-image: url(../images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header {
@@ -51,20 +54,39 @@ main {
     width: 100%;
     height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.left {
+    padding-top: 5%;
+    margin-left: 10%;
+    width: 40%;
+}
+
+.right {
+    padding-top: 5%;
+    width: 80%;
 }
 
 h1 {
     color: #443229;
     margin-bottom: 60px;
+    font-size: xxx-large;
+}
+
+hr {
+    width: 20%;
+    background-color: #443229;
+    height: 2px;
+    border: 0;
+    margin-right: 100%;
+    margin-top: -6%;
 }
 
 iframe {
-    width: 80%;
     height: 500px;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 footer {
@@ -72,8 +94,6 @@ footer {
     background-color: #815E5B;
     display: flex;
     justify-content: space-between;
-    position: relative;
-    top: 100px;
     padding: 7px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
