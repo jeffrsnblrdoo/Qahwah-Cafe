@@ -47,39 +47,103 @@ header {
 .navbar > a:hover {color: #815E5B;}
 
   .background-drink {
-    background-image: url("./Pictures/BGdrinks.png");
+    background-image: url("../images/BGDrinks.jpg");
     background-position: center;
     background-size: auto 80%;
     background-repeat: no-repeat;
     padding: 50px;
     text-align: center;
-    color: #815E5B;
+    color: #E9E7DA;
     font-family: Century Gothic, sans-serif;
     font-size: 50px;
+    font-weight: bold;
     margin-top: 20px;
   }
 
+  /* TEST
+  #image-container {
+    text-align: center;
+  }
+  .carousel-image {
+      max-width: 200px; /* Adjust the maximum width as needed 
+      display: inline-block; /* Display images in a row 
+      margin: 10px; /* Add some margin between images 
+  }
+  END TEST */
 
   .background-pastry {
-    background-image: url("./Pictures/BGpastry.png");
+    background-image: url("../images/BGPastry.png");
     background-position: center;
-    background-size: auto 70%;
+    background-size: auto 80%;
     background-repeat: no-repeat;
     padding: 50px;
     text-align: center;
-    color: #815E5B;
+    color: #E9E7DA;
     font-family: Century Gothic, sans-serif;
+    font-weight: bold;
     font-size: 50px;
   }
 
+  .limited {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
 
-  .coldDrinks{
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #E9E7DA;
+    font-family: Century Gothic, sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+  }
+
+  .limited img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .limited-content {
+    display: flex;
+    height: 500px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    font-family: Century Gothic, sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+  .limited-content span {
+    margin: 10% 5% 0% 5%;
+    text-align: center;
+  }
+
+  .limited-content img {
+    height: auto;
+    width: 100%;
+  }
+
+  .limited-content img:hover {
+    height: auto;
+    width: 110%;
+  }
+
+ .coldDrinks{
     margin: auto;
     width: 900px;
     display: flex;
     overflow-x: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+    font-family: Century Gothic, sans-serif;
+    font-weight: bold;
+    font-size: 17px;
   }
 
   .coldDrinks div{
@@ -93,8 +157,7 @@ header {
   }
 
   .coldDrinks img{
-    width: 150%;
-    filter: grayscale(100%);
+    width: 100%;
     transition: transform 0.5s;
   }
 
@@ -103,17 +166,14 @@ header {
   }
 
   .coldDrinks div img:hover{
-    filter: grayscale(0);
     cursor: pointer;
     transform: scale(1.1)
-    
   }
 
   .coldDrinks div p{
-    margin-left: 50%;
-    text-align: justify;
+    text-align: center;
     font-family: Century Gothic, sans-serif;
-    font-size: 50px;
+    font-size: 17px;
   }
 
   .pastry{
@@ -125,8 +185,8 @@ header {
     scroll-snap-type: x mandatory;
   }
 
-  .pastry div{
-    width: 150%;
+  .pastry1{
+    width: 100%;
     display: flex;
     grid-template-columns: auto auto auto;
     grid-gap: 200px;
@@ -136,8 +196,8 @@ header {
   }
 
   .pastry img{
-    width: 180%;
-    filter: grayscale(100%);
+    width: 300%;
+    height: 70%;
     transition: transform 0.5s;
   }
 
@@ -145,18 +205,53 @@ header {
     display: none;
   }
 
-  .pastry div img:hover{
-    filter: grayscale(0);
+  .pastry1 img:hover{
     cursor: pointer;
     transform: scale(1.1)
     
   }
 
-  .pastry div p{
-    margin-left: 40%;
-    text-align: justify;
+  .pastry1 p{
+    margin-left: 100%;
+    width: 100%;
+    text-align: center;
     font-family: Century Gothic, sans-serif;
-    font-size: 50px;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+  .unliwings-containter {
+    margin: auto;
+    margin-top: 5%;
+    width: 80%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .unli1{
+    width: 40%;
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+  }
+
+  .unli1 img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .unli2{
+    width: 40%; 
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+  }
+
+  .unli2 img{
+    width: 100%;
+    height: 100%;
   }
 
   footer {

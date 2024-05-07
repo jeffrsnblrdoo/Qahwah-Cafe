@@ -18,8 +18,76 @@
 </header>
 
   <div class="background-drink">
-    <p>Our Drink</p>
+    <p>COLD DRINKS</p>
   </div>
+
+  <!--TEST
+  <div id="image-container">
+    <a href=""><img class="carousel-image" src="./images/IcedAmericano.png" alt="Image 1"></a>
+    <a href=""><img class="carousel-image" src="./images/icedCaramelMacchiato.png" alt="Image 2"></a>
+    <a href=""></a><img class="carousel-image" src="./images/icedLatte.png" alt="Image 3"></a>
+    <a href=""></a><img class="carousel-image" src="./images/icedMatchaLatte.png" alt="Image 4" style="display:none;"></a>
+    <a href=""></a><img class="carousel-image" src="./images/icedMocha.png" alt="Image 5" style="display:none;">
+    <br>
+    <button id="prevBtn" onclick="prevImage()" disabled>Previous</button>
+    <button id="nextBtn" onclick="nextImage()">Next</button>
+</div>
+
+<script>
+  var currentIndex = 0;
+  var run = 0;
+  var images = document.getElementsByClassName("carousel-image");
+  var prevBtn = document.getElementById("prevBtn");
+  var nextBtn = document.getElementById("nextBtn");
+
+  function showImage(index) {
+      for (var i = 0; i < images.length; i++) {
+          if (currentIndex >=3) {
+              for (var i = 0; i < 5; i++) {
+                  if (i === 0) {
+                    images[i].style.display = "none";
+                    images[3].style.display = "inline-block";
+                  }
+              }
+              run++;
+              if (run === 2) {
+                images[1].style.display = "none";
+                images[4].style.display = "inline-block";
+              }
+          } else if (i < 3 || i === index) {
+              images[i].style.display = "inline-block";
+          } else {
+              images[i].style.display = "none";
+          }
+      }
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === images.length - 1;
+  }
+
+  function prevImage() {
+      if (currentIndex > 0) {
+          currentIndex--;
+          showImage(currentIndex);
+          run=0;
+      }
+  }
+
+  function nextImage() {
+      if (currentIndex < images.length - 1) {
+          if (currentIndex === 0) {
+              images[currentIndex].style.display = "none"; // Hide the first image
+              currentIndex += 3; // Move to the fourth image
+          } else {
+              currentIndex++;
+          }
+          showImage(currentIndex);
+      }
+  }
+
+  showImage(currentIndex);
+</script>
+  END TEST-->
+
 
   <div class="coldDrinks">
     <div>
@@ -32,16 +100,36 @@
   </div>
 
   <div class="background-pastry">
-    <p>Our Pastry</p>
+    <p>PASTRIES</p>
   </div>
-  
+
   <div class="pastry">
-    <div>
+    <div class="pastry1">
       <span><a href="../FoodDescription/BlueberryBagel.html"><img src="./images/BlueberryBagel.png"></a><p>Blueberry Bagel</p></span>
       <span><a href="../FoodDescription/BlueberryMuffin.html"><img src="./images/BlueberryMuffin.png"></a><p>Blueberry Muffin</p></span>
       <span><a href="../FoodDescription/ButterCroissant.html"><img src="./images/ButterCroissant.png"></a><p>Butter Croissant</p></span>
       <span><a href="../FoodDescription/CheeseBaconDanish.html"><img src="./images/CheeseBaconDanish.png"></a><p>Cheese Bacon Danish</p></span>
       <span><a href="../FoodDescription/Waffle.html"><img src="./images/Waffle.png"></a><p>Waffle</p></span>
+    </div>
+  </div> 
+
+  <div class="limited">
+    <img src="./images/BGLimited.png" alt="Background of Limited Offer Drinks">
+    <div class="centered">LIMITED TIME OFFERS</div>
+  </div>
+
+  <div class="limited-content">
+    <span><a href="#"><img src="./images/lemonade.png"></a><p>Signature Lemonade</p></span>
+    <span><a href="#"><img src="./images/strawberry.png"></a><p>Strawberry Lemon</p></span>
+    <span><a href="#"><img src="./images/yogurt.png"></a><p>Yogurt Lemonade</p></span>
+  </div>
+
+  <div class="unliwings-containter">
+    <div class="unli1">
+      <img src="./images/UnliWings1.jpg" alt="">
+    </div>
+    <div class="unli2">
+      <img src="./images/UnliWings2.jpg" alt="">
     </div>
   </div>
 
