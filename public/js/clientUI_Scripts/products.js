@@ -159,33 +159,7 @@ class Products {
         const { _id, category, id, name, price, description } = product;
 
         const prodToUpdate = document.querySelector(`.product-box[data-product-id="${productId}"]`);
-        prodToUpdate.style.border = "3px solid red";
-
-        prodToUpdate.innerHTML = `
-            <div class='left'>
-                <button class='finish-update-btn' data-product-id=${_id}>UPDATE</button>
-                <button class='cancel-update-btn' data-product-id=${_id}>CANCEL</button>
-            </div>
-            <div class='middle'>
-                <div>Category: <input type='text' placeholder='${category}' /></div>
-                <div>Product ID: <input type='number' placeholder='${id}' /></div>
-                <div>Name: <input type='text' placeholder='${name}' /></div>
-                <div>Price: <input type='number' placeholder='Php ${price}' /></div>
-                <div>Description: <input type='text' placeholder='${description}' /></div>
-            </div>
-        `;
-
-        const finishUpdateBtn = document.querySelector('.finish-update-btn');
-        finishUpdateBtn.addEventListener('click', () => {
-
-            category = newCategory;
-            id = newId;
-            name = newName;
-            price = newPrice;
-            description = newDescription;
-
-            console.log("finished updating product: ", product);
-        });
+        prodToUpdate.style.border = "5px solid blue";
     }
 }
 
