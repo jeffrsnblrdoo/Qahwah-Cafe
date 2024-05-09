@@ -1,6 +1,7 @@
+import { createDisplay } from "./createDisplay.js";
+import { containerToggler } from "./containerToggler.js";
 
 const openCart = document.querySelector('.shopping-cart');
-const closeCart = document.querySelector('.closeShop');
 const cartList = document.querySelector('.cart-list');
 const cartContainer = document.querySelector('.cart-container');
 const formContainer = document.querySelector('.form-container');
@@ -21,26 +22,6 @@ const customerName = document.getElementById('fname');
 const customerNumber = document.getElementById('contact-number');
 const customerAddress = document.getElementById('address');
 
-//function for html display creation
-const createDisplay = (value) => {
-    let newDiv = document.createElement('div');
-        newDiv.classList.add(value.category);
-        newDiv.innerHTML = `
-        <div class='flip-card'>
-            <div class='flip-card-inner'>
-                <div class='flip-card-front'>
-                    <img loading='lazy' src='./images/${value.image}'/>
-                </div>
-                <div class='flip-card-back'>${value.description}</div>
-            </div>
-        </div>
-        <div class='title'>${value.name}</div>
-        <div class='price'>Php ${value.price.toLocaleString()}
-        <button id='${value.id}' class='add-to-orders-btn'>+</button>
-        </div>
-        `;
-        return newDiv;
-}
 
 //creates the display for the products array
 fetch('/products')
@@ -66,8 +47,8 @@ fetch('/products')
         [...addToOrdersBtns].forEach((btn) => {
             btn.addEventListener("click", (event) => {
                 cart.showModal(Number(event.target.id));
-                toggleContainerFlex(modalContainer);
-                toggleContainerBlock(overlay);
+                containerToggler(modalContainer, "flex");
+                containerToggler(overlay, "block");
                 console.log(cart);
                 return;
             });
@@ -83,28 +64,16 @@ openCart.addEventListener("click", () => {
     orderContainer.style.display = orderContainer.style.display === "none" ? "flex" : "none";
 });
 
-//display togglers
-const toggleContainerFlex = (container) => {
-    container.style.display = "flex";
-}
-
-const toggleContainerBlock = (container) => {
-    container.style.display = "block";
-}
-
-const toggleContainerHide = (container) => {
-    container.style.display = "none";
-}
 
 class ShoppingCart {
     constructor() {
-      this.cart = [];
-      this.temp = [];
-      this.order = {};
-      this.count = 0;
-      this.total = 0;
-      this.products = [];
-      this.fetchedProducts();
+        this.count = 0;
+        this.total = 0;
+        this.order = {};
+        this.cart = [];
+        this.temp = [];
+        this.products = [];
+        this.fetchedProducts();
     }
 
     //fetch the products from the data base
@@ -239,8 +208,8 @@ class ShoppingCart {
     //closes the modal to allow user to continue browsing products
     //this also resets the modal display for the next product to order
     closeModal() {
-        toggleContainerHide(overlay);
-        toggleContainerHide(modalContainer);
+        containerToggler(overlay, "none");
+        containerToggler(modalContainer, "none");
         body.classList.remove('disabled-body');
         modalContent.innerHTML = "";
         this.order = {};
@@ -485,8 +454,6 @@ class ShoppingCart {
 }
 
 const cart = new ShoppingCart();
-//event handler for opening the order modal
-
 
 //event handlers for closing the modal
 overlay.addEventListener('click', () => {
@@ -525,10 +492,10 @@ const proceedCheckOut = document.querySelector('.checkout');
 proceedCheckOut.addEventListener('click', () => {
     if(!cart.isCartEmpty()) {
         cart.checkout();
-        toggleContainerFlex(formContainer);
-        toggleContainerHide(cartContainer);
-        toggleContainerHide(itemsContainer);
-        toggleContainerHide(openCart);
+        containerToggler(formContainer, "flex");
+        containerToggler(cartContainer, "none");
+        containerToggler(itemsContainer, "none");
+        containerToggler(openCart, "none");
     } else {
         alert("Your cart is currently empty.");
     }
@@ -537,10 +504,10 @@ proceedCheckOut.addEventListener('click', () => {
 //event handler for editing orders before submiting order
 const editBtn = document.querySelector('.edit-button');
 editBtn.addEventListener('click', () => {
-    toggleContainerFlex(cartContainer);
-    toggleContainerHide(formContainer);
-    toggleContainerBlock(itemsContainer);
-    toggleContainerBlock(openCart);
+    containerToggler(cartContainer, "flex");
+    containerToggler(formContainer, "none");
+    containerToggler(itemsContainer, "block");
+    containerToggler(openCart, "block");
     orderReview.innerHTML = "";
 });
 

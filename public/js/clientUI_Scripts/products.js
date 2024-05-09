@@ -72,7 +72,7 @@ class Products {
                 toggleFlex(upProdContent);
                 toggleFlex(addToListBtn);
                 const productId = event.target.dataset.productId;
-                this.updateProducts(productId);
+                this.updateAndPostProduct(productId);
             });
         });
     }
@@ -139,54 +139,74 @@ class Products {
     }
 
      //update a product in product collection
-     updateProducts(productId) {
-
+     updateAndPostProduct(productId) {
         const product = this.products.find(item => item._id === productId);
         const { category, id, name, price, description, image } = product;
-
+    
+        console.log(productId);
+    
         updateDetails.innerHTML = "";
-
+    
         updateDetails.innerHTML = `
         <h2>You are about to update product:</h2><p>${name}</p>
-
+    
         <label for='new-product-category'>Product Category: </label>
         <input type='text' id='new-product-category' name='new-product-category' placeholder='${category}' required />
-
+    
         <label for='new-product-id'>Product ID: </label>
         <input type='number' id='new-product-id' name='new-product-id' placeholder='${id}' required />
-
+    
         <label for='new-product-name'>Product Name: </label>
         <input type='text' id='new-product-name' name='new-product-name' placeholder='${name}' required />
-
+    
         <label for='new-product-price'>Product Price: </label>
         <input type='number' id='new-product-price' name='new-product-price' placeholder='${price}' required />
-
+    
         <label for='new-product-description'>Product Description: </label>
         <input type='text' id='new-product-description' name='new-product-description' placeholder='${description}' required />
-
+    
         <label for='new-product-image'>Product Image: </label>
         <input type='file' id='new-product-image' name='new-product-image' accept='image/png' placeholder='${image}' required />
         `;
-    }
-
-    postUpdate(productId) {
-        //get input field values
-        const category = document.getElementById('new-product-category').value;
-        const id = document.getElementById('new-product-id').value;
-        const name = document.getElementById('new-product-name').value;
-        const price = document.getElementById('new-product-price').value;
-        const description = document.getElementById('new-product-description').value;
-        const image = document.getElementById('new-product-image').value;
-
-        //creates the product object
-        this.updatedProduct = {
-            category,
-            id,
-            name,
-            price,
-            description,
-            image
-        }
+    
+        // Add event listener for the button to submit the updated product
+        const finishUpdateBtn = document.querySelector('.finish-update-btn');
+        finishUpdateBtn.addEventListener('click', event => {
+            const category = document.getElementById('new-product-category').value;
+            const id = document.getElementById('new-product-id').value;
+            const name = document.getElementById('new-product-name').value;
+            const price = document.getElementById('new-product-price').value;
+            const description = document.getElementById('new-product-description').value;
+            const image = document.getElementById('new-product-image').value;
+    
+            const updatedProduct = {
+                category,
+                id,
+                name,
+                price,
+                description,
+                image
+            };
+    
+            console.log(updatedProduct);
+            console.log(productId);
+    
+            fetch(`/products/${productId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedProduct)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(`Product with ID: ${productId} has been updated`);
+                this.fetchProducts(); // Refresh the product list after update
+            })
+            .catch(error => {
+                console.log('Error updating product: ', error);
+            });
+        });
     }
 
     //delete a product from the products collection

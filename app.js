@@ -127,6 +127,34 @@ app.post('/addProducts', async (req,res) => {
 });
 
 
+//route for updating products
+app.put('/products/:productId', async (req, res) => {
+    const productId = req.params.productId;
+    const { category, id, name, price, description, image } = req.body;
+
+    try {
+        // Find the product by its ID and update its properties
+        const updatedProduct = await Products.findByIdAndUpdate(productId, {
+            category,
+            id,
+            name,
+            price,
+            description,
+            image
+        }, { new: true });
+
+        if (!updatedProduct) {
+            return res.status(404).json({ error: `Product with ID ${productId} not found` });
+        }
+
+        res.json({ message: `Product with ID ${productId} has been updated`, updatedProduct });
+    } catch (error) {
+        console.error('Error updating product:', error);
+        res.status(500).json({ error: 'Failed to update product' });
+    }
+});
+
+
 //route for deleting products
 app.delete('/addProducts/:productId', async (req, res) => {
     const productId = req.params.productId;
